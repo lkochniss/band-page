@@ -1,0 +1,6 @@
+news_list_frontend:
+    path: /
+    defaults: { _controller: 'App\Controller\NewsController::listFrontend' }
+news_show:
+    path: /news/{slug}
+    defaults: { _controller: 'App\Controller\NewsController::show' }

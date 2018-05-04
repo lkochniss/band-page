@@ -1,0 +1,9 @@
+news_list_backend:
+    path: /news
+    defaults: { _controller: 'App\Controller\NewsController::listBackend' }
+news_create:
+    path: /news/create
+    defaults: { _controller: 'App\Controller\NewsController::create' }
+news_edit:
+    path: /news/{id}/edit
+    defaults: { _controller: 'App\Controller\NewsController::edit' }

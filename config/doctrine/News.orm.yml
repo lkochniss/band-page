@@ -1,0 +1,13 @@
+App\Entity\News:
+    type: entity
+    repositoryClass: App\Repository\NewsRepository
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        title:
+            type: string
+            length: 100
+        content:
+            type: text

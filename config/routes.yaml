@@ -1,0 +1,17 @@
+# Admin
+
+## Login
+secruity_admin:
+    resource: routing/security_admin.yaml
+    prefix: /admin
+
+## News
+news_admin:
+    resource: routing/news_admin.yaml
+    prefix: /admin
+
+# Frontend
+
+## News
+news_frontend:
+    resource: routing/news_frontend.yaml

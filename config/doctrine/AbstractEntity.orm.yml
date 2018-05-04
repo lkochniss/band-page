@@ -1,0 +1,22 @@
+App\Entity\AbstractEntity:
+    type: mappedSuperclass
+
+    fields:
+        slug:
+            type: string
+            nullable: true
+        createdAt:
+            column: created_at
+            type: datetime
+            nullable: false
+        modifiedAt:
+            column: modified_at
+            type: datetime
+            nullable: false
+    lifecycleCallbacks:
+        prePersist:
+                - setModifiedAt
+                - setCreatedAt
+                - setSlug
+        preUpdate:
+                - setModifiedAt

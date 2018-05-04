@@ -1,0 +1,10 @@
+App\Entity\News:
+    news_1:
+        title: 'Post 1'
+        content: '<sentence()><sentence()><sentence()>'
+    news_2:
+        title: 'Post 2'
+        content: '<sentence()><sentence()><sentence()>'
+    news_3:
+        title: 'Post 3'
+        content: '<sentence()><sentence()><sentence()>'
