@@ -5,7 +5,7 @@ secruity_admin:
     resource: routing/security_admin.yaml
     prefix: /admin
 
-## News
+## Homepage
 homepage_admin:
     resource: routing/homepage_admin.yaml
     prefix: /admin
@@ -18,6 +18,11 @@ page_admin:
 ## News
 news_admin:
     resource: routing/news_admin.yaml
+    prefix: /admin
+
+## Location
+location_admin:
+    resource: routing/location_admin.yaml
     prefix: /admin
 
 # Frontend

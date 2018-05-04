@@ -1,18 +1,18 @@
 {% extends 'base.html.twig' %}
 {% block body %}
     <div class="container">
-        {% for post in entities %}
+        {% for news in entities %}
 
             <div class="card">
                 <div class="card-header row">
-                    <h2 class="col card-title">{{ post.title }}</h2>
-                    <div class="col text-right text-muted">{{ post.createdAt|date('d.m.Y') }}</div>
+                    <h2 class="col card-title">{{ news.title }}</h2>
+                    <div class="col text-right text-muted">{{ news.createdAt|date('d.m.Y') }}</div>
                 </div>
                 <div class="card-body">
                     <p class="card-text">
-                        {{ post.content }}
+                        {{ news.content }}
                     </p>
-                    <a href="{{ path('news_show', {'slug': post.slug}) }}"
+                    <a href="{{ path('news_show', {'slug': news.slug}) }}"
                        class="btn btn-primary">{% trans from 'news' %}Read more{% endtrans %}</a>
                 </div>
             </div>

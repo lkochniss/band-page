@@ -19,3 +19,20 @@ App\Entity\Page:
     page_3:
         title: 'Page 3'
         content: '<sentence()><sentence()><sentence()>'
+
+App\Entity\Location:
+    location_1:
+        name: 'Location 1'
+        street: '<word()><numberBetween(1,200)>'
+        city: 'City 1'
+        zip: '12345'
+    location_2:
+        name: 'Location 2'
+        street: '<word()><numberBetween(1,200)>'
+        city: 'City 2'
+        zip: '23456'
+    location_3:
+        name: 'Location 3'
+        street: '<word()><numberBetween(1,200)>'
+        city: 'City 3'
+        zip: '34567'

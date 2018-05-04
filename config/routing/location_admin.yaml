@@ -1,0 +1,9 @@
+location_list_backend:
+    path: /location
+    defaults: { _controller: 'App\Controller\LocationController::listBackend' }
+location_create:
+    path: /location/create
+    defaults: { _controller: 'App\Controller\LocationController::create' }
+location_edit:
+    path: /location/{id}/edit
+    defaults: { _controller: 'App\Controller\LocationController::edit' }

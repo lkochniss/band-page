@@ -1,0 +1,19 @@
+App\Entity\Location:
+    type: entity
+    repositoryClass: App\Repository\LocationRepository
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        name:
+            type: string
+            length: 100
+        street:
+            type: string
+            length: 100
+        city:
+            type: string
+            length: 100
+        zip:
+            type: integer

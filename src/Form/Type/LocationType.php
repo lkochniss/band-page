@@ -2,18 +2,18 @@
 
 namespace App\Form\Type;
 
-use App\Entity\News;
+use App\Entity\Location;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Class NewsType
+ * Class LocationType
  */
-class NewsType extends AbstractType
+class LocationType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -25,7 +25,7 @@ class NewsType extends AbstractType
     {
         $builder
             ->add(
-                'title',
+                'name',
                 TextType::class,
                 [
                     'attr' =>
@@ -35,8 +35,28 @@ class NewsType extends AbstractType
                 ]
             )
             ->add(
-                'content',
-                TextareaType::class,
+                'street',
+                TextType::class,
+                [
+                    'attr' =>
+                        [
+                            'class' => 'form-control'
+                        ]
+                ]
+            )
+            ->add(
+                'city',
+                TextType::class,
+                [
+                    'attr' =>
+                        [
+                            'class' => 'form-control'
+                        ]
+                ]
+            )
+            ->add(
+                'zip',
+                NumberType::class,
                 [
                     'attr' =>
                         [
@@ -58,10 +78,10 @@ class NewsType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => News::class,
+            'data_class' => Location::class,
             'csrf_protection' => true,
             'csrf_field_name' => '_token',
-            'csrf_token_id' => 'news'
+            'csrf_token_id' => 'location'
         ]);
     }
 }

@@ -14,14 +14,14 @@
         </tr>
         </thead>
         <tbody>
-        {% for post in entities %}
+        {% for page in entities %}
             <tr>
-                <td scope="row">{{ post.title }}</td>
-                <td scope="col" data-order="{{ post.createdAt|date('Y-m-d') }}">{{ post.createdAt|date('d.m.Y H:i') }}</td>
-                <td scope="col" data-order="{{ post.createdAt|date('Y-m-d') }}">{{ post.modifiedAt|date('d.m.Y H:i') }}</td>
+                <td scope="row">{{ page.title }}</td>
+                <td scope="col" data-order="{{ page.createdAt|date('Y-m-d') }}">{{ page.createdAt|date('d.m.Y H:i') }}</td>
+                <td scope="col" data-order="{{ page.createdAt|date('Y-m-d') }}">{{ page.modifiedAt|date('d.m.Y H:i') }}</td>
                 <td scope="col">
                     <a class="float-right"
-                       href="{{ path('page_edit', {'id': post.id}) }}">{% trans from 'page' %}edit{% endtrans %}
+                       href="{{ path('page_edit', {'id': page.id}) }}">{% trans from 'page' %}edit{% endtrans %}
                     </a>
                 </td>
             </tr>
