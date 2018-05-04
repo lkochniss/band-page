@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}band-profile{% endblock %}</title>
     {% block stylesheets %}
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/application.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap-4.css') }}">
     {% endblock %}
 </head>
 <body>
@@ -12,5 +14,7 @@
 {% endblock %}
 </body>
 {% block javascripts %}
+    <script src="{{ asset('js/application.js') }}"></script>
+    <script src="{{ asset('js/bootstrap-4.js') }}"></script>
 {% endblock %}
 </html>
