@@ -1,4 +1,6 @@
 const path = require('path');
+const WebpackAssetsManifest = require('webpack-assets-manifest');
+const webpack = require('webpack');
 
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
@@ -31,7 +33,8 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'public/'),
         pathinfo: true,
-        filename: '[name].js',
+        filename: '[name]-[chunkhash].js',
+        chunkFilename: '[id]-[chunkhash].js',
         libraryTarget: 'window'
     },
     module: {
@@ -62,8 +65,9 @@ module.exports = {
         ]
     },
     plugins: [
+        new WebpackAssetsManifest({}),
         new ExtractTextPlugin({
-            filename: '[name].css',
+            filename: '[name]-[chunkhash].css'
         }),
         new webpack.ProvidePlugin({
             $: 'jquery',

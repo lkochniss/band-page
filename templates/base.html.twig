@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}band-profile{% endblock %}</title>
     {% block stylesheets %}
-
+        <link rel="stylesheet" type="text/css" href="{{ asset('js/application.js') }}">
     {% endblock %}
     <script async src="https://www.googletagmanager.com/gtag/js?id={{ ga_tracking }}"></script>
     <script>
@@ -25,5 +25,6 @@
 {% endblock %}
 </body>
 {% block javascripts %}
+    <script src="{{ asset('js/application.js') }}"></script>
 {% endblock %}
 </html>

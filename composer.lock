@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "312e34ac74dc90c18c806b431581a12e",
+    "content-hash": "7d2ef7d8e538526dadaa30c3fdd495a6",
     "packages": [
         {
             "name": "api-platform/api-pack",
@@ -2147,7 +2147,7 @@
         },
         {
             "name": "symfony/asset",
-            "version": "v4.0.8",
+            "version": "v4.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/asset.git",
