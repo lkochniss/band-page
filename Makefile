@@ -70,7 +70,7 @@ migration-migrate:
 
 # SETUP
 composer-development:
-	${DOCKER_COMPOSE_PHP} composer install --no-progress --prefer-dist --no-scripts
+	${DOCKER_COMPOSE_PHP} composer install --no-progress --prefer-dist
 
 composer-production:
 	${DOCKER_COMPOSE_PHP} composer install --no-dev --no-progress --prefer-dist --no-scripts

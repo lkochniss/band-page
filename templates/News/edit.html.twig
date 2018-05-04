@@ -3,7 +3,7 @@
     {% if  app.request.get('_route') ends with '_edit' %}
         <div class="row">
             <div class="col text-right">
-                <a href="{{ path('news_show', {'blogPostSlug' : entity.slug }) }}">{% trans from "news" %}show{% endtrans %} </a>
+                <a href="{{ path('news_show', {'slug' : entity.slug }) }}">{% trans from "news" %}show{% endtrans %} </a>
             </div>
         </div>
     {% endif %}
