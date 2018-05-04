@@ -1,35 +1,21 @@
 {% extends 'base.html.twig' %}
 {% block body %}
     <div class="container">
-        <table id="news-list" class="table">
-            <thead>
-            <tr>
-                <th scope="col">
-                    {% trans from 'news' %}title{% endtrans %}
-                </th>
-                <th scope="col">
-                    {% trans from 'news' %}created at{% endtrans %}
-                </th>
-                <th scope="col">
-                    {% trans from 'news ' %}updated at{% endtrans %}
-                </th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for post in entities %}
-                <tr>
-                    <td scope="row">
-                        <a href="{{ path('news_show', {'slug': post.slug}) }}"> {{ post.title }}</a>
-                    </td>
-                    <td scope="col" data-order="{{ post.createdAt|date('Y-m-d') }}">
-                        {{ post.createdAt|date('d.m.Y H:i') }}
-                    </td>
-                    <td scope="col" data-order="{{ post.modifiedAt|date('Y-m-d') }}">
-                        {{ post.modifiedAt|date('d.m.Y H:i') }}
-                    </td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+        {% for post in entities %}
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="text-right text-muted">{{ post.createdAt|date('d.m.Y') }}</div>
+                    <h2 class="card-title">{{ post.title }}</h2>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">
+                        {{ post.content }}
+                    </p>
+                    <a href="{{ path('news_show', {'slug': post.slug}) }}"
+                       class="btn btn-primary">{% trans from 'news' %}Read more{% endtrans %}</a>
+                </div>
+            </div>
+        {% endfor %}
     </div>
 {% endblock %}
