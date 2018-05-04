@@ -1,0 +1,9 @@
+page_list_backend:
+    path: /page
+    defaults: { _controller: 'App\Controller\PageController::listBackend' }
+page_create:
+    path: /page/create
+    defaults: { _controller: 'App\Controller\PageController::create' }
+page_edit:
+    path: /page/{id}/edit
+    defaults: { _controller: 'App\Controller\PageController::edit' }

@@ -4,9 +4,9 @@
         {% for post in entities %}
 
             <div class="card">
-                <div class="card-header">
-                    <div class="text-right text-muted">{{ post.createdAt|date('d.m.Y') }}</div>
-                    <h2 class="card-title">{{ post.title }}</h2>
+                <div class="card-header row">
+                    <h2 class="col card-title">{{ post.title }}</h2>
+                    <div class="col text-right text-muted">{{ post.createdAt|date('d.m.Y') }}</div>
                 </div>
                 <div class="card-body">
                     <p class="card-text">

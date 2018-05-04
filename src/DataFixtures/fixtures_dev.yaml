@@ -8,3 +8,14 @@ App\Entity\News:
     news_3:
         title: 'Post 3'
         content: '<sentence()><sentence()><sentence()>'
+
+App\Entity\Page:
+    page_1:
+        title: 'Page 1'
+        content: '<sentence()><sentence()><sentence()>'
+    page_2:
+        title: 'Page 2'
+        content: '<sentence()><sentence()><sentence()>'
+    page_3:
+        title: 'Page 3'
+        content: '<sentence()><sentence()><sentence()>'

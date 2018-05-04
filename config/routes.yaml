@@ -10,6 +10,11 @@ homepage_admin:
     resource: routing/homepage_admin.yaml
     prefix: /admin
 
+## Page
+page_admin:
+    resource: routing/page_admin.yaml
+    prefix: /admin
+
 ## News
 news_admin:
     resource: routing/news_admin.yaml
@@ -20,3 +25,8 @@ news_admin:
 ## News
 news_frontend:
     resource: routing/news_frontend.yaml
+
+## Page
+page_frontend:
+    resource: routing/page_frontend.yaml
+
