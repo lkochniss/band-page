@@ -13,7 +13,8 @@ class HomepageController extends Controller
     /**
      * @return Response
      */
-    public function backendDashboard(): Response {
+    public function backendDashboard(): Response
+    {
         return $this->render('Homepage/backend-dashboard.html.twig', []);
     }
 }
