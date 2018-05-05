@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Entity\AbstractEntity;
-use App\Repository\GameRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -71,7 +70,7 @@ abstract class AbstractCrudController extends Controller
         return $this->render(
             sprintf('%s/list-frontend.html.twig', $this->getTemplateBasePath()),
             [
-                'entities' => $entities,
+                'entities' => array_reverse($entities),
             ]
         );
     }
@@ -82,10 +81,11 @@ abstract class AbstractCrudController extends Controller
     public function listBackend(): Response
     {
         $entities = $this->getDoctrine()->getRepository($this->getEntityName())->findAll();
+
         return $this->render(
             sprintf('%s/list-backend.html.twig', $this->getTemplateBasePath()),
             [
-                'entities' => $entities,
+                'entities' => array_reverse($entities),
             ]
         );
     }
