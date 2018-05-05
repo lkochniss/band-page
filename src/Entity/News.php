@@ -34,7 +34,7 @@ class News extends AbstractEntity
     }
 
     /**
-     * @return mixed
+     * @return null|String
      */
     public function getContent()
     {

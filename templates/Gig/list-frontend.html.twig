@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container">
+        {% for gig in entities %}
+
+            <div class="card">
+                <div class="card-header row">
+                    <h2 class="col card-title">{{ gig.title }}</h2>
+                    <div class="col text-right text-muted">{{ gig.createdAt|date('d.m.Y') }}</div>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">
+                        {{ gig.content }}
+                    </p>
+                    <a href="{{ path('gig_show', {'slug': gig.slug}) }}"
+                       class="btn btn-primary">{% trans from 'gig' %}Read more{% endtrans %}</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

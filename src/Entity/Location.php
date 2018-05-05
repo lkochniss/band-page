@@ -10,17 +10,17 @@ class Location extends AbstractEntity
     /**
      * @var string
      */
-    private $name = '';
+    private $name;
 
     /**
      * @var string
      */
-    private $street = '';
+    private $street;
 
     /**
      * @var string
      */
-    private $city = '';
+    private $city;
 
     /**
      * @var int
@@ -32,7 +32,7 @@ class Location extends AbstractEntity
      */
     public function getName(): string
     {
-        return $this->name;
+        return $this->stringTransform($this->name);
     }
 
     /**
@@ -48,7 +48,7 @@ class Location extends AbstractEntity
      */
     public function getStreet(): string
     {
-        return $this->street;
+        return $this->stringTransform($this->street);
     }
 
     /**
@@ -64,7 +64,7 @@ class Location extends AbstractEntity
      */
     public function getCity(): string
     {
-        return $this->city;
+        return $this->stringTransform($this->city);
     }
 
     /**
@@ -80,7 +80,7 @@ class Location extends AbstractEntity
      */
     public function getZip(): int
     {
-        return $this->zip;
+        return $this->integerTransform($this->zip);
     }
 
     /**

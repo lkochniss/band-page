@@ -1,0 +1,9 @@
+gig_list_backend:
+    path: /gig
+    defaults: { _controller: 'App\Controller\GigController::listBackend' }
+gig_create:
+    path: /gig/create
+    defaults: { _controller: 'App\Controller\GigController::create' }
+gig_edit:
+    path: /gig/{id}/edit
+    defaults: { _controller: 'App\Controller\GigController::edit' }

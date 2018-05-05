@@ -1,0 +1,21 @@
+App\Entity\Gig:
+    type: entity
+    repositoryClass: App\Repository\GigRepository
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        title:
+            type: string
+            length: 100
+        description:
+            type: text
+        date:
+            type: datetime
+    manyToOne:
+        location:
+            targetEntity: Location
+            joinColumn:
+                name: location_id
+                referencedColumnName: id

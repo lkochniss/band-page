@@ -1,8 +1,8 @@
 # Admin
 
-## Login
-secruity_admin:
-    resource: routing/security_admin.yaml
+## Gig
+gig_admin:
+    resource: routing/gig_admin.yaml
     prefix: /admin
 
 ## Homepage
@@ -10,9 +10,14 @@ homepage_admin:
     resource: routing/homepage_admin.yaml
     prefix: /admin
 
-## Page
-page_admin:
-    resource: routing/page_admin.yaml
+## Location
+location_admin:
+    resource: routing/location_admin.yaml
+    prefix: /admin
+
+## Login
+secruity_admin:
+    resource: routing/security_admin.yaml
     prefix: /admin
 
 ## News
@@ -20,12 +25,17 @@ news_admin:
     resource: routing/news_admin.yaml
     prefix: /admin
 
-## Location
-location_admin:
-    resource: routing/location_admin.yaml
+## Page
+page_admin:
+    resource: routing/page_admin.yaml
     prefix: /admin
 
+
 # Frontend
+
+## Gig
+gig_frontend:
+    resource: routing/gig_frontend.yaml
 
 ## News
 news_frontend:

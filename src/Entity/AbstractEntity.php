@@ -21,18 +21,21 @@ abstract class AbstractEntity
      * @var String
      */
     protected $slug;
+
     /**
      * @var \DateTime
      *
      * @Assert\DateTime()
      */
     private $createdAt;
+
     /**
      * @var \DateTime
      *
      * @Assert\DateTime()
      */
     private $modifiedAt;
+
     /**
      * @return integer
      */
@@ -86,11 +89,29 @@ abstract class AbstractEntity
 
     /**
      * @param $value
-     * @return null|String
+     * @return String
      */
-    protected function stringTransform($value) : ?String
+    protected function stringTransform($value) : String
     {
         return $value ?: '';
+    }
+
+    /**
+     * @param $value
+     * @return int
+     */
+    protected function integerTransform($value) : int
+    {
+        return $value ?: 0;
+    }
+
+    /**
+     * @param $value
+     * @return \DateTime
+     */
+    protected function dateTimeTransform($value) : \DateTime
+    {
+        return $value ?: new \DateTime();
     }
 
     /**

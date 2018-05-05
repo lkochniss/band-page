@@ -1,0 +1,6 @@
+gig_list_frontend:
+    path: /gig
+    defaults: { _controller: 'App\Controller\GigController::listFrontend' }
+gig_show:
+    path: /gig/{slug}
+    defaults: { _controller: 'App\Controller\GigController::show' }
