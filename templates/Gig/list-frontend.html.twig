@@ -10,7 +10,7 @@
                 </div>
                 <div class="card-body">
                     <p class="card-text">
-                        {{ gig.content }}
+                        {{ gig.description }}
                     </p>
                     <a href="{{ path('gig_show', {'slug': gig.slug}) }}"
                        class="btn btn-primary">{% trans from 'gig' %}Read more{% endtrans %}</a>
