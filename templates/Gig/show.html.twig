@@ -1,26 +1,42 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-    <div class="row">
-        <h1 class="col">{{ entity.title }}</h1>
-        <div class="col text-right">
-            {% trans from "blog_post" %}posted at{% endtrans %} {{ entity.createdAt|date("d.m.Y H:i") }} <br/>
-            {% trans from "blog_post" %}updated at{% endtrans %} {{ entity.modifiedAt|date("d.m.Y H:i") }}
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1>
+                    {{ entity.title }}
+                </h1>
+                <h3>
+                    {{ entity.date| date('d.m.Y') }}
+                </h3>
+            </div>
+            <div class="col text-right">
+                <h4>
+                    {% trans from 'gig' %}doors open{% endtrans %}
+                    {{ entity.date| date('H:i') }}
+                </h4>
+            </div>
         </div>
-    </div>
-    <hr/>
-    <div class="row">
-        <div class="col">
-            {{ entity.description| raw }}
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            {{ entity.date| date('H:i d.m.Y') }}
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            {{ entity.location.name }} {{ entity.location.street }}, {{ entity.location.zip }} {{ entity.location.city }}
+        <hr/>
+        <div class="row">
+            <div class="col">
+                {{ entity.description| raw }}
+            </div>
+            <div class="col">
+                <div class="text-right">
+                    <h6>
+                        {{ entity.location.name }}
+                    </h6>
+                    <h6>
+                        {{ entity.location.street }}, {{ entity.location.zip }} {{ entity.location.city }}
+                    </h6>
+                </div>
+                <iframe class="w-100 h-50"
+                        frameborder="0" style="border:0"
+                        src="https://www.google.com/maps/embed/v1/place?key={{ ga_api_key }}
+    &q={{ entity.location.street }}+ {{ entity.location.zip }}+ {{ entity.location.city }}" allowfullscreen>
+                </iframe>
+            </div>
         </div>
     </div>
 {% endblock %}

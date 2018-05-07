@@ -39,7 +39,6 @@ class GigControllerTest extends WebTestCase
             ['/'],
             [sprintf('/gig/%s-gig-1', $now->format('Y-m-d'))],
             [sprintf('/gig/%s-gig-2', $now->format('Y-m-d'))],
-            [sprintf('/gig/%s-gig-3', $now->format('Y-m-d'))]
         ];
     }
 

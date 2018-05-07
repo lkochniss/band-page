@@ -1,19 +1,19 @@
 App\Entity\Location:
     location_1:
-        name: 'Location 1'
-        street: '<word()> <numberBetween(1,200)>'
-        city: 'City 1'
-        zip: '12345'
+        name: 'Kubana'
+        street: 'Zeithstraße 100'
+        city: 'Siegburg'
+        zip: '53721'
     location_2:
-        name: 'Location 2'
-        street: '<word()> <numberBetween(1,200)>'
-        city: 'City 2'
-        zip: '23456'
+        name: 'Live Music Hall'
+        street: 'Lichtstraße 30'
+        city: 'Köln'
+        zip: '50825'
     location_3:
-        name: 'Location 3'
-        street: '<word()> <numberBetween(1,200)>'
-        city: 'City 3'
-        zip: '34567'
+        name: 'Turbinenhalle'
+        street: 'Im Lipperfeld 23'
+        city: 'Oberhausen'
+        zip: '46047'
 
 App\Entity\Gig:
     gig_1:
@@ -31,8 +31,14 @@ App\Entity\Gig:
     gig_3:
         title: 'Gig 3'
         description: '<sentence()><sentence()><sentence()>'
-        date: '<dateTimeBetween("now", "now")>'
-        location: '@location_3'
+        date: '<dateTimeBetween("now", "+10 days")>'
+        location: '@location_2'
+        price: '<numberBetween(0,15)>'
+    gig_{4..10}:
+        title: '<word()>'
+        description: '<sentence()><sentence()><sentence()><sentence()><sentence()><sentence()><sentence()><sentence()><sentence()><sentence()><sentence()><sentence()><sentence()><sentence()><sentence()><sentence()><sentence()><sentence()><sentence()><sentence()><sentence()><sentence()><sentence()><sentence()><sentence()><sentence()><sentence()><sentence()><sentence()><sentence()><sentence()><sentence()>'
+        date: '<dateTimeBetween("now", "+30 days")>'
+        location: '@location_<numberBetween(1,3)>'
         price: '<numberBetween(0,15)>'
 
 App\Entity\News:
