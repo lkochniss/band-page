@@ -9,6 +9,9 @@
             <thead>
             <tr>
                 <th scope="col">{% trans from 'gig' %}title{% endtrans %}</th>
+                <th scope="col">{% trans from 'gig' %}date{% endtrans %}</th>
+                <th scope="col">{% trans from 'gig' %}doors open{% endtrans %}</th>
+                <th scope="col">{% trans from 'gig' %}price{% endtrans %}</th>
                 <th scope="col">{% trans from 'gig' %}createdAt at{% endtrans %}</th>
                 <th scope="col">{% trans from 'gig' %}modified at{% endtrans %}</th>
                 <th></th>
@@ -18,6 +21,11 @@
             {% for gig in entities %}
                 <tr>
                     <td scope="row">{{ gig.title }}</td>
+                    <td scope="col"
+                        data-order="{{ gig.date|date('Y-m-d') }}">{{ gig.createdAt|date('d.m.Y') }}</td>
+                    <td scope="col"
+                        data-order="{{ gig.date|date('H:i') }}">{{ gig.createdAt|date('H:i') }}</td>
+                    <td scope="col">{{ gig.price }} {{ default_currency }}</td>
                     <td scope="col"
                         data-order="{{ gig.createdAt|date('Y-m-d') }}">{{ gig.createdAt|date('d.m.Y H:i') }}</td>
                     <td scope="col"
@@ -39,7 +47,7 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $('#gig-list').DataTable({
-                'order': [[3, 'desc']]
+                'order': [[1, 'desc']]
             });
         });
     </script>
