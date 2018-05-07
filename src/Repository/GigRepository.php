@@ -10,6 +10,19 @@ use App\Entity\Gig;
  */
 class GigRepository extends AbstractRepository
 {
+
+    public function findAllActiveGigsSortedByDate(): array
+    {
+        $now = new \DateTime();
+        $query = $this->createQueryBuilder('gig')
+            ->where('gig.date > :now' )
+            ->setParameter('now', $now)
+            ->orderBy('gig.date', 'DESC')
+            ->getQuery();
+
+        return $query->getResult();
+    }
+
     /**
      * @param AbstractEntity $entity
      * @throws \Doctrine\ORM\ORMException
