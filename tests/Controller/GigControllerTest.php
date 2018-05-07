@@ -35,10 +35,14 @@ class GigControllerTest extends WebTestCase
     public function frontendUrlProvider(): array
     {
         $now = new \DateTime();
+        $new = new \DateTime('+10 days');
+        $old = new \DateTime('-5 days');
+        
         return [
             ['/'],
             [sprintf('/gig/%s-gig-1', $now->format('Y-m-d'))],
-            [sprintf('/gig/%s-gig-2', $now->format('Y-m-d'))],
+            [sprintf('/gig/%s-gig-2', $new->format('Y-m-d'))],
+            [sprintf('/gig/%s-gig-3', $old->format('Y-m-d'))],
         ];
     }
 

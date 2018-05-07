@@ -14,7 +14,35 @@ class GigController extends AbstractCrudController
     /**
      * @return Response
      */
-    public function listFrontend(): Response
+    public function listUpcoming(): Response
+    {
+        return $this->render(
+            sprintf('%s/list-upcoming.html.twig', $this->getTemplateBasePath()),
+            [
+                'entities' => $this->getDoctrine()->getRepository($this->getEntityName())
+                    ->findAllUpcomingGigsSortedByDate()
+            ]
+        );
+    }
+
+    /**
+     * @return Response
+     */
+    public function listPast(): Response
+    {
+        return $this->render(
+            sprintf('%s/list-past.html.twig', $this->getTemplateBasePath()),
+            [
+                'entities' => $this->getDoctrine()->getRepository($this->getEntityName())
+                    ->findAllPastGigsSortedByDate()
+            ]
+        );
+    }
+
+    /**
+     * @return Response
+     */
+    public function listOldGigs(): Response
     {
         $entities = $this->getDoctrine()->getRepository($this->getEntityName())->findAllActiveGigsSortedByDate();
 
