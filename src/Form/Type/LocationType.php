@@ -28,6 +28,7 @@ class LocationType extends AbstractType
                 'name',
                 TextType::class,
                 [
+                    'required' => true,
                     'attr' =>
                         [
                             'class' => 'form-control'
@@ -38,6 +39,7 @@ class LocationType extends AbstractType
                 'street',
                 TextType::class,
                 [
+                    'required' => true,
                     'attr' =>
                         [
                             'class' => 'form-control'
@@ -48,6 +50,7 @@ class LocationType extends AbstractType
                 'city',
                 TextType::class,
                 [
+                    'required' => true,
                     'attr' =>
                         [
                             'class' => 'form-control'
@@ -58,6 +61,7 @@ class LocationType extends AbstractType
                 'zip',
                 NumberType::class,
                 [
+                    'required' => true,
                     'attr' =>
                         [
                             'class' => 'form-control'
@@ -69,7 +73,7 @@ class LocationType extends AbstractType
                 SubmitType::class,
                 [
                     'attr' => [
-                        'class' => 'btn-success form-controll'
+                        'class' => 'btn btn-primary form-controll'
                     ]
                 ]
             );
