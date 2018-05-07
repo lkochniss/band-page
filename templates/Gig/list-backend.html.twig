@@ -30,9 +30,13 @@
                         data-order="{{ gig.createdAt|date('Y-m-d') }}">{{ gig.createdAt|date('d.m.Y H:i') }}</td>
                     <td scope="col"
                         data-order="{{ gig.createdAt|date('Y-m-d') }}">{{ gig.modifiedAt|date('d.m.Y H:i') }}</td>
-                    <td scope="col">
-                        <a class="float-right"
-                           href="{{ path('gig_edit', {'id': gig.id}) }}">{% trans from 'gig' %}edit{% endtrans %}
+                    <td scope="col text-right">
+                        <a href="{{ path('gig_show', {'slug': gig.slug}) }}">
+                            {% trans from 'gig' %}show{% endtrans %}
+                        </a>
+                        |
+                        <a href="{{ path('gig_edit', {'id': gig.id}) }}">
+                            {% trans from 'gig' %}edit{% endtrans %}
                         </a>
                     </td>
                 </tr>

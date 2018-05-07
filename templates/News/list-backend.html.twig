@@ -23,8 +23,12 @@
                     <td scope="col"
                         data-order="{{ news.createdAt|date('Y-m-d') }}">{{ news.modifiedAt|date('d.m.Y H:i') }}</td>
                     <td scope="col">
-                        <a class="float-right"
-                           href="{{ path('news_edit', {'id': news.id}) }}">{% trans from 'news' %}edit{% endtrans %}
+                        <a href="{{ path('news_show', {'slug': news.slug}) }}">
+                            {% trans from 'news' %}show{% endtrans %}
+                        </a>
+                        |
+                        <a href="{{ path('news_edit', {'id': news.id}) }}">
+                            {% trans from 'news' %}edit{% endtrans %}
                         </a>
                     </td>
                 </tr>
@@ -39,7 +43,7 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $('#news-list').DataTable({
-                'order': [[3, 'desc']]
+                'order': [[1, 'desc']]
             });
         });
     </script>
