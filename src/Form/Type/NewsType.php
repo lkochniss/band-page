@@ -28,6 +28,7 @@ class NewsType extends AbstractType
                 'title',
                 TextType::class,
                 [
+                    'required' => true,
                     'attr' =>
                         [
                             'class' => 'form-control'
@@ -40,6 +41,7 @@ class NewsType extends AbstractType
                 [
                     'attr' =>
                         [
+                            'required' => true,
                             'class' => 'form-control'
                         ]
                 ]
@@ -49,7 +51,7 @@ class NewsType extends AbstractType
                 SubmitType::class,
                 [
                     'attr' => [
-                        'class' => 'btn-success form-controll'
+                        'class' => 'btn btn-primary form-controll'
                     ]
                 ]
             );

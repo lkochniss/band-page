@@ -1,29 +1,41 @@
 {% extends 'admin-base.html.twig' %}
 {% block body %}
-    {% if  app.request.get('_route') ends with '_edit' %}
-        <div class="row">
-            <div class="col text-right">
-                <a href="{{ path('page_show', {'slug' : entity.slug }) }}">{% trans from "news" %}show{% endtrans %} </a>
+    <div class="container">
+        {% if  app.request.get('_route') ends with '_edit' %}
+            <div class="row mb-3">
+                <div class="col">
+                    <h1>{% trans from "page" %}edit page{% endtrans %}</h1>
+                </div>
+                <div class="col text-right">
+                    <a href="{{ path('page_show', {'slug' : entity.slug }) }}">{% trans from "page" %}show page{% endtrans %}</a>
+                </div>
+            </div>
+        {% else %}
+            <div class="row mb-3">
+                <div class="col">
+                    <h1>{% trans from "page" %}create page{% endtrans %}</h1>
+                </div>
+            </div>
+        {% endif %}
+        {{ form_start(form) }}
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label>{% trans from "location" %}title{% endtrans %}</label>
+                {{ form_widget(form.title) }}
             </div>
         </div>
-    {% endif %}
-    {{ form_start(form) }}
-    <div class="row">
-        <div class="col">
-            {{ form_row(form.title) }}
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                {{ form_widget(form.content) }}
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            {{ form_widget(form.content) }}
+        <div class="form-row">
+            <div class="col text-right">
+                {{ form_row(form.submit) }}
+            </div>
         </div>
+        {{ form_end(form) }}
     </div>
-    <div class="row">
-        <div class="col">
-            {{ form_row(form.submit) }}
-        </div>
-    </div>
-    {{ form_end(form) }}
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}

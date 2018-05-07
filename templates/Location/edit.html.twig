@@ -1,30 +1,43 @@
 {% extends 'admin-base.html.twig' %}
 {% block body %}
-    {{ form_start(form) }}
-    <div class="row">
-        <div class="col">
-            {{ form_row(form.name) }}
+    <div class="container">
+        {% if  app.request.get('_route') ends with '_edit' %}
+            <div class="row mb-3">
+                <div class="col">
+                    <h1>{% trans from "location" %}edit location{% endtrans %}</h1>
+                </div>
+            </div>
+        {% else %}
+            <div class="row mb-3">
+                <div class="col">
+                    <h1>{% trans from "location" %}create location{% endtrans %}</h1>
+                </div>
+            </div>
+        {% endif %}
+        {{ form_start(form) }}
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label>{% trans from "location" %}name{% endtrans %}</label>
+                {{ form_widget(form.name) }}
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            {{ form_widget(form.street) }}
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label>{% trans from "location" %}street{% endtrans %}</label>
+                {{ form_widget(form.street) }}
+            </div>
+            <div class="form-group col-md-4">
+                <label>{% trans from "location" %}city{% endtrans %}</label>
+                {{ form_widget(form.city) }}
+            </div>
+            <div class="form-group col-md-2">
+                <label>{% trans from "location" %}zip{% endtrans %}</label>
+                {{ form_widget(form.zip) }}
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            {{ form_widget(form.city) }}
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            {{ form_widget(form.zip) }}
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
+        <div class="form-group text-right">
             {{ form_row(form.submit) }}
         </div>
+        {{ form_end(form) }}
     </div>
-    {{ form_end(form) }}
 {% endblock %}

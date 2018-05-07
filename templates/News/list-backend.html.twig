@@ -4,30 +4,34 @@
      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
  {% endblock %}
 {% block body %}
-    <table id="news-list" class="table">
-        <thead>
-        <tr>
-            <th scope="col">{% trans from 'news' %}title{% endtrans %}</th>
-            <th scope="col">{% trans from 'news' %}createdAt at{% endtrans %}</th>
-            <th scope="col">{% trans from 'news' %}modified at{% endtrans %}</th>
-            <th></th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for news in entities %}
+    <div class="container">
+        <table id="news-list" class="table">
+            <thead>
             <tr>
-                <td scope="row">{{ news.title }}</td>
-                <td scope="col" data-order="{{ news.createdAt|date('Y-m-d') }}">{{ news.createdAt|date('d.m.Y H:i') }}</td>
-                <td scope="col" data-order="{{ news.createdAt|date('Y-m-d') }}">{{ news.modifiedAt|date('d.m.Y H:i') }}</td>
-                <td scope="col">
-                    <a class="float-right"
-                       href="{{ path('news_edit', {'id': news.id}) }}">{% trans from 'news' %}edit{% endtrans %}
-                    </a>
-                </td>
+                <th scope="col">{% trans from 'news' %}title{% endtrans %}</th>
+                <th scope="col">{% trans from 'news' %}createdAt at{% endtrans %}</th>
+                <th scope="col">{% trans from 'news' %}modified at{% endtrans %}</th>
+                <th></th>
             </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            {% for news in entities %}
+                <tr>
+                    <td scope="row">{{ news.title }}</td>
+                    <td scope="col"
+                        data-order="{{ news.createdAt|date('Y-m-d') }}">{{ news.createdAt|date('d.m.Y H:i') }}</td>
+                    <td scope="col"
+                        data-order="{{ news.createdAt|date('Y-m-d') }}">{{ news.modifiedAt|date('d.m.Y H:i') }}</td>
+                    <td scope="col">
+                        <a class="float-right"
+                           href="{{ path('news_edit', {'id': news.id}) }}">{% trans from 'news' %}edit{% endtrans %}
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}

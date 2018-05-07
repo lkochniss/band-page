@@ -4,30 +4,34 @@
      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
  {% endblock %}
 {% block body %}
-    <table id="location-list" class="table">
-        <thead>
-        <tr>
-            <th scope="col">{% trans from 'page' %}title{% endtrans %}</th>
-            <th scope="col">{% trans from 'page' %}createdAt at{% endtrans %}</th>
-            <th scope="col">{% trans from 'page' %}modified at{% endtrans %}</th>
-            <th></th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for location in entities %}
+    <div class="container">
+        <table id="location-list" class="table">
+            <thead>
             <tr>
-                <td scope="row">{{ location.name }}</td>
-                <td scope="col" data-order="{{ location.createdAt|date('Y-m-d') }}">{{ location.createdAt|date('d.m.Y H:i') }}</td>
-                <td scope="col" data-order="{{ location.createdAt|date('Y-m-d') }}">{{ location.modifiedAt|date('d.m.Y H:i') }}</td>
-                <td scope="col">
-                    <a class="float-right"
-                       href="{{ path('page_edit', {'id': location.id}) }}">{% trans from 'page' %}edit{% endtrans %}
-                    </a>
-                </td>
+                <th scope="col">{% trans from 'location' %}title{% endtrans %}</th>
+                <th scope="col">{% trans from 'location' %}createdAt at{% endtrans %}</th>
+                <th scope="col">{% trans from 'location' %}modified at{% endtrans %}</th>
+                <th></th>
             </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            {% for location in entities %}
+                <tr>
+                    <td scope="row">{{ location.name }}</td>
+                    <td scope="col"
+                        data-order="{{ location.createdAt|date('Y-m-d') }}">{{ location.createdAt|date('d.m.Y H:i') }}</td>
+                    <td scope="col"
+                        data-order="{{ location.createdAt|date('Y-m-d') }}">{{ location.modifiedAt|date('d.m.Y H:i') }}</td>
+                    <td scope="col">
+                        <a class="float-right"
+                           href="{{ path('location_edit', {'id': location.id}) }}">{% trans from 'location' %}edit{% endtrans %}
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}

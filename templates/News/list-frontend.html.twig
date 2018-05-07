@@ -1,22 +1,36 @@
 {% extends 'base.html.twig' %}
 {% block body %}
     <div class="container">
-        {% for news in entities %}
+        {% for key, news in entities %}
+            {% if key % 2 == 0 %}
+                <div class="row">
+            {% endif %}
+            <div class="col-sm-6">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <div class="float-right text-right text-muted">{{ news.createdAt|date('d.m.Y') }}</div>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title"> {{ news.title }}</h3>
+                        <p class="card-text">
+                            {{ news.content|slice(0, 200) }}
+                            {% if news.content|length > 200 %}
+                                ...
+                            {% endif %}
+                        </p>
 
-            <div class="card mb-5">
-                <h2 class="card-header card-title">{{ news.title }}</h2>
-                <div class="card-body">
-                    <p class="card-text">
-                        {{ news.content|slice(0, 200) }}
-                        {% if news.content|length > 200 %}
-                            ...
-                        {% endif %}
-                    </p>
-                    <a href="{{ path('news_show', {'slug': news.slug}) }}"
-                       class="btn btn-light btn-outline-dark">{% trans from 'news' %}Read more{% endtrans %}</a>
+                    </div>
+                    <div class="card-footer text-right">
+                        <a href="{{ path('news_show', {'slug': news.slug}) }}"
+                           class="btn btn-light btn-outline-dark">
+                            {% trans from 'news' %}Read more{% endtrans %}
+                        </a>
+                    </div>
                 </div>
-                <div class="card-footer text-right text-muted">{{ news.createdAt|date('d.m.Y') }}</div>
             </div>
+            {% if key % 2 == 1 %}
+                </div>
+            {% endif %}
         {% endfor %}
     </div>
 {% endblock %}

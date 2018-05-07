@@ -22,19 +22,27 @@
         <div class="row">
             <div class="col-sm">
                 {{ entity.description| raw }}
+                <p>
+                    <b>{% trans from 'gig' %}price{% endtrans %}: {{ entity.price }} {{ default_currency }}</b>
+                </p>
             </div>
             <div class="col-sm">
-                <iframe class="w-100 mh-50" height="300px"
-                        frameborder="0" style="border:0"
-                        src="https://www.google.com/maps/embed/v1/place?key={{ ga_api_key }}
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{% trans from 'gig' %}location{% endtrans %}</h5>
+                        <iframe class="w-100 mh-50" height="300px"
+                                frameborder="0" style="border:0"
+                                src="https://www.google.com/maps/embed/v1/place?key={{ ga_api_key }}
     &q={{ entity.location.street }}+ {{ entity.location.zip }}+ {{ entity.location.city }}" allowfullscreen>
-                </iframe>
-                <div class="text-right">
-                    <h6>
-                        {{ entity.location.name }} |
-                        {{ entity.location.street }},
-                        {{ entity.location.zip }} {{ entity.location.city }}
-                    </h6>
+                        </iframe>
+                        <div class="text-right">
+                            <h6>
+                                {{ entity.location.name }} |
+                                {{ entity.location.street }},
+                                {{ entity.location.zip }} {{ entity.location.city }}
+                            </h6>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

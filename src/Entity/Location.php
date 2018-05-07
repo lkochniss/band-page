@@ -25,7 +25,7 @@ class Location extends AbstractEntity
     /**
      * @var int
      */
-    private $zip = 0;
+    private $zip;
 
     /**
      * @return string
@@ -78,9 +78,9 @@ class Location extends AbstractEntity
     /**
      * @return int
      */
-    public function getZip(): int
+    public function getZip(): ?int
     {
-        return $this->integerTransform($this->zip);
+        return $this->zip;
     }
 
     /**

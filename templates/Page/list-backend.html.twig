@@ -4,6 +4,7 @@
      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
  {% endblock %}
 {% block body %}
+<div class="container">
     <table id="news-list" class="table">
         <thead>
         <tr>
@@ -17,8 +18,10 @@
         {% for page in entities %}
             <tr>
                 <td scope="row">{{ page.title }}</td>
-                <td scope="col" data-order="{{ page.createdAt|date('Y-m-d') }}">{{ page.createdAt|date('d.m.Y H:i') }}</td>
-                <td scope="col" data-order="{{ page.createdAt|date('Y-m-d') }}">{{ page.modifiedAt|date('d.m.Y H:i') }}</td>
+                <td scope="col"
+                    data-order="{{ page.createdAt|date('Y-m-d') }}">{{ page.createdAt|date('d.m.Y H:i') }}</td>
+                <td scope="col"
+                    data-order="{{ page.createdAt|date('Y-m-d') }}">{{ page.modifiedAt|date('d.m.Y H:i') }}</td>
                 <td scope="col">
                     <a class="float-right"
                        href="{{ path('page_edit', {'id': page.id}) }}">{% trans from 'page' %}edit{% endtrans %}
@@ -28,15 +31,16 @@
         {% endfor %}
         </tbody>
     </table>
-{% endblock %}
-{% block javascripts %}
-    {{ parent() }}
-    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#page-list').DataTable({
-                'order': [[3, 'desc']]
+
+    {% endblock %}
+    {% block javascripts %}
+        {{ parent() }}
+        <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#page-list').DataTable({
+                    'order': [[3, 'desc']]
+                });
             });
-        });
-    </script>
-{% endblock %}
+        </script>
+    {% endblock %}
