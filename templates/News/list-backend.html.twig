@@ -8,9 +8,9 @@
         <table id="news-list" class="table">
             <thead>
             <tr>
-                <th scope="col">{% trans from 'news' %}title{% endtrans %}</th>
-                <th scope="col">{% trans from 'news' %}createdAt at{% endtrans %}</th>
-                <th scope="col">{% trans from 'news' %}modified at{% endtrans %}</th>
+                <th scope="col">{% trans from "messages" %}title{% endtrans %}</th>
+                <th scope="col">{% trans from "messages" %}created_at{% endtrans %}</th>
+                <th scope="col">{% trans from "messages" %}modified_at{% endtrans %}</th>
                 <th></th>
             </tr>
             </thead>
@@ -24,11 +24,11 @@
                         data-order="{{ news.createdAt|date('Y-m-d') }}">{{ news.modifiedAt|date('d.m.Y H:i') }}</td>
                     <td scope="col">
                         <a href="{{ path('news_show', {'slug': news.slug}) }}">
-                            {% trans from 'news' %}show{% endtrans %}
+                            {% trans from "messages" %}show{% endtrans %}
                         </a>
                         |
                         <a href="{{ path('news_edit', {'id': news.id}) }}">
-                            {% trans from 'news' %}edit{% endtrans %}
+                            {% trans from "messages" %}edit{% endtrans %}
                         </a>
                     </td>
                 </tr>

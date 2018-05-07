@@ -4,34 +4,34 @@
         {% if  app.request.get('_route') ends with '_edit' %}
             <div class="row mb-3">
                 <div class="col">
-                    <h1>{% trans from "location" %}edit location{% endtrans %}</h1>
+                    <h1>{% trans from "messages" %}edit_location{% endtrans %}</h1>
                 </div>
             </div>
         {% else %}
             <div class="row mb-3">
                 <div class="col">
-                    <h1>{% trans from "location" %}create location{% endtrans %}</h1>
+                    <h1>{% trans from "messages" %}create_location{% endtrans %}</h1>
                 </div>
             </div>
         {% endif %}
         {{ form_start(form) }}
         <div class="form-row">
             <div class="form-group col-md-12">
-                <label>{% trans from "location" %}name{% endtrans %}</label>
+                <label>{% trans from "messages" %}name{% endtrans %}</label>
                 {{ form_widget(form.name) }}
             </div>
         </div>
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label>{% trans from "location" %}street{% endtrans %}</label>
+                <label>{% trans from "messages" %}street{% endtrans %}</label>
                 {{ form_widget(form.street) }}
             </div>
             <div class="form-group col-md-4">
-                <label>{% trans from "location" %}city{% endtrans %}</label>
+                <label>{% trans from "messages" %}city{% endtrans %}</label>
                 {{ form_widget(form.city) }}
             </div>
             <div class="form-group col-md-2">
-                <label>{% trans from "location" %}zip{% endtrans %}</label>
+                <label>{% trans from "messages" %}zip{% endtrans %}</label>
                 {{ form_widget(form.zip) }}
             </div>
         </div>

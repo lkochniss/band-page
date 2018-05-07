@@ -8,9 +8,9 @@
         <table id="location-list" class="table">
             <thead>
             <tr>
-                <th scope="col">{% trans from 'location' %}title{% endtrans %}</th>
-                <th scope="col">{% trans from 'location' %}createdAt at{% endtrans %}</th>
-                <th scope="col">{% trans from 'location' %}modified at{% endtrans %}</th>
+                <th scope="col">{% trans from "messages" %}title{% endtrans %}</th>
+                <th scope="col">{% trans from "messages" %}created_at{% endtrans %}</th>
+                <th scope="col">{% trans from "messages" %}modified_at{% endtrans %}</th>
                 <th></th>
             </tr>
             </thead>
@@ -24,7 +24,7 @@
                         data-order="{{ location.createdAt|date('Y-m-d') }}">{{ location.modifiedAt|date('d.m.Y H:i') }}</td>
                     <td scope="col">
                         <a class="float-right"
-                           href="{{ path('location_edit', {'id': location.id}) }}">{% trans from 'location' %}edit{% endtrans %}
+                           href="{{ path('location_edit', {'id': location.id}) }}">{% trans from "messages" %}edit{% endtrans %}
                         </a>
                     </td>
                 </tr>
