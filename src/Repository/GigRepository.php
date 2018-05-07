@@ -10,6 +10,31 @@ use App\Entity\Gig;
  */
 class GigRepository extends AbstractRepository
 {
+
+    public function findAllUpcomingGigsSortedByDate(): array
+    {
+        $now = new \DateTime('now 00:00:00');
+        $query = $this->createQueryBuilder('gig')
+            ->where('gig.date > :now')
+            ->setParameter('now', $now)
+            ->orderBy('gig.date', 'ASC')
+            ->getQuery();
+
+        return $query->getResult();
+    }
+
+    public function findAllPastGigsSortedByDate(): array
+    {
+        $now = new \DateTime('now 00:00:00');
+        $query = $this->createQueryBuilder('gig')
+            ->where('gig.date < :now')
+            ->setParameter('now', $now)
+            ->orderBy('gig.date', 'DESC')
+            ->getQuery();
+
+        return $query->getResult();
+    }
+
     /**
      * @param AbstractEntity $entity
      * @throws \Doctrine\ORM\ORMException
