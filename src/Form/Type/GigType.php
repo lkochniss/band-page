@@ -31,6 +31,7 @@ class GigType extends AbstractType
                 'title',
                 TextType::class,
                 [
+                    'required' => true,
                     'attr' =>
                         [
                             'class' => 'form-control'
@@ -41,6 +42,7 @@ class GigType extends AbstractType
                 'description',
                 TextareaType::class,
                 [
+                    'required' => true,
                     'attr' =>
                         [
                             'class' => 'form-control'
@@ -51,6 +53,7 @@ class GigType extends AbstractType
                 'price',
                 MoneyType::class,
                 [
+                    'required' => true,
                     'currency' => getenv('DEFAULT_CURRENCY'),
                     'attr' =>
                         [
@@ -62,9 +65,13 @@ class GigType extends AbstractType
                 'date',
                 DateTimeType::class,
                 [
+                    'required' => true,
+                    'widget' => 'single_text',
                     'attr' =>
                         [
-                            'class' => 'form-control'
+                            'class' => 'form-control',
+                            'date-provide' => 'datetimepicker',
+                            'hml5' => false
                         ]
                 ]
             )
@@ -72,6 +79,7 @@ class GigType extends AbstractType
                 'location',
                 EntityType::class,
                 [
+                    'required' => true,
                     'class' => 'App\Entity\Location',
                     'choice_label' => 'name',
                     'attr' =>
@@ -85,7 +93,7 @@ class GigType extends AbstractType
                 SubmitType::class,
                 [
                     'attr' => [
-                        'class' => 'btn-success form-controll'
+                        'class' => 'btn btn-primary form-controll'
                     ]
                 ]
             );
