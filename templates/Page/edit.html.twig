@@ -4,23 +4,23 @@
         {% if  app.request.get('_route') ends with '_edit' %}
             <div class="row mb-3">
                 <div class="col">
-                    <h1>{% trans from "page" %}edit page{% endtrans %}</h1>
+                    <h1>{% trans from "messages" %}edit_page{% endtrans %}</h1>
                 </div>
                 <div class="col text-right">
-                    <a href="{{ path('page_show', {'slug' : entity.slug }) }}">{% trans from "page" %}show page{% endtrans %}</a>
+                    <a href="{{ path('page_show', {'slug' : entity.slug }) }}">{% trans from "messages" %}show_page{% endtrans %}</a>
                 </div>
             </div>
         {% else %}
             <div class="row mb-3">
                 <div class="col">
-                    <h1>{% trans from "page" %}create page{% endtrans %}</h1>
+                    <h1>{% trans from "messages" %}create_page{% endtrans %}</h1>
                 </div>
             </div>
         {% endif %}
         {{ form_start(form) }}
         <div class="form-row">
             <div class="form-group col-md-12">
-                <label>{% trans from "location" %}title{% endtrans %}</label>
+                <label>{% trans from "messages" %}title{% endtrans %}</label>
                 {{ form_widget(form.title) }}
             </div>
         </div>

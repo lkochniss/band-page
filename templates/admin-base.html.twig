@@ -19,48 +19,48 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="{{ path('homepage_backend_dashboard') }}">{% trans from 'navigation' %}dashboard{% endtrans %} <span class="sr-only"></span></a>
+                <a class="nav-link" href="{{ path('homepage_backend_dashboard') }}">{% trans from "messages" %}dashboard{% endtrans %} <span class="sr-only"></span></a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                    {% trans from 'navigation' %}news{% endtrans %}
+                    {% trans from "messages" %}news{% endtrans %}
                 </a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="{{ path('news_create') }}">{% trans from 'navigation' %}create new{% endtrans %}</a>
-                    <a class="dropdown-item" href="{{ path('news_list_backend') }}">{% trans from 'navigation' %}list all{% endtrans %}</a>
+                    <a class="dropdown-item" href="{{ path('news_create') }}">{% trans from "messages" %}create_new{% endtrans %}</a>
+                    <a class="dropdown-item" href="{{ path('news_list_backend') }}">{% trans from "messages" %}list_all{% endtrans %}</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                    {% trans from 'navigation' %}location{% endtrans %}
+                    {% trans from "messages" %}location{% endtrans %}
                 </a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="{{ path('location_create') }}">{% trans from 'navigation' %}create new{% endtrans %}</a>
-                    <a class="dropdown-item" href="{{ path('location_list_backend') }}">{% trans from 'navigation' %}list all{% endtrans %}</a>
+                    <a class="dropdown-item" href="{{ path('location_create') }}">{% trans from "messages" %}create_new{% endtrans %}</a>
+                    <a class="dropdown-item" href="{{ path('location_list_backend') }}">{% trans from "messages" %}list_all{% endtrans %}</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                    {% trans from 'navigation' %}gig{% endtrans %}
+                    {% trans from "messages" %}gig{% endtrans %}
                 </a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="{{ path('gig_create') }}">{% trans from 'navigation' %}create new{% endtrans %}</a>
-                    <a class="dropdown-item" href="{{ path('gig_list_backend') }}">{% trans from 'navigation' %}list all{% endtrans %}</a>
+                    <a class="dropdown-item" href="{{ path('gig_create') }}">{% trans from "messages" %}create_new{% endtrans %}</a>
+                    <a class="dropdown-item" href="{{ path('gig_list_backend') }}">{% trans from "messages" %}list_all{% endtrans %}</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                    {% trans from 'navigation' %}page{% endtrans %}
+                    {% trans from "messages" %}page{% endtrans %}
                 </a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="{{ path('page_create') }}">{% trans from 'navigation' %}create new{% endtrans %}</a>
-                    <a class="dropdown-item" href="{{ path('page_list_backend') }}">{% trans from 'navigation' %}list all{% endtrans %}</a>
+                    <a class="dropdown-item" href="{{ path('page_create') }}">{% trans from "messages" %}create_new{% endtrans %}</a>
+                    <a class="dropdown-item" href="{{ path('page_list_backend') }}">{% trans from "messages" %}list_all{% endtrans %}</a>
                 </div>
             </li>
         </ul>
         <ul class="navbar-nav mr-auto right">
             <li class="nav-item">
-                <a class="nav-link" href="{{ path('security_logout') }}">{% trans from "navigation" %}logout{% endtrans %}</a>
+                <a class="nav-link" href="{{ path('security_logout') }}">{% trans from "messages" %}logout{% endtrans %}</a>
             </li>
         </ul>
     </div>

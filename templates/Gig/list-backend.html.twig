@@ -8,12 +8,12 @@
         <table id="gig-list" class="table">
             <thead>
             <tr>
-                <th scope="col">{% trans from 'gig' %}title{% endtrans %}</th>
-                <th scope="col">{% trans from 'gig' %}date{% endtrans %}</th>
-                <th scope="col">{% trans from 'gig' %}doors open{% endtrans %}</th>
-                <th scope="col">{% trans from 'gig' %}price{% endtrans %}</th>
-                <th scope="col">{% trans from 'gig' %}createdAt at{% endtrans %}</th>
-                <th scope="col">{% trans from 'gig' %}modified at{% endtrans %}</th>
+                <th scope="col">{% trans from "messages" %}title{% endtrans %}</th>
+                <th scope="col">{% trans from "messages" %}date{% endtrans %}</th>
+                <th scope="col">{% trans from "messages" %}doors_open{% endtrans %}</th>
+                <th scope="col">{% trans from "messages" %}price{% endtrans %}</th>
+                <th scope="col">{% trans from "messages" %}created_at{% endtrans %}</th>
+                <th scope="col">{% trans from "messages" %}modified_at{% endtrans %}</th>
                 <th></th>
             </tr>
             </thead>
@@ -32,11 +32,11 @@
                         data-order="{{ gig.createdAt|date('Y-m-d') }}">{{ gig.modifiedAt|date('d.m.Y H:i') }}</td>
                     <td scope="col text-right">
                         <a href="{{ path('gig_show', {'slug': gig.slug}) }}">
-                            {% trans from 'gig' %}show{% endtrans %}
+                            {% trans from "messages" %}show{% endtrans %}
                         </a>
                         |
                         <a href="{{ path('gig_edit', {'id': gig.id}) }}">
-                            {% trans from 'gig' %}edit{% endtrans %}
+                            {% trans from "messages" %}edit{% endtrans %}
                         </a>
                     </td>
                 </tr>

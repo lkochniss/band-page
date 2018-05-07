@@ -8,9 +8,9 @@
     <table id="page-list" class="table">
         <thead>
         <tr>
-            <th scope="col">{% trans from 'page' %}title{% endtrans %}</th>
-            <th scope="col">{% trans from 'page' %}createdAt at{% endtrans %}</th>
-            <th scope="col">{% trans from 'page' %}modified at{% endtrans %}</th>
+            <th scope="col">{% trans from "messages" %}title{% endtrans %}</th>
+            <th scope="col">{% trans from "messages" %}created_at{% endtrans %}</th>
+            <th scope="col">{% trans from "messages" %}modified_at{% endtrans %}</th>
             <th></th>
         </tr>
         </thead>
@@ -24,11 +24,11 @@
                     data-order="{{ page.createdAt|date('Y-m-d') }}">{{ page.modifiedAt|date('d.m.Y H:i') }}</td>
                 <td scope="col">
                     <a href="{{ path('page_show', {'slug': page.slug}) }}">
-                        {% trans from 'page' %}show{% endtrans %}
+                        {% trans from "messages" %}show{% endtrans %}
                     </a>
                     |
                     <a href="{{ path('page_edit', {'id': page.id}) }}">
-                        {% trans from 'page' %}edit{% endtrans %}
+                        {% trans from "messages" %}edit{% endtrans %}
                     </a>
                 </td>
             </tr>

@@ -2,19 +2,19 @@
     <thead>
     <tr>
         <th scope="col">
-            {% trans from 'gig' %}when{% endtrans %}
+            {% trans from "messages" %}when{% endtrans %}
         </th>
         <th scope="col">
-            {% trans from 'gig' %}gig{% endtrans %}
+            {% trans from "messages" %}gig{% endtrans %}
         </th>
         <th scope="col">
-            {% trans from 'gig' %}price{% endtrans %}
+            {% trans from "messages" %}price{% endtrans %}
         </th>
         <th scope="col">
-            {% trans from 'gig' %}doors open{% endtrans %}
+            {% trans from "messages" %}doors_open{% endtrans %}
         </th>
         <th scope="col">
-            {% trans from 'gig' %}where{% endtrans %}
+            {% trans from "messages" %}where{% endtrans %}
         </th>
         <th scope="col"></th>
     </tr>
@@ -39,7 +39,7 @@
             </td>
             <td>
                 <a class="btn btn-light btn-outline-dark"
-                   href="{{ path('gig_show', {'slug': gig.slug}) }}"> {% trans from 'gig' %}more information{% endtrans %}</a>
+                   href="{{ path('gig_show', {'slug': gig.slug}) }}"> {% trans from "messages" %}more_information{% endtrans %}</a>
             </td>
         </tr>
 

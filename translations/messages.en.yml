@@ -1,0 +1,43 @@
+logout: logout
+dashboard: Dashboard
+news: News
+create_new: Create New
+list_all: List All
+location: Location
+gig: Gig
+page: Page
+gigs: Gigs
+when: When
+price: Price
+doors_open: Doors Open
+where: Where
+more_information: More Information
+edit_gig: Edit Gig
+show_gig: Show Gig
+create_gig: Create Gig
+title: Title
+price_in_currency: 'Price:'
+date: Date
+created_at: Created at
+modified_at: Modified at
+show: Show
+edit: Edit
+past_gigs: Past Gigs
+upcoming_gigs: Upcoming Gigs
+edit_location: Edit Location
+create_location: Create Location
+name: Name
+street: Street
+city: City
+zip: Zip
+edit_news: Edit News
+show_news: Show News
+create_news: Create News
+read_more: Read More
+edit_page: Edit Page
+show_page: Show Page
+create_page: Create Page
+login: Login
+username: Username
+password: Password
+submit: Submit
