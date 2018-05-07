@@ -3,39 +3,39 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <h1>
-                    {{ entity.title }}
-                </h1>
+
                 <h3>
                     {{ entity.date| date('d.m.Y') }}
                 </h3>
-            </div>
-            <div class="col text-right">
-                <h4>
+                <h3>
                     {% trans from 'gig' %}doors open{% endtrans %}
                     {{ entity.date| date('H:i') }}
-                </h4>
+                </h3>
+            </div>
+            <div class="col text-right">
+                <h1>
+                    {{ entity.title }} @ {{ entity.location.name }}, {{ entity.location.city }}
+                </h1>
             </div>
         </div>
         <hr/>
         <div class="row">
-            <div class="col">
+            <div class="col-sm">
                 {{ entity.description| raw }}
             </div>
-            <div class="col">
-                <div class="text-right">
-                    <h6>
-                        {{ entity.location.name }}
-                    </h6>
-                    <h6>
-                        {{ entity.location.street }}, {{ entity.location.zip }} {{ entity.location.city }}
-                    </h6>
-                </div>
-                <iframe class="w-100 h-50"
+            <div class="col-sm">
+                <iframe class="w-100 mh-50" height="300px"
                         frameborder="0" style="border:0"
                         src="https://www.google.com/maps/embed/v1/place?key={{ ga_api_key }}
     &q={{ entity.location.street }}+ {{ entity.location.zip }}+ {{ entity.location.city }}" allowfullscreen>
                 </iframe>
+                <div class="text-right">
+                    <h6>
+                        {{ entity.location.name }} |
+                        {{ entity.location.street }},
+                        {{ entity.location.zip }} {{ entity.location.city }}
+                    </h6>
+                </div>
             </div>
         </div>
     </div>
