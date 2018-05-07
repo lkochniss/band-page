@@ -57,6 +57,9 @@ App\Entity\News:
     news_3:
         title: 'Post 3'
         content: '<sentence()><sentence()><sentence()><sentence()><sentence()><sentence()><sentence()><sentence()><sentence()><sentence()><sentence()>'
+    news_{4..9}:
+        title: '<word()>'
+        content: '<sentence()><sentence()><sentence()><sentence()><sentence()><sentence()><sentence()><sentence()><sentence()><sentence()><sentence()>'
 
 App\Entity\Page:
     page_1:
