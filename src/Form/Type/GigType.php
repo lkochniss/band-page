@@ -6,6 +6,7 @@ use App\Entity\Gig;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -40,6 +41,17 @@ class GigType extends AbstractType
                 'description',
                 TextareaType::class,
                 [
+                    'attr' =>
+                        [
+                            'class' => 'form-control'
+                        ]
+                ]
+            )
+            ->add(
+                'price',
+                MoneyType::class,
+                [
+                    'currency' => getenv('DEFAULT_CURRENCY'),
                     'attr' =>
                         [
                             'class' => 'form-control'

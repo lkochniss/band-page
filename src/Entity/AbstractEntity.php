@@ -107,6 +107,15 @@ abstract class AbstractEntity
 
     /**
      * @param $value
+     * @return float
+     */
+    protected function floatTransform($value) : float
+    {
+        return $value ?: 0.0;
+    }
+
+    /**
+     * @param $value
      * @return \DateTime
      */
     protected function dateTimeTransform($value) : \DateTime
