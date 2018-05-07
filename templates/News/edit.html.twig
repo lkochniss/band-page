@@ -1,39 +1,40 @@
 {% extends 'admin-base.html.twig' %}
 {% block body %}
     <div class="container">
-    {% if  app.request.get('_route') ends with '_edit' %}
-        <div class="row mb-3">
-            <div class="col">
-                <h1>{% trans from "news" %}edit news{% endtrans %}</h1>
+        {% if  app.request.get('_route') ends with '_edit' %}
+            <div class="row mb-3">
+                <div class="col">
+                    <h1>{% trans from "news" %}edit news{% endtrans %}</h1>
+                </div>
+                <div class="col text-right">
+                    <a href="{{ path('news_show', {'slug' : entity.slug }) }}">{% trans from "news" %}show news{% endtrans %}</a>
+                </div>
             </div>
+        {% else %}
+            <div class="row mb-3">
+                <div class="col">
+                    <h1>{% trans from "news" %}create news{% endtrans %}</h1>
+                </div>
+            </div>
+        {% endif %}
+        {{ form_start(form) }}
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label>{% trans from "location" %}title{% endtrans %}</label>
+                {{ form_widget(form.title) }}
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                {{ form_widget(form.content) }}
+            </div>
+        </div>
+        <div class="form-row">
             <div class="col text-right">
-                <a href="{{ path('news_show', {'slug' : entity.slug }) }}">{% trans from "news" %}show news{% endtrans %}</a>
+                {{ form_row(form.submit) }}
             </div>
         </div>
-    {% else %}
-        <div class="row mb-3">
-            <div class="col">
-                <h1>{% trans from "news" %}create news{% endtrans %}</h1>
-            </div>
-        </div>
-    {% endif %}
-    {{ form_start(form) }}
-    <div class="row mb-3">
-        <div class="col">
-            {{ form_widget(form.title) }}
-        </div>
-    </div>
-    <div class="row mb-3">
-        <div class="col">
-            {{ form_widget(form.content) }}
-        </div>
-    </div>
-    <div class="row mb-3">
-        <div class="col text-right">
-            {{ form_row(form.submit) }}
-        </div>
-    </div>
-    {{ form_end(form) }}
+        {{ form_end(form) }}
     </div>
 {% endblock %}
 {% block javascripts %}
