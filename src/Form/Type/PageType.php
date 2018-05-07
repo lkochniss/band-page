@@ -49,7 +49,7 @@ class PageType extends AbstractType
                 SubmitType::class,
                 [
                     'attr' => [
-                        'class' => 'btn-success form-controll'
+                        'class' => 'btn btn-primary form-controll'
                     ]
                 ]
             );
