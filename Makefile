@@ -20,6 +20,7 @@ codefix:
 rebuild:
 	docker-compose down --remove-orphans
 	docker-compose build --force-rm --pull
+	docker-compose create
 	docker-compose up -d
 
 start:

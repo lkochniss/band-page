@@ -28,6 +28,11 @@ class Gig extends AbstractEntity
     private $location;
 
     /**
+     * @var float
+     */
+    private $price;
+
+    /**
      * @return string
      */
     public function getTitle(): string
@@ -89,6 +94,22 @@ class Gig extends AbstractEntity
     public function setLocation(Location $location): void
     {
         $this->location = $location;
+    }
+
+    /**
+     * @return float
+     */
+    public function getPrice(): float
+    {
+        return $this->floatTransform($this->price);
+    }
+
+    /**
+     * @param float $price
+     */
+    public function setPrice(float $price): void
+    {
+        $this->price = $price;
     }
 
     public function setSlug(): void

@@ -13,6 +13,8 @@ App\Entity\Gig:
             type: text
         date:
             type: datetime
+        price:
+            type: float
     manyToOne:
         location:
             targetEntity: Location

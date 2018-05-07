@@ -1,21 +1,42 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-    <div class="container">
-        {% for gig in entities %}
-
-            <div class="card">
-                <div class="card-header row">
-                    <h2 class="col card-title">{{ gig.title }}</h2>
-                    <div class="col text-right text-muted">{{ gig.createdAt|date('d.m.Y') }}</div>
-                </div>
-                <div class="card-body">
-                    <p class="card-text">
-                        {{ gig.content }}
-                    </p>
-                    <a href="{{ path('gig_show', {'slug': gig.slug}) }}"
-                       class="btn btn-primary">{% trans from 'gig' %}Read more{% endtrans %}</a>
-                </div>
+    <div class="container table">
+        <div class="row">
+            <div class="col">
+                {% trans from 'gig' %}gig{% endtrans %}
             </div>
+            <div class="col">
+                {% trans from 'gig' %}price{% endtrans %}
+            </div>
+            <div class="col">
+                {% trans from 'gig' %}when{% endtrans %}
+            </div>
+            <div class="col">
+                {% trans from 'gig' %}doors open{% endtrans %}
+            </div>
+            <div class="col">
+                {% trans from 'gig' %}where{% endtrans %}
+            </div>
+        </div>
+        {% for gig in entities %}
+           <div class="row">
+               <div class="col">
+                   {{ gig.title }}
+               </div>
+               <div class="col">
+                   {{ gig.price }}{{ default_currency }}
+               </div>
+               <div class="col">
+                   {{ gig.date|date('d.m.Y') }}
+               </div>
+               <div class="col">
+                   {{ gig.date|date('H:i') }}
+               </div>
+               <div class="col">
+                   {{ gig.location.street }}, {{ gig.location.zip }} {{ gig.location.city }}
+               </div>
+           </div>
+
         {% endfor %}
     </div>
 {% endblock %}
