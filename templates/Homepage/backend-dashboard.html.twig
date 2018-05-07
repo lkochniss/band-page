@@ -1,9 +1,9 @@
 {% extends 'admin-base.html.twig' %}
- {% block stylesheets %}
-     {{ parent() }}
-     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
- {% endblock %}
 {% block body %}
     <a href="{{ path('news_create') }}">{% trans from 'news' %}Create new News{% endtrans %}</a><br/>
-    <a href="{{ path('news_list_backend') }}">{% trans from 'news' %}List News{% endtrans %}</a>
+    <a href="{{ path('news_list_backend') }}">{% trans from 'news' %}List News{% endtrans %}</a><br/>
+    <a href="{{ path('location_create') }}">{% trans from 'news' %}Create new Location{% endtrans %}</a><br/>
+    <a href="{{ path('location_list_backend') }}">{% trans from 'news' %}List Locations{% endtrans %}</a><br/>
+    <a href="{{ path('gig_create') }}">{% trans from 'news' %}Create new Gig{% endtrans %}</a><br/>
+    <a href="{{ path('gig_list_backend') }}">{% trans from 'news' %}List Gigs{% endtrans %}</a><br/>
 {% endblock %}
