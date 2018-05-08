@@ -48,11 +48,13 @@ edit_footer_menu: 'Edit Footer Menu'
 settings: Settings
 facebook: Facebook
 instagram: Instagram
-target_page: Target Page
-target_url: Target Url
+target_page: 'Target Page'
+target_url: 'Target Url'
 sort: Sort
 save: Save
-add_menu_item: Add Menu Item
-band_name: Band Name
-facebook_page: Facebook Page Url
-instagram_account: Instagram Account Url
+add_menu_item: 'Add Menu Item'
+band_name: 'Band Name'
+facebook_page: 'Facebook Page Url'
+instagram_account: 'Instagram Account Url'
+main_menu: 'Main Menu'
+footer_menu: 'Footer Menu'

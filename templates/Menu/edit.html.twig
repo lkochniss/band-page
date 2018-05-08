@@ -9,17 +9,19 @@
         <table id="menu-list" class="table sortable">
             <thead>
             <tr>
+                <th scope="col">{% trans from "messages" %}sort{% endtrans %}</th>
+                <th scope="col">{% trans from "messages" %}action{% endtrans %}</th>
                 <th scope="col">{% trans from "messages" %}target_page{% endtrans %}</th>
                 <th scope="col">{% trans from "messages" %}target_url{% endtrans %}</th>
-                <th scope="col">{% trans from "messages" %}sort{% endtrans %}</th>
             </tr>
             </thead>
             <tbody>
             {% for item in menu.items %}
                 <tr draggable="true" id="{{ item.id }}">
+                    <td>sort</td>
+                    <td><a class="btn btn-outline-dark btn-light" href="{{ path('menu_item_remove', {'menuId': menu.id, 'itemId': item.id}) }}">{% trans from "messages" %}remove_item{% endtrans %}</a></td>
                     <td scope="col">{{ item.name }}</td>
                     <td><a href="{{ path('page_show', {'slug': item.page.slug}) }}">/{{ item.page.slug }}</a></td>
-                    <td>sort</td>
                 </tr>
             {% endfor %}
             </tbody>

@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\AbstractEntity;
+use App\Entity\Menu;
 use App\Entity\MenuItem;
 use App\Form\Type\MenuItemType;
+use App\Repository\MenuItemRepository;
 use App\Repository\MenuRepository;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -28,7 +30,7 @@ class MenuItemController extends AbstractCrudController
         $menuItem->setMenu($menu);
         $menuItem->setPosition(count($menu->getItems()));
 
-        return $this->createAndHandleForm($menuItem, $request, 'item_create', ['menuId' => $menuId]);
+        return $this->createAndHandleForm($menuItem, $request, 'create', ['menuId' => $menuId]);
     }
 
     public function editItemForMenu(int $menuId, int $itemId, MenuRepository $menuRepository, Request $request)
@@ -44,12 +46,37 @@ class MenuItemController extends AbstractCrudController
         return $this->createAndHandleForm(
             $menuItem,
             $request,
-            'item_edit',
+            'edit',
             [
                 'menuId' => $menuId,
                 'itemId' => $itemId
             ]
         );
+    }
+
+    /**
+     * @param int $menuId
+     * @param int $itemId
+     * @param MenuRepository $menuRepository
+     * @param MenuItemRepository $menuItemRepository
+     * @return Response
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function removeItem(int $menuId, int $itemId, MenuRepository $menuRepository, MenuItemRepository $menuItemRepository): Response
+    {
+        $menu = $menuRepository->findOneBy(['id' => $menuId]);
+
+        if (is_null($menu)) {
+            throw new NotFoundHttpException();
+        }
+
+        $menuItem = $this->getDoctrine()->getRepository($this->getEntityName())->find($itemId);
+        $menuItemRepository->remove($menuItem);
+
+        $route = $menu->getType() === Menu::MAIN_MENU ? 'menu_main_list' : 'menu_footer_list';
+
+        return $this->redirect($this->generateUrl($route));
     }
 
     /**
@@ -75,7 +102,9 @@ class MenuItemController extends AbstractCrudController
             if ($form->isSubmitted() && $form->isValid()) {
                 $this->handleValidForm($entity);
 
-                return $this->redirect($this->generateUrlForAction('main_list'));
+                $route = $entity->getMenu()->getType() === Menu::MAIN_MENU ? 'menu_main_list' : 'menu_footer_list';
+
+                return $this->redirect($this->generateUrl($route));
             }
         }
 
@@ -125,6 +154,6 @@ class MenuItemController extends AbstractCrudController
      */
     protected function getRoutePrefix(): string
     {
-        return 'menu';
+        return 'menu_item';
     }
 }
