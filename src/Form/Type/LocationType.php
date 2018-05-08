@@ -73,7 +73,7 @@ class LocationType extends AbstractType
                 SubmitType::class,
                 [
                     'attr' => [
-                        'class' => 'btn btn-primary form-controll'
+                        'class' => 'btn btn-primary form-control'
                     ]
                 ]
             );

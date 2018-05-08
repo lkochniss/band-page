@@ -23,7 +23,7 @@
             <div class="col-sm">
                 {{ entity.description| raw }}
                 <p>
-                    <b>{% trans from "messages" %}price{% endtrans %}: {{ entity.price }} {{ default_currency }}</b>
+                    <b>{% trans from "messages" %}price{% endtrans %}: {{ entity.price }}{{ default_currency|trans }}</b>
                 </p>
             </div>
             <div class="col-sm">

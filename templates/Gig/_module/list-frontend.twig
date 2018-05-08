@@ -29,7 +29,7 @@
                 {{ gig.title }}
             </td>
             <td>
-                {{ gig.price }} {{ default_currency }}
+                {{ gig.price }}{{ default_currency|trans() }}
             </td>
             <td>
                 {{ gig.date|date('H:i') }}
