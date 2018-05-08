@@ -5,3 +5,7 @@ menu_item_create:
 menu_item_edit:
     path: /menu/{menuId}/item/{itemId}/edit
     defaults: { _controller: 'App\Controller\MenuItemController::editItemForMenu' }
+
+menu_item_remove:
+    path: /menu/{menuId}/item/{itemId}/remove
+    defaults: { _controller: 'App\Controller\MenuItemController::removeItem' }
