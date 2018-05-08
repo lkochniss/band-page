@@ -1,0 +1,30 @@
+{% extends 'admin-base.html.twig' %}
+{% block body %}
+    <div class="container">
+        <div class="row mb-3">
+            <div class="col">
+                <h1>{% trans from "messages" %}settings{% endtrans %}</h1>
+            </div>
+        </div>
+        {{ form_start(form) }}
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label>{% trans from "messages" %}band_name{% endtrans %}</label>
+                {{ form_widget(form.bandName) }}
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label>{% trans from "messages" %}facebook_page{% endtrans %}</label>
+                {{ form_widget(form.facebookPage) }}
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label>{% trans from "messages" %}instagram_account{% endtrans %}</label>
+                {{ form_widget(form.instagramAccount) }}
+            </div>
+        </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

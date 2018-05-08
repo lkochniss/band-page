@@ -30,6 +30,10 @@ page_admin:
     resource: routing/page_admin.yaml
     prefix: /admin
 
+## Settings
+settings_admin:
+    resource: routing/settings_admin.yaml
+    prefix: /admin
 
 # Frontend
 
