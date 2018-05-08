@@ -20,14 +20,15 @@ class MenuController extends AbstractCrudController
      */
     public function listMainMenu()
     {
-        $menu = $this->getDoctrine()->getRepository($this->getEntityName())->findOneByTypeOrCreate(Menu::MAIN_MENU);
+        return $this->listMenu(Menu::MAIN_MENU);
+    }
 
-        return $this->render(
-            sprintf('%s/edit.html.twig', $this->getTemplateBasePath()),
-            [
-                'menu' => $menu
-            ]
-        );
+    /**
+     * @return RedirectResponse|Response
+     */
+    public function listFooterMenu(): Response
+    {
+        return $this->listMenu(Menu::FOOTER_MENU);
     }
 
     /**
@@ -37,7 +38,7 @@ class MenuController extends AbstractCrudController
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException
      */
-    public function updateMainMenu(Request $request, MenuItemRepository $menuItemRepository): JsonResponse
+    public function updateMenu(Request $request, MenuItemRepository $menuItemRepository): JsonResponse
     {
         $changeset = $request->request->get('changeset');
 
@@ -88,5 +89,21 @@ class MenuController extends AbstractCrudController
     protected function getRoutePrefix(): string
     {
         return 'menu';
+    }
+
+    /**
+     * @param string $menuType
+     * @return Response
+     */
+    private function listMenu(string $menuType): Response
+    {
+        $menu = $this->getDoctrine()->getRepository($this->getEntityName())->findOneByTypeOrCreate($menuType);
+
+        return $this->render(
+            sprintf('%s/edit.html.twig', $this->getTemplateBasePath()),
+            [
+                'menu' => $menu
+            ]
+        );
     }
 }

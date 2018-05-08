@@ -8,16 +8,16 @@ App\Entity\MenuItem:
     fields:
         position:
             type: integer
-    oneToOne:
-        page:
-            targetEntity: Page
-            joinColumn:
-                name: page_id
-                referencedColumnName: id
     manyToOne:
         menu:
             targetEntity: Menu
             inversedBy: items
             joinColumn:
                 name: menu_id
+                referencedColumnName: id
+        page:
+            targetEntity: Page
+            inversedBy: items
+            joinColumn:
+                name: page_id
                 referencedColumnName: id

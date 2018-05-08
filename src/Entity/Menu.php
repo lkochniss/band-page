@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Entity;
+
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
@@ -45,7 +46,13 @@ class Menu extends AbstractEntity
      */
     public function getItems(): array
     {
-        return $this->items->toArray();
+        $items = $this->items->toArray();
+
+        usort($items, function (MenuItem $itemA, MenuItem $itemB) {
+            return $itemA->getPosition() > $itemB->getPosition() ? 1 : -1;
+        });
+
+        return $items;
     }
 
     /**
@@ -58,6 +65,4 @@ class Menu extends AbstractEntity
             $menuItem->setMenu($this);
         }
     }
-
-
 }

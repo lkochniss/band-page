@@ -5,7 +5,7 @@
  {% endblock %}
 {% block body %}
     <div class="container">
-        <a href="{{ path('menu_item_create', {'menuId': menu.id}) }}">{% trans from "messages" %}add_menu_item{% endtrans %}</a>
+        <h1>{{ menu.type|trans }}</h1>
         <table id="menu-list" class="table sortable">
             <thead>
             <tr>
@@ -25,6 +25,7 @@
             </tbody>
         </table>
         <a id="save-changes" href="#" class="btn btn-primary">{% trans from "messages" %}save{% endtrans %}</a>
+        <a class="btn btn-outline-dark btn-light" href="{{ path('menu_item_create', {'menuId': menu.id}) }}">{% trans from "messages" %}add_menu_item{% endtrans %}</a>
     </div>
 {% endblock %}
 

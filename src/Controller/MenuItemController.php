@@ -39,7 +39,7 @@ class MenuItemController extends AbstractCrudController
             throw new NotFoundHttpException();
         }
 
-        $menuItem = $entity = $this->getDoctrine()->getRepository($this->getEntityName())->find($itemId);
+        $menuItem = $this->getDoctrine()->getRepository($this->getEntityName())->find($itemId);
 
         return $this->createAndHandleForm(
             $menuItem,

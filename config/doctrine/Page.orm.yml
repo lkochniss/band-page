@@ -11,3 +11,7 @@ App\Entity\Page:
             length: 100
         content:
             type: text
+    oneToMany:
+        items:
+            targetEntity: MenuItem
+            mappedBy: menu
