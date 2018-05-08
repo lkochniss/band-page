@@ -66,12 +66,11 @@ class GigType extends AbstractType
                 DateTimeType::class,
                 [
                     'required' => true,
-                    'widget' => 'single_text',
+                    'date_widget' => 'single_text',
+                    'time_widget' => 'single_text',
                     'attr' =>
                         [
-                            'class' => 'form-control',
-                            'date-provide' => 'datetimepicker',
-                            'hml5' => false
+                            'class' => 'form-control'
                         ]
                 ]
             )
@@ -93,7 +92,7 @@ class GigType extends AbstractType
                 SubmitType::class,
                 [
                     'attr' => [
-                        'class' => 'btn btn-primary form-controll'
+                        'class' => 'btn btn-primary form-control'
                     ]
                 ]
             );

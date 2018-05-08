@@ -22,9 +22,9 @@
                 <tr>
                     <td scope="row">{{ gig.title }}</td>
                     <td scope="col"
-                        data-order="{{ gig.date|date('Y-m-d') }}">{{ gig.createdAt|date('d.m.Y') }}</td>
+                        data-order="{{ gig.date|date('Y-m-d') }}">{{ gig.date|date('d.m.Y') }}</td>
                     <td scope="col"
-                        data-order="{{ gig.date|date('H:i') }}">{{ gig.createdAt|date('H:i') }}</td>
+                        data-order="{{ gig.date|date('H:i') }}">{{ gig.date|date('H:i') }}</td>
                     <td scope="col">{{ gig.price }}{{ default_currency|trans }}</td>
                     <td scope="col"
                         data-order="{{ gig.createdAt|date('Y-m-d') }}">{{ gig.createdAt|date('d.m.Y H:i') }}</td>
