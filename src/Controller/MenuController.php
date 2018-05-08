@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Menu;
 use App\Form\Type\MenuType;
+use App\Repository\MenuItemRepository;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,10 +16,9 @@ use Symfony\Component\HttpFoundation\Response;
 class MenuController extends AbstractCrudController
 {
     /**
-     * @param Request $request
      * @return RedirectResponse|Response
      */
-    public function editMainMenu(Request $request)
+    public function listMainMenu()
     {
         $menu = $this->getDoctrine()->getRepository($this->getEntityName())->findOneByTypeOrCreate(Menu::MAIN_MENU);
 
@@ -27,6 +28,26 @@ class MenuController extends AbstractCrudController
                 'menu' => $menu
             ]
         );
+    }
+
+    /**
+     * @param Request $request
+     * @param MenuItemRepository $menuItemRepository
+     * @return JsonResponse
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function updateMainMenu(Request $request, MenuItemRepository $menuItemRepository): JsonResponse
+    {
+        $changeset = $request->request->get('changeset');
+
+        foreach (\GuzzleHttp\json_decode($changeset) as $key => $item) {
+            $menuItem = $menuItemRepository->find($item);
+            $menuItem->setPosition($key);
+            $menuItemRepository->save($menuItem);
+        }
+
+        return new JsonResponse('ok');
     }
 
     /**

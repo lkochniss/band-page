@@ -37,8 +37,16 @@
     <script type="text/javascript">
         $("tbody").sortable();
         $("#save-changes").click(function () {
-                var ahoi = $("tbody").sortable('toArray', {attribute: 'id'});
-                console.log(ahoi);
+            var data = JSON.stringify($("tbody").sortable('toArray', {attribute: 'id'}));
+            console.log(data);
+            $.ajax({
+                type: 'POST',
+                dataType: 'json',
+                url: '/admin/main-menu/update',
+                data: {
+                    'changeset' : data
+                }
+            })
         });
     </script>
 {% endblock %}

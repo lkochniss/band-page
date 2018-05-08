@@ -75,7 +75,7 @@ class MenuItemController extends AbstractCrudController
             if ($form->isSubmitted() && $form->isValid()) {
                 $this->handleValidForm($entity);
 
-                return $this->redirect($this->generateUrlForAction('main_edit'));
+                return $this->redirect($this->generateUrlForAction('main_list'));
             }
         }
 
