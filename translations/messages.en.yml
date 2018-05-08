@@ -18,7 +18,7 @@ create_gig: Create Gig
 title: Title
 price_in_currency: 'Price:'
 date: Date
-created_at: Created at
+created_at: Posted at
 modified_at: Modified at
 show: Show
 edit: Edit
