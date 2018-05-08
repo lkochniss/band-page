@@ -1,0 +1,7 @@
+menu_item_create:
+    path: /menu/{menuId}/item/create
+    defaults: { _controller: 'App\Controller\MenuItemController::createItemForMenu' }
+
+menu_item_edit:
+    path: /menu/{menuId}/item/{itemId}/edit
+    defaults: { _controller: 'App\Controller\MenuItemController::editItemForMenu' }

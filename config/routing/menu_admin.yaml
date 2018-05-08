@@ -1,0 +1,17 @@
+menu_main_list:
+    path: /main-menu
+    defaults: { _controller: 'App\Controller\MenuController::listMainMenu' }
+
+menu_main_update:
+    path: /main-menu/update
+    defaults: { _controller: 'App\Controller\MenuController::updateMenu' }
+    methods: [POST]
+
+menu_footer_list:
+    path: /footer-menu
+    defaults: { _controller: 'App\Controller\MenuController::listFooterMenu' }
+
+menu_footer_update:
+    path: /footer-menu/update
+    defaults: { _controller: 'App\Controller\MenuController::updateMenu' }
+    methods: [POST]

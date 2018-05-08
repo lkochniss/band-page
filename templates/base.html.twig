@@ -22,45 +22,74 @@
         gtag('config', '{{ ga_tracking }}');
     </script>
 </head>
-<body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
-    <div class="navbar-brand">
-        <a href="{{ path('news_list_frontend') }}">{{ bandName }} <span class="sr-only"></span></a>
-    </div>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+<body class="d-flex flex-column" style="min-height: 100vh">
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
+        <div class="navbar-brand">
+            <a href="{{ path('news_list_frontend') }}">{{ bandName }} <span class="sr-only"></span></a>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link"
-                   href="{{ path('gig_list_upcoming_frontend') }}">{% trans from "messages" %}gigs{% endtrans %} <span
-                            class="sr-only"></span></a>
-            </li>
-        </ul>
-        <ul class="navbar-nav mr-auto right">
-            {% set facebookPage='facebook-page'|getFacebookPage %}
-            {% if facebookPage %}
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto col-md-8">
                 <li class="nav-item">
                     <a class="nav-link"
-                       href="{{ facebookPage }}" target="_blank">{% trans from "messages" %}facebook{% endtrans %}</a>
+                       href="{{ path('gig_list_upcoming_frontend') }}">{% trans from "messages" %}gigs{% endtrans %}
+                        <span
+                                class="sr-only"></span></a>
                 </li>
-            {% endif %}
-            {% set instagramAccount='instagram-account'|getInstagramAccount %}
-            {% if instagramAccount %}
+                {% set mainMenu = 'menu'|getMainMenu %}
+                {% for item in mainMenu.items %}
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="{{ path('page_show', {'slug':  item.page.slug }) }}">{{ item.page.name }}<span
+                                    class="sr-only"></span></a>
+                    </li>
+                {% endfor %}
+            </ul>
+            <ul class="navbar-nav mr-auto right">
+                {% set facebookPage='facebook-page'|getFacebookPage %}
+                {% if facebookPage %}
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="{{ facebookPage }}"
+                           target="_blank">{% trans from "messages" %}facebook{% endtrans %}</a>
+                    </li>
+                {% endif %}
+                {% set instagramAccount='instagram-account'|getInstagramAccount %}
+                {% if instagramAccount %}
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="{{ instagramAccount }}"
+                           target="_blank">{% trans from "messages" %}instagram{% endtrans %}</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+</header>
+<main class="container-fluid flex-fill">
+    {% block body %}
+    {% endblock %}
+</main>
+<footer class="container-fluid w-100 p-0">
+    {% set footerMenu = 'footer'|getFooterMenu %}
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <ul class="navbar-nav mr-auto col-md-8">
+            {% for item in footerMenu.items %}
                 <li class="nav-item">
                     <a class="nav-link"
-                       href="{{ instagramAccount }}"
-                       target="_blank">{% trans from "messages" %}instagram{% endtrans %}</a>
+                       href="{{ path('page_show', {'slug':  item.page.slug }) }}">{{ item.page.name }}</a>
                 </li>
-            {% endif %}
+            {% endfor %}
         </ul>
+    </nav>
+    <div class="navbar-inverse">
     </div>
-</nav>
-{% block body %}
-{% endblock %}
+</footer>
 </body>
 {% block javascripts %}
     <script src="{{ asset('js/application.js') }}"></script>

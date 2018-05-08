@@ -3,32 +3,32 @@
 namespace App\Repository;
 
 use App\Entity\AbstractEntity;
-use App\Entity\Settings;
+use App\Entity\Menu;
 
 /**
- * Class SettingsRepository
+ * Class MenuRepository
  */
-class SettingsRepository extends AbstractRepository
+class MenuRepository extends AbstractRepository
 {
     /**
-     * @param string $key
-     * @return Settings
+     * @param string $type
+     * @return Menu
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException
      */
-    public function findOneByKeyOrCreate(string $key): Settings
+    public function findOneByTypeOrCreate(string $type): Menu
     {
         /**
-         * @var Settings
+         * @var Menu
          */
-        $settings = $this->findOneBy(['settingsKey' => $key]);
+        $menu = $this->findOneBy(['type' => $type]);
 
-        if (is_null($settings)) {
-            $settings = new Settings($key);
-            $this->save($settings);
+        if (is_null($menu)) {
+            $menu = new Menu($type);
+            $this->save($menu);
         }
 
-        return $settings;
+        return $menu;
     }
 
     /**
@@ -47,6 +47,6 @@ class SettingsRepository extends AbstractRepository
      */
     protected function getEntity(): string
     {
-        return Settings::class;
+        return Menu::class;
     }
 }

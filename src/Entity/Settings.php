@@ -28,6 +28,7 @@ class Settings extends AbstractEntity
     public function __construct(string $key)
     {
         $this->settingsKey = $key;
+        $this->slug = $key;
     }
 
     /**
@@ -52,11 +53,6 @@ class Settings extends AbstractEntity
     public function setSettingsValue(?string $settingsValue): void
     {
         $this->settingsValue = $settingsValue;
-    }
-
-    public function setSlug():void
-    {
-        $this->slug = $this->settingsKey;
     }
 
     /**

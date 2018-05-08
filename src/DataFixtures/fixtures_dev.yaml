@@ -72,3 +72,10 @@ App\Entity\Page:
         title: 'Page 3'
         content: '<sentence()><sentence()><sentence()>'
 
+App\Entity\Menu:
+    main_menu:
+        __construct:
+            0: 'main_menu'
+    footer_menu:
+        __construct:
+            0: 'footer_menu'

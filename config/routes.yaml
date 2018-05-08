@@ -10,6 +10,16 @@ homepage_admin:
     resource: routing/homepage_admin.yaml
     prefix: /admin
 
+## Menu
+menu_admin:
+    resource: routing/menu_admin.yaml
+    prefix: /admin
+
+## MenuItem
+menu_item_admin:
+    resource: routing/menu_item_admin.yaml
+    prefix: /admin
+
 ## Location
 location_admin:
     resource: routing/location_admin.yaml
