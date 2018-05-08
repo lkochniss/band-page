@@ -47,9 +47,9 @@ class Settings extends AbstractEntity
     }
 
     /**
-     * @param string $settingsValue
+     * @param null|string $settingsValue
      */
-    public function setSettingsValue(string $settingsValue): void
+    public function setSettingsValue(?string $settingsValue): void
     {
         $this->settingsValue = $settingsValue;
     }
