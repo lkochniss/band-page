@@ -64,10 +64,12 @@ tear-down-test-db:
 	${DOCKER_COMPOSE_PHP} ./bin/console --env=test do:da:dr --force
 
 create-migration-diff:
-	${DOCKER_COMPOSE_PHP} ./bin/console do:mi:di
-
-migration-migrate:
+	${DOCKER_COMPOSE_PHP} ./bin/console do:da:dr --force --if-exists
+	${DOCKER_COMPOSE_PHP} ./bin/console do:da:cr
 	${DOCKER_COMPOSE_PHP} ./bin/console do:mi:mi -n
+	${DOCKER_COMPOSE_PHP} ./bin/console do:mi:di
+	${DOCKER_COMPOSE_PHP} ./bin/console do:mi:mi -n
+	${DOCKER_COMPOSE_PHP} ./bin/console do:fi:lo -n
 
 # SETUP
 composer-development:

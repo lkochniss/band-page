@@ -53,4 +53,9 @@ class Page extends AbstractEntity
     {
         $this->slug = $this->slugify($this->getTitle());
     }
+
+    public function getName(): string
+    {
+        return $this->title;
+    }
 }

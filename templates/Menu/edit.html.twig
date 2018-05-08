@@ -1,0 +1,44 @@
+{% extends 'admin-base.html.twig' %}
+ {% block stylesheets %}
+     {{ parent() }}
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.css" rel="stylesheet">
+ {% endblock %}
+{% block body %}
+    <div class="container">
+        <a href="{{ path('menu_item_create', {'menuId': menu.id}) }}">{% trans from "messages" %}add_menu_item{% endtrans %}</a>
+        <table id="menu-list" class="table sortable">
+            <thead>
+            <tr>
+                <th scope="col">{% trans from "messages" %}target_page{% endtrans %}</th>
+                <th scope="col">{% trans from "messages" %}target_url{% endtrans %}</th>
+                <th scope="col">{% trans from "messages" %}sort{% endtrans %}</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for item in menu.items %}
+                <tr draggable="true" id="{{ item.id }}">
+                    <td scope="col">{{ item.name }}</td>
+                    <td><a href="{{ path('page_show', {'slug': item.page.slug}) }}">/{{ item.page.slug }}</a></td>
+                    <td>sort</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <a id="save-changes" href="#" class="btn btn-primary">{% trans from "messages" %}save{% endtrans %}</a>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script
+            src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+            integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+            crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        $("tbody").sortable();
+        $("#save-changes").click(function () {
+                var ahoi = $("tbody").sortable('toArray', {attribute: 'id'});
+                console.log(ahoi);
+        });
+    </script>
+{% endblock %}

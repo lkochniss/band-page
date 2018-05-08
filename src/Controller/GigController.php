@@ -55,7 +55,7 @@ class GigController extends AbstractCrudController
     }
 
     /**
-     * @return \App\Entity\AbstractEntity|Gig
+     * @return Gig
      */
     protected function createNewEntity()
     {

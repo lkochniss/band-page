@@ -124,6 +124,15 @@ abstract class AbstractEntity
     }
 
     /**
+     * @param $value
+     * @return array
+     */
+    protected function arrayTransform($value) : array
+    {
+        return $value ?: [];
+    }
+
+    /**
      * @param string $string
      * @return mixed|string
      */

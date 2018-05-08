@@ -1,0 +1,23 @@
+App\Entity\MenuItem:
+    type: entity
+    repositoryClass: App\Repository\MenuItemRepository
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        position:
+            type: integer
+    oneToOne:
+        page:
+            targetEntity: Page
+            joinColumn:
+                name: page_id
+                referencedColumnName: id
+    manyToOne:
+        menu:
+            targetEntity: Menu
+            inversedBy: items
+            joinColumn:
+                name: menu_id
+                referencedColumnName: id
