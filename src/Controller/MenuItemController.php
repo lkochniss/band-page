@@ -63,8 +63,12 @@ class MenuItemController extends AbstractCrudController
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException
      */
-    public function removeItem(int $menuId, int $itemId, MenuRepository $menuRepository, MenuItemRepository $menuItemRepository): Response
-    {
+    public function removeItem(
+        int $menuId,
+        int $itemId,
+        MenuRepository $menuRepository,
+        MenuItemRepository $menuItemRepository
+    ): Response {
         $menu = $menuRepository->findOneBy(['id' => $menuId]);
 
         if (is_null($menu)) {
