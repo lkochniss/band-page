@@ -31,6 +31,7 @@ class SettingsExtension extends AbstractExtension
             new TwigFilter('getInstagramAccount', [$this, 'getInstagramAccount']),
             new TwigFilter('getYouTubeChannel', [$this, 'getYouTubeChannel']),
             new TwigFilter('getSpotifyAccount', [$this, 'getSpotifyAccount']),
+            new TwigFilter('getFavicon', [$this, 'getFavicon']),
         ];
     }
 
@@ -90,6 +91,18 @@ class SettingsExtension extends AbstractExtension
     public function getSpotifyAccount(): ?string
     {
         $bandName = $this->settingsRepository->findOneByKeyOrCreate(Settings::SPOTIFY_ACCOUNT);
+
+        return $bandName->getSettingsValue() ?: null;
+    }
+
+    /**
+     * @return string
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function getFavicon(): ?string
+    {
+        $bandName = $this->settingsRepository->findOneByKeyOrCreate(Settings::FAVICON);
 
         return $bandName->getSettingsValue() ?: null;
     }
