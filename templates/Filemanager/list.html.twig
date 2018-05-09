@@ -1,0 +1,69 @@
+{% extends 'admin-base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <h3 class="col-md-6">/{{ currentDirectory.fullPath }}</h3>
+            <div class="col-md-2">
+                <a href="{{ path('filemanager_create', {'id': currentDirectory.id }) }}"
+                   class="btn btn-primary">{% trans from "messages" %}create_directory{% endtrans %}
+                </a>
+            </div>
+            <div class="col-md-2">
+                <a href="{{ path('filemanager_upload', {'id': currentDirectory.id }) }}"
+                   class="btn btn-primary">{% trans from "messages" %}upload_image{% endtrans %}
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-9">
+                <div class="row">
+                    {% if currentDirectory.isRootNode == false %}
+                        <figure class="directory">
+                            <a href="{{ path('filemanager_list',{'id': currentDirectory.parentDirectory.id}) }}">
+                                <span class="fa fa-5x fa-arrow-up"></span>
+                            </a>
+                            <figcaption>
+                                <a href="{{ path('filemanager_list',{'id': currentDirectory.parentDirectory.id}) }}">
+                                    {% trans from "messages" %} filemanager_up{% endtrans %}
+                                </a>
+                            </figcaption>
+                        </figure>
+                    {% endif %}
+
+                    {% for directory in currentDirectory.childDirectories %}
+                        <a href="{{ path('filemanager_list', { 'id': directory.id}) }}">
+                            <figure class="col-md-2">
+                                <span class="fa fa-5x fa-folder"></span>
+                                <figcaption>
+                                    {{ directory.name }}
+                                </figcaption>
+                            </figure>
+                        </a>
+                    {% endfor %}
+                    {% for image in currentDirectory.images %}
+                        <figure class="file directory col-md-2">
+                            <img class="img-responsive w-100" src="{{ asset( image.fullPath ) }}"/>
+                            <figcaption>{{ image.name }}</figcaption>
+                        </figure>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="filepreview col-md-3"></div>
+        </div>
+
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="application/javascript">
+        $('.file img').click(function () {
+            var html = '' +
+                '<h3>Preview</h3>' +
+                '<img class="img-responsive w-100" src="' + $(this).attr('src') + '"/>' +
+                '<p>copy&paste:</p><p> ' + window.location.host + $(this).attr('src') + '</p>';
+            $('.filepreview').html(html);
+        });
+    </script>
+{% endblock %}
