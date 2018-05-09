@@ -18,7 +18,6 @@ App\Entity\Directory:
             type: string
             length: 255
             column: full_path
-            unique: true
 
     oneToMany:
         childDirectories:
