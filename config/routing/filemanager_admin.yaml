@@ -1,0 +1,11 @@
+filemanager_create:
+    path: /filemanager/create/directory/{id}
+    defaults: { _controller: 'App\Controller\FilemanagerController::create', id: 1 }
+
+filemanager_upload:
+    path: /filemanager/upload/image/{id}
+    defaults: { _controller: 'App\Controller\FilemanagerController::upload', id: 1 }
+
+filemanager_list:
+    path: /filemanager/{id}
+    defaults: { _controller: 'App\Controller\FilemanagerController::list', id: 1 }

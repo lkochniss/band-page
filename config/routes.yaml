@@ -1,5 +1,10 @@
 # Admin
 
+## Filemanager
+filemanager_admin:
+    resource: routing/filemanager_admin.yaml
+    prefix: /admin
+
 ## Gig
 gig_admin:
     resource: routing/gig_admin.yaml

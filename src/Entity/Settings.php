@@ -12,6 +12,7 @@ class Settings extends AbstractEntity
     const INSTAGRAM_ACCOUNT = 'instagram_account';
     const YOUTUBE_CHANNEL = 'youtube_channel';
     const SPOTIFY_ACCOUNT = 'spotify_account';
+    const FAVICON = 'favicon';
 
     /**
      * @var string

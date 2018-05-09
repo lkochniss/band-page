@@ -1,0 +1,36 @@
+App\Entity\Directory:
+    type: entity
+    repositoryClass: App\Repository\DirectoryRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        path:
+            type: string
+            length: 255
+        fullPath:
+            type: string
+            length: 255
+            column: full_path
+            unique: true
+
+    oneToMany:
+        childDirectories:
+            targetEntity: Directory
+            mappedBy: parentDirectory
+            column: child_directories
+        images:
+            targetEntity: Image
+            mappedBy: parentDirectory
+    manyToOne:
+        parentDirectory:
+            targetEntity: Directory
+            inversedBy: childDirectories
+            column: parent_directory
+            nullable: true

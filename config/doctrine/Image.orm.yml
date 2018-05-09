@@ -1,0 +1,27 @@
+App\Entity\Image:
+    type: entity
+    table: null
+    repositoryClass: App\Repository\ImageRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        path:
+            type: string
+            length: 255
+        fullPath:
+            type: string
+            length: 255
+            column: full_path
+    manyToOne:
+        parentDirectory:
+            targetEntity: Directory
+            inversedBy: images
+            column: parent_directory
+    lifecycleCallbacks: {  }

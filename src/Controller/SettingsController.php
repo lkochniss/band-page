@@ -28,6 +28,7 @@ class SettingsController extends Controller
             'instagramAccount' => $bandName = $settingsRepository->findOneByKeyOrCreate(Settings::INSTAGRAM_ACCOUNT),
             'youtubeChannel' => $bandName = $settingsRepository->findOneByKeyOrCreate(Settings::YOUTUBE_CHANNEL),
             'spotifyAccount' => $bandName = $settingsRepository->findOneByKeyOrCreate(Settings::SPOTIFY_ACCOUNT),
+            'favicon' => $bandName = $settingsRepository->findOneByKeyOrCreate(Settings::FAVICON),
         ];
 
         $form = $this->createForm(
