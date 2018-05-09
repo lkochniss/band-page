@@ -1,8 +1,9 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-    <div class="container table-responsive">
+    <div class="container">
         <h1>{% trans from "messages" %}past_gigs{% endtrans %}</h1>
-        {% include 'Gig/_module/list-frontend.twig' with {'gigs': entities} only %}
+        {% include 'Gig/_module/list-frontend-xs.html.twig' with {'gigs': entities} only %}
+        {% include 'Gig/_module/list-frontend-md.html.twig' with {'gigs': entities} only %}
         <a href="{{ path('gig_list_upcoming_frontend') }}">{% trans from "messages" %}upcoming_gigs{% endtrans %}</a>
     </div>
 {% endblock %}
