@@ -29,6 +29,8 @@ class SettingsExtension extends AbstractExtension
             new TwigFilter('getBandName', [$this, 'getBandName']),
             new TwigFilter('getFacebookPage', [$this, 'getFacebookPage']),
             new TwigFilter('getInstagramAccount', [$this, 'getInstagramAccount']),
+            new TwigFilter('getYouTubeChannel', [$this, 'getYouTubeChannel']),
+            new TwigFilter('getSpotifyAccount', [$this, 'getSpotifyAccount']),
         ];
     }
 
@@ -64,6 +66,30 @@ class SettingsExtension extends AbstractExtension
     public function getInstagramAccount(): ?string
     {
         $bandName = $this->settingsRepository->findOneByKeyOrCreate(Settings::INSTAGRAM_ACCOUNT);
+
+        return $bandName->getSettingsValue() ?: null;
+    }
+
+    /**
+     * @return string
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function getYouTubeChannel(): ?string
+    {
+        $bandName = $this->settingsRepository->findOneByKeyOrCreate(Settings::YOUTUBE_CHANNEL);
+
+        return $bandName->getSettingsValue() ?: null;
+    }
+
+    /**
+     * @return string
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function getSpotifyAccount(): ?string
+    {
+        $bandName = $this->settingsRepository->findOneByKeyOrCreate(Settings::SPOTIFY_ACCOUNT);
 
         return $bandName->getSettingsValue() ?: null;
     }

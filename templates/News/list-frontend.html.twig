@@ -13,7 +13,7 @@
                     <div class="card-body">
                         <h3 class="card-title"> {{ news.title }}</h3>
                         <p class="card-text">
-                            {{ news.content|slice(0, 200) }}
+                            {{ news.content|striptags| slice(0, 200) }}
                             {% if news.content|length > 200 %}
                                 ...
                             {% endif %}
