@@ -10,6 +10,8 @@ class Settings extends AbstractEntity
     const BAND_NAME = 'band_name';
     const FACEBOOK_PAGE = 'facebook_page';
     const INSTAGRAM_ACCOUNT = 'instagram_account';
+    const YOUTUBE_CHANNEL = 'youtube_channel';
+    const SPOTIFY_ACCOUNT = 'spotify_account';
 
     /**
      * @var string

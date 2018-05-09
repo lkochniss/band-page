@@ -67,6 +67,22 @@
                            target="_blank">{% trans from "messages" %}instagram{% endtrans %}</a>
                     </li>
                 {% endif %}
+                {% set youtubeChannel='youtube-channel'|getYouTubeChannel %}
+                {% if youtubeChannel %}
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="{{ youtubeChannel }}"
+                           target="_blank">{% trans from "messages" %}youtube_channel{% endtrans %}</a>
+                    </li>
+                {% endif %}
+                {% set spotifyAccount='spotify-account'|getSpotifyAccount %}
+                {% if spotifyAccount %}
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="{{ spotifyAccount }}"
+                           target="_blank">{% trans from "messages" %}spotify_account{% endtrans %}</a>
+                    </li>
+                {% endif %}
             </ul>
         </div>
     </nav>
