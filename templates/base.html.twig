@@ -54,6 +54,16 @@
                 {% endfor %}
             </ul>
             <ul class="navbar-nav mr-auto right">
+                {% set linkToShop='link-to-shop'|getLinkToShop %}
+                {% if linkToShop %}
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="{{ linkToShop }}"
+                           target="_blank">
+                            {% trans from "messages" %}link_to_shop{% endtrans %}
+                        </a>
+                    </li>
+                {% endif %}
                 {% set facebookPage='facebook-page'|getFacebookPage %}
                 {% if facebookPage %}
                     <li class="nav-item">

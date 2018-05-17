@@ -92,6 +92,17 @@ class SettingsType extends AbstractType
                 ]
             )
             ->add(
+                'linkToShop',
+                UrlType::class,
+                [
+                    'required' => false,
+                    'attr' =>
+                        [
+                            'class' => 'form-control'
+                        ]
+                ]
+            )
+            ->add(
                 'submit',
                 SubmitType::class,
                 [
