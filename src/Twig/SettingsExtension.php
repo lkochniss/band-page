@@ -32,6 +32,7 @@ class SettingsExtension extends AbstractExtension
             new TwigFilter('getYouTubeChannel', [$this, 'getYouTubeChannel']),
             new TwigFilter('getSpotifyAccount', [$this, 'getSpotifyAccount']),
             new TwigFilter('getFavicon', [$this, 'getFavicon']),
+            new TwigFilter('getLinkToShop', [$this, 'getLinkToShop']),
         ];
     }
 
@@ -54,9 +55,9 @@ class SettingsExtension extends AbstractExtension
      */
     public function getFacebookPage(): ?string
     {
-        $bandName = $this->settingsRepository->findOneByKeyOrCreate(Settings::FACEBOOK_PAGE);
+        $facebookPage = $this->settingsRepository->findOneByKeyOrCreate(Settings::FACEBOOK_PAGE);
 
-        return $bandName->getSettingsValue() ?: null;
+        return $facebookPage->getSettingsValue() ?: null;
     }
 
     /**
@@ -66,9 +67,9 @@ class SettingsExtension extends AbstractExtension
      */
     public function getInstagramAccount(): ?string
     {
-        $bandName = $this->settingsRepository->findOneByKeyOrCreate(Settings::INSTAGRAM_ACCOUNT);
+        $instagramAccount = $this->settingsRepository->findOneByKeyOrCreate(Settings::INSTAGRAM_ACCOUNT);
 
-        return $bandName->getSettingsValue() ?: null;
+        return $instagramAccount->getSettingsValue() ?: null;
     }
 
     /**
@@ -78,9 +79,9 @@ class SettingsExtension extends AbstractExtension
      */
     public function getYouTubeChannel(): ?string
     {
-        $bandName = $this->settingsRepository->findOneByKeyOrCreate(Settings::YOUTUBE_CHANNEL);
+        $youtubeChannel = $this->settingsRepository->findOneByKeyOrCreate(Settings::YOUTUBE_CHANNEL);
 
-        return $bandName->getSettingsValue() ?: null;
+        return $youtubeChannel->getSettingsValue() ?: null;
     }
 
     /**
@@ -90,9 +91,9 @@ class SettingsExtension extends AbstractExtension
      */
     public function getSpotifyAccount(): ?string
     {
-        $bandName = $this->settingsRepository->findOneByKeyOrCreate(Settings::SPOTIFY_ACCOUNT);
+        $spotifyAccount = $this->settingsRepository->findOneByKeyOrCreate(Settings::SPOTIFY_ACCOUNT);
 
-        return $bandName->getSettingsValue() ?: null;
+        return $spotifyAccount->getSettingsValue() ?: null;
     }
 
     /**
@@ -102,8 +103,20 @@ class SettingsExtension extends AbstractExtension
      */
     public function getFavicon(): ?string
     {
-        $bandName = $this->settingsRepository->findOneByKeyOrCreate(Settings::FAVICON);
+        $favicon = $this->settingsRepository->findOneByKeyOrCreate(Settings::FAVICON);
 
-        return $bandName->getSettingsValue() ?: null;
+        return $favicon->getSettingsValue() ?: null;
+    }
+
+    /**
+     * @return string
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function getLinkToShop(): ?string
+    {
+        $linkToShop = $this->settingsRepository->findOneByKeyOrCreate(Settings::LINK_TO_SHOP);
+
+        return $linkToShop->getSettingsValue() ?: null;
     }
 }

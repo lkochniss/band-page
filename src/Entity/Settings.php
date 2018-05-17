@@ -13,6 +13,7 @@ class Settings extends AbstractEntity
     const YOUTUBE_CHANNEL = 'youtube_channel';
     const SPOTIFY_ACCOUNT = 'spotify_account';
     const FAVICON = 'favicon';
+    const LINK_TO_SHOP = 'link_to_shop';
 
     /**
      * @var string

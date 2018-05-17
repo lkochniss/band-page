@@ -1,9 +1,8 @@
 {% extends 'base.html.twig' %}
 {% block body %}
     <div class="container">
-        <div class="row">
+        <div class="row d-none d-md-block">
             <div class="col">
-
                 <h3>
                     {{ entity.date| date('d.m.Y') }}
                 </h3>
@@ -17,6 +16,23 @@
                     {{ entity.title }} @ {{ entity.location.name }}, {{ entity.location.city }}
                 </h1>
             </div>
+        </div>
+        <div class="row d-block d-md-none">
+            <div class="col">
+                <h1>
+                    {{ entity.title }} @ {{ entity.location.name }}, {{ entity.location.city }}
+                </h1>
+            </div>
+            <div class="col">
+                <h3>
+                    {{ entity.date| date('d.m.Y') }}
+                </h3>
+                <h3>
+                    {% trans from "messages" %}doors_open{% endtrans %}
+                    {{ entity.date| date('H:i') }}
+                </h3>
+            </div>
+
         </div>
         <hr/>
         <div class="row">

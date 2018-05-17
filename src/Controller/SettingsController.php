@@ -29,6 +29,7 @@ class SettingsController extends Controller
             'youtubeChannel' => $bandName = $settingsRepository->findOneByKeyOrCreate(Settings::YOUTUBE_CHANNEL),
             'spotifyAccount' => $bandName = $settingsRepository->findOneByKeyOrCreate(Settings::SPOTIFY_ACCOUNT),
             'favicon' => $bandName = $settingsRepository->findOneByKeyOrCreate(Settings::FAVICON),
+            'linkToShop' => $bandName = $settingsRepository->findOneByKeyOrCreate(Settings::LINK_TO_SHOP),
         ];
 
         $form = $this->createForm(

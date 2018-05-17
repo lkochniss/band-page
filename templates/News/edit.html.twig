@@ -42,7 +42,9 @@
     <script src="https://cdn.ckeditor.com/4.8.0/standard/ckeditor.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            CKEDITOR.replace('news_content');
+            CKEDITOR.replace('news_content',{
+                'entities': false
+            });
         });
     </script>
 {% endblock %}
