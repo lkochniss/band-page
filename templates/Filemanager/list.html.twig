@@ -62,7 +62,7 @@
             var html = '' +
                 '<h3>Preview</h3>' +
                 '<img class="img-responsive w-100" src="' + $(this).attr('src') + '"/>' +
-                '<p>copy&paste:</p><p> ' + window.location.host + $(this).attr('src') + '</p>';
+                '<p>copy&paste:</p><p> ' + window.location.protocol + '//' + window.location.host + $(this).attr('src') + '</p>';
             $('.filepreview').html(html);
         });
     </script>
