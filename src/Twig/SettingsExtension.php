@@ -33,6 +33,7 @@ class SettingsExtension extends AbstractExtension
             new TwigFilter('getSpotifyAccount', [$this, 'getSpotifyAccount']),
             new TwigFilter('getFavicon', [$this, 'getFavicon']),
             new TwigFilter('getLinkToShop', [$this, 'getLinkToShop']),
+            new TwigFilter('getBannerImage', [$this, 'getBannerImage']),
         ];
     }
 
@@ -116,6 +117,18 @@ class SettingsExtension extends AbstractExtension
     public function getLinkToShop(): ?string
     {
         $linkToShop = $this->settingsRepository->findOneByKeyOrCreate(Settings::LINK_TO_SHOP);
+
+        return $linkToShop->getSettingsValue() ?: null;
+    }
+
+    /**
+     * @return string
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function getBannerImage(): ?string
+    {
+        $linkToShop = $this->settingsRepository->findOneByKeyOrCreate(Settings::BANNER_IMAGE);
 
         return $linkToShop->getSettingsValue() ?: null;
     }

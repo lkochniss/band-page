@@ -103,6 +103,17 @@ class SettingsType extends AbstractType
                 ]
             )
             ->add(
+                'bannerImage',
+                UrlType::class,
+                [
+                    'required' => false,
+                    'attr' =>
+                        [
+                            'class' => 'form-control'
+                        ]
+                ]
+            )
+            ->add(
                 'submit',
                 SubmitType::class,
                 [

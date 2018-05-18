@@ -6,8 +6,8 @@
     {% set bandName='band-page'|getBandName %}
     <title>{% block title %}{{ bandName }}{% endblock %}</title>
     {% block stylesheets %}
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/application.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap-4.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/application.css') }}">
         <link rel="stylesheet" type="text/css"
               href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     {% endblock %}
@@ -25,100 +25,17 @@
     </script>
     <link id="favicon" rel="shortcut icon" href="{{ 'favicon'|getFavicon }}" title="Favicon">
 </head>
-<body class="d-flex flex-column" style="min-height: 100vh">
+<body class="d-flex flex-column bg-black" style="min-height: 100vh">
 <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
-        <div class="navbar-brand">
-            <a href="{{ path('news_list_frontend') }}">{{ bandName }} <span class="sr-only"></span></a>
-        </div>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto col-md-8">
-                <li class="nav-item">
-                    <a class="nav-link"
-                       href="{{ path('gig_list_upcoming_frontend') }}">{% trans from "messages" %}gigs{% endtrans %}
-                        <span
-                                class="sr-only"></span></a>
-                </li>
-                {% set mainMenu = 'menu'|getMainMenu %}
-                {% for item in mainMenu.items %}
-                    <li class="nav-item">
-                        <a class="nav-link"
-                           href="{{ path('page_show', {'slug':  item.page.slug }) }}">{{ item.page.name }}<span
-                                    class="sr-only"></span></a>
-                    </li>
-                {% endfor %}
-            </ul>
-            <ul class="navbar-nav mr-auto right">
-                {% set linkToShop='link-to-shop'|getLinkToShop %}
-                {% if linkToShop %}
-                    <li class="nav-item">
-                        <a class="nav-link"
-                           href="{{ linkToShop }}"
-                           target="_blank">
-                            {% trans from "messages" %}link_to_shop{% endtrans %}
-                        </a>
-                    </li>
-                {% endif %}
-                {% set facebookPage='facebook-page'|getFacebookPage %}
-                {% if facebookPage %}
-                    <li class="nav-item">
-                        <a class="nav-link"
-                           href="{{ facebookPage }}"
-                           target="_blank">
-                            <span title="{% trans from "messages" %}facebook{% endtrans %}"
-                                  class="fa fa-facebook-official"></span>
-                        </a>
-                    </li>
-                {% endif %}
-                {% set instagramAccount='instagram-account'|getInstagramAccount %}
-                {% if instagramAccount %}
-                    <li class="nav-item">
-                        <a class="nav-link"
-                           href="{{ instagramAccount }}"
-                           target="_blank">
-                            <span title="{% trans from "messages" %}instagram{% endtrans %}"
-                                  class="fa fa-instagram"></span>
-                        </a>
-                    </li>
-                {% endif %}
-                {% set youtubeChannel='youtube-channel'|getYouTubeChannel %}
-                {% if youtubeChannel %}
-                    <li class="nav-item">
-                        <a class="nav-link"
-                           href="{{ youtubeChannel }}"
-                           target="_blank">
-                            <span title="{% trans from "messages" %}youtube{% endtrans %}"
-                                  class="fa fa-youtube-play"></span>
-                        </a>
-                    </li>
-                {% endif %}
-                {% set spotifyAccount='spotify-account'|getSpotifyAccount %}
-                {% if spotifyAccount %}
-                    <li class="nav-item">
-                        <a class="nav-link"
-                           href="{{ spotifyAccount }}"
-                           target="_blank">
-                            <span title="{% trans from "messages" %}spotify{% endtrans %}"
-                                  class="fa fa-spotify"></span>
-                        </a>
-                    </li>
-                {% endif %}
-            </ul>
-        </div>
-    </nav>
+    {% include 'Navigation/frontend-navigation.html.twig' %}
 </header>
-<main class="container-fluid flex-fill">
+<main class="container-fluid flex-fill text-light">
     {% block body %}
     {% endblock %}
 </main>
-<footer class="container-fluid w-100 p-0">
+<footer class="container-fluid w-100 p-0 bg-black">
     {% set footerMenu = 'footer'|getFooterMenu %}
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <ul class="navbar-nav mr-auto col-md-8">
             {% for item in footerMenu.items %}
                 <li class="nav-item">

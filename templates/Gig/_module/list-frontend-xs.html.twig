@@ -1,21 +1,22 @@
 <div class="d-block d-md-none">
     {% for gig in gigs %}
-        <div class="card mb-3">
+        <div class="card mb-3 bg-black border-light">
             <div class="card-header">
-                <h5 class="card-title">{{ gig.title }}</h5>
+                <h2 class="card-title">{{ gig.title }}</h2>
             </div>
             <div class="card-body">
                 <p class="card-text">
                     {% trans from "messages" %}when{% endtrans %}: {{ gig.createdAt|date('d.m.Y') }}<br/>
                     {% trans from "messages" %}doors_open{% endtrans %}: {{ gig.createdAt|date('H:i') }}<br/>
                     {% trans from "messages" %}price{% endtrans %}: {{ gig.price }}{{ default_currency|trans() }}<br/>
-                    {% trans from "messages" %}location{% endtrans %}: {{ gig.location.name }}, {{ gig.location.city }}<br/>
+                    {% trans from "messages" %}location{% endtrans %}: {{ gig.location.name }}, {{ gig.location.city }}
+                    <br/>
                 </p>
-
             </div>
             <div class="card-footer text-right">
-                <a class="btn btn-light btn-outline-dark"
-                   href="{{ path('gig_show', {'slug': gig.slug}) }}"> {% trans from "messages" %}more_information{% endtrans %}
+                <a class="btn btn-outline-light"
+                   href="{{ path('gig_show', {'slug': gig.slug}) }}">
+                    {% trans from "messages" %}more_information{% endtrans %}
                 </a>
             </div>
         </div>
