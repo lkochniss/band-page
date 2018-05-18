@@ -1,77 +1,62 @@
 {% extends 'base.html.twig' %}
 {% block body %}
     <div class="container">
-        <div class="row d-none d-md-block">
-            <div class="col-6">
-                <h1>
-                    {{ entity.title }} @ {{ entity.location.name }}, {{ entity.location.city }}
-                </h1>
-                <h3>
-                    {% trans from "messages" %}date{% endtrans %}:
-                    {{ entity.date| date('d.m.Y') }}
-                </h3>
-                <h3>
-                    {% trans from "messages" %}doors_open{% endtrans %}:
-                    {{ entity.date| date('H:i') }} {{ entity.date| date('a')|trans }}
-                </h3>
-            </div>
-            <div class="col-6">
-                <h4>
-                    {% trans from "messages" %}price{% endtrans %}:
-                    {{ entity.price }}{{ default_currency|trans }}
-                </h4>
+        <div class="d-none d-md-block">
+            <div class="row ">
+                <div class="col-md-6">
+                    <h1>
+                        {{ entity.title }} @ {{ entity.location.name }}, {{ entity.location.city }}
+                    </h1>
+                    <h3>
+                        {% trans from "messages" %}date{% endtrans %}:
+                        {{ entity.date| date('d.m.Y') }}
+                    </h3>
+                    <h3>
+                        {% trans from "messages" %}doors_open{% endtrans %}:
+                        {{ entity.date| date('H:i') }} {{ entity.date| date('a')|trans }}
+                    </h3>
+                    <h3>
+                        {% trans from "messages" %}price{% endtrans %}:
+                        {{ entity.price }}{{ default_currency|trans }}
+                    </h3>
+                </div>
+                <div class="col-md-6">
+                    {% include 'Gig/_module/map.html.twig' %}
+                </div>
             </div>
         </div>
-        <div class="row d-block d-md-none">
-            <div class="col">
-                <h1>
-                    {{ entity.title }} @ {{ entity.location.name }}, {{ entity.location.city }}
-                </h1>
+        <div class="d-block d-md-none">
+            <div class="row">
+                <div class="col">
+                    <h1>
+                        {{ entity.title }} @ {{ entity.location.name }}, {{ entity.location.city }}
+                    </h1>
+                </div>
+                <div class="col">
+                    <h3>
+                        {% trans from "messages" %}date{% endtrans %}:
+                        {{ entity.date| date('d.m.Y') }}
+                    </h3>
+                    <h3>
+                        {% trans from "messages" %}doors_open{% endtrans %}:
+                        {{ entity.date| date('H:i') }}
+                    </h3>
+                    <h3>
+                        {% trans from "messages" %}price{% endtrans %}:
+                        {{ entity.price }}{{ default_currency|trans }}
+                    </h3>
+                </div>
             </div>
-            <div class="col">
-                <h3>
-                    {% trans from "messages" %}date{% endtrans %}:
-                    {{ entity.date| date('d.m.Y') }}
-                </h3>
-                <h3>
-                    {% trans from "messages" %}doors_open{% endtrans %}:
-                    {{ entity.date| date('H:i') }}
-                </h3>
+            <div class="row">
+                <div class="col">
+                    {% include 'Gig/_module/map.html.twig' %}
+                </div>
             </div>
-            <div class="col">
-                <h4>
-                    {% trans from "messages" %}price{% endtrans %}:
-                    {{ entity.price }}{{ default_currency|trans }}
-                </h4>
-            </div>
-
         </div>
         <hr/>
         <div class="row">
             <div class="col-sm">
                 {{ entity.description| raw }}
-            </div>
-            <div class="col-sm">
-                <div class="card bg-black">
-                    <div class="card-body">
-                        <h5 class="card-title">{% trans from "messages" %}location{% endtrans %}</h5>
-                        <iframe class="w-100 mh-50" height="300px"
-                                frameborder="0" style="border:0"
-                                src="https://www.google.com/maps/embed/v1/place?key={{ ga_api_key }}
-    &q={{ entity.location.street }} + {{ entity.location.zip }} + {{ entity.location.city }}" allowfullscreen>
-                        </iframe>
-                        <div class="text-right">
-                            <h6>
-                                <a target="_blank" class="text-light"
-                                   href="https://www.google.com/maps/search/?api=1&query={{ entity.location.street }} + {{ entity.location.zip }} + {{ entity.location.city }}">
-                                    {{ entity.location.name }} |
-                                    {{ entity.location.street }},
-                                    {{ entity.location.zip }} {{ entity.location.city }}
-                                </a>
-                            </h6>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
