@@ -71,5 +71,10 @@ spotify_account: 'Spotify Account'
 file_manager: 'File Manager'
 link_to_shop: Shop
 latest_news: 'Latest news'
-favicon: 'Favicon'
+favicon: Favicon
 banner_image: 'Banner Image'
+create_user: 'Create User'
+email: Email
+password_repeat: 'Repeate Password'
+roles: 'Roles'
+last_login: 'Last Login'

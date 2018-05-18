@@ -1,0 +1,26 @@
+App\Entity\User:
+    type: entity
+    repositoryClass: App\Repository\UserRepository
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        username:
+            type: string
+            length: 25
+            name: user_name
+            unique: true
+        password:
+            type: string
+            length: 64
+        email:
+            type: string
+            length: 254
+            unique: true
+        roles:
+            type: array
+        lastLogin:
+            column: last_login
+            type: datetime
+            nullable: true

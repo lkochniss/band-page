@@ -1,0 +1,49 @@
+{% extends 'admin-base.html.twig' %}
+ {% block stylesheets %}
+     {{ parent() }}
+     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css">
+ {% endblock %}
+{% block body %}
+    <div class="container">
+        <table id="news-list" class="table">
+            <thead>
+            <tr>
+                <th scope="col">{% trans from "messages" %}username{% endtrans %}</th>
+                <th scope="col">{% trans from "messages" %}last_login{% endtrans %}</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for user in users %}
+                <tr>
+                    <td scope="row">{{ user.username }}</td>
+                    <td scope="row">
+                        {% if user.lastLogin %}
+                            {{ user.lastLogin|date('d.m.Y H:i') }}
+                        {% else %}
+                            {% trans from "messages" %}no_login_yet{% endtrans %}
+                        {% endif %}
+                    </td>
+                    <td>
+                        <a href="{{ path('user_edit', {'id': user.id}) }}">
+                            {% trans from "messages" %}edit{% endtrans %}
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#news-list').DataTable({
+                'order': [[1, 'desc']]
+            });
+        });
+    </script>
+{% endblock %}

@@ -33,3 +33,8 @@ services:
     GuzzleHttp\Client:
         autowire: true
         public: true
+
+    App\Listener\LoginSuccessListener:
+        class: App\Listener\LoginSuccessListener
+        tags:
+            - { name: 'kernel.event_listener', event: 'security.interactive_login' }
