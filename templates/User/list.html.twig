@@ -9,6 +9,7 @@
             <thead>
             <tr>
                 <th scope="col">{% trans from "messages" %}username{% endtrans %}</th>
+                <th scope="col">{% trans from "messages" %}email{% endtrans %}</th>
                 <th scope="col">{% trans from "messages" %}last_login{% endtrans %}</th>
                 <th></th>
             </tr>
@@ -17,6 +18,7 @@
             {% for user in users %}
                 <tr>
                     <td scope="row">{{ user.username }}</td>
+                    <td scope="row">{{ user.email }}</td>
                     <td scope="row">
                         {% if user.lastLogin %}
                             {{ user.lastLogin|date('d.m.Y H:i') }}

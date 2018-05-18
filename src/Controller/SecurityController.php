@@ -4,10 +4,12 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\Type\CreateUserType;
+use App\Form\Type\EditUserType;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
@@ -31,7 +33,7 @@ class SecurityController extends Controller
         $form = $this->createForm(CreateUserType::class, $user);
 
         $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()){
+        if ($form->isSubmitted() && $form->isValid()) {
             $password = $encoder->encodePassword($user, $user->getPlainPassword());
             $user->setPassword($password);
 
@@ -39,7 +41,7 @@ class SecurityController extends Controller
             $entityManager->persist($user);
             $entityManager->flush();
 
-            return $this->redirectToRoute('user_list');
+            return $this->redirectToRoute('user_edit', ['id' => $user->getId()]);
         }
 
         return $this->render(
@@ -53,17 +55,33 @@ class SecurityController extends Controller
     /**
      * @param int $id
      * @param Request $request
+     * @param UserRepository $userRepository
      * @return Response
      */
-    public function edit(int $id, Request $request): Response
+    public function edit(int $id, Request $request, UserRepository $userRepository): Response
     {
-        $user = new User();
-        $form = $this->createForm(CreateUserType::class, $user);
+        $user = $userRepository->find($id);
+
+        if (is_null($user)) {
+            throw new NotFoundHttpException('User not found');
+        }
+
+        $user->setPlainPassword('dirty-hack-no-idea-why-this-field-needs-a-value');
+
+        $form = $this->createForm(EditUserType::class, $user);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($user);
+            $entityManager->flush();
+        }
 
         return $this->render(
             'User/edit.html.twig',
             [
-                'form' => $form->createView()
+                'form' => $form->createView(),
+                'user' => $user
             ]
         );
     }
