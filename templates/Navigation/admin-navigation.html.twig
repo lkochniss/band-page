@@ -67,36 +67,49 @@
             </li>
         </ul>
         <ul class="navbar-nav mr-auto right">
+            {% if is_granted('ROLE_ADMIN') %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                       aria-haspopup="true"
+                       aria-expanded="false">
+                        {% trans from "messages" %}user_manager{% endtrans %}
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item"
+                           href="{{ path('user_create') }}">{% trans from "messages" %}create_new{% endtrans %}</a>
+                        <a class="dropdown-item"
+                           href="{{ path('user_list') }}">{% trans from "messages" %}list_all{% endtrans %}</a>
+                    </div>
+                </li>
+            {% endif %}
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                    aria-expanded="false">
-                    {% trans from "messages" %}user{% endtrans %}
+                    {% trans from "messages" %}settings{% endtrans %}
                 </a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item"
-                       href="{{ path('user_create') }}">{% trans from "messages" %}create_new{% endtrans %}</a>
+                       href="{{ path('menu_main_list') }}">{% trans from "messages" %}edit_main_menu{% endtrans %}
+                    </a>
                     <a class="dropdown-item"
-                       href="{{ path('user_list') }}">{% trans from "messages" %}list_all{% endtrans %}</a>
+                       href="{{ path('menu_footer_list') }}">{% trans from "messages" %}edit_footer_menu{% endtrans %}
+                    </a>
+                    <a class="dropdown-item"
+                       href="{{ path('settings_edit') }}">{% trans from "messages" %}global_settings{% endtrans %}
+                    </a>
                 </div>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                    aria-expanded="false">
-                    {% trans from "messages" %}menu{% endtrans %}
+                    {% trans from "messages" %}profile{% endtrans %}
                 </a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item"
-                       href="{{ path('menu_main_list') }}">{% trans from "messages" %}edit_main_menu{% endtrans %}</a>
+                       href="{{ path('user_password_reset') }}">{% trans from "messages" %}reset_password{% endtrans %}</a>
                     <a class="dropdown-item"
-                       href="{{ path('menu_footer_list') }}">{% trans from "messages" %}edit_footer_menu{% endtrans %}</a>
+                       href="{{ path('security_logout') }}">{% trans from "messages" %}logout{% endtrans %}</a>
                 </div>
-            <li class="nav-item">
-                <a class="nav-link"
-                   href="{{ path('settings_edit') }}">{% trans from "messages" %}settings{% endtrans %}</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link"
-                   href="{{ path('security_logout') }}">{% trans from "messages" %}logout{% endtrans %}</a>
             </li>
         </ul>
     </div>

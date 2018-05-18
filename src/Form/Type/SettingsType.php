@@ -57,7 +57,9 @@ class SettingsType extends AbstractType
                             'class' => 'form-control'
                         ]
                 ]
-            )
+            );
+
+        $builder
             ->add(
                 'youtubeChannel',
                 UrlType::class,
@@ -90,7 +92,8 @@ class SettingsType extends AbstractType
                             'class' => 'form-control'
                         ]
                 ]
-            )
+            );
+        $builder
             ->add(
                 'linkToShop',
                 UrlType::class,

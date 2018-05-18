@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\Type\CreateUserType;
 use App\Form\Type\EditUserType;
+use App\Form\Type\PasswordReset;
+use App\Form\Type\PasswordResetType;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -27,19 +29,21 @@ class SecurityController extends Controller
         );
     }
 
+    /**
+     * @param Request $request
+     * @param UserPasswordEncoderInterface $encoder
+     * @return Response
+     */
     public function register(Request $request, UserPasswordEncoderInterface $encoder): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
         $user = new User();
         $form = $this->createForm(CreateUserType::class, $user);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $password = $encoder->encodePassword($user, $user->getPlainPassword());
-            $user->setPassword($password);
-
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($user);
-            $entityManager->flush();
+            $this->encryptPasswordAndSaveUser($user, $encoder);
 
             return $this->redirectToRoute('user_edit', ['id' => $user->getId()]);
         }
@@ -57,9 +61,13 @@ class SecurityController extends Controller
      * @param Request $request
      * @param UserRepository $userRepository
      * @return Response
+     *
+     * @SuppressWarnings(PHPMD.ShortVariableName)
      */
     public function edit(int $id, Request $request, UserRepository $userRepository): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
         $user = $userRepository->find($id);
 
         if (is_null($user)) {
@@ -86,13 +94,58 @@ class SecurityController extends Controller
         );
     }
 
+    /**
+     * @param Request $request
+     * @param UserPasswordEncoderInterface $encoder
+     * @return Response
+     */
+    public function reset(Request $request, UserPasswordEncoderInterface $encoder): Response
+    {
+        $form = $this->createForm(PasswordResetType::class);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $user = $this->getUser();
+
+            $this->encryptPasswordAndSaveUser($user, $encoder);
+        }
+
+        return $this->render(
+            'User/reset.html.twig',
+            [
+                'form' => $form->createView(),
+            ]
+        );
+    }
+
+    /**
+     * @param UserRepository $userRepository
+     * @return Response
+     */
     public function list(UserRepository $userRepository): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
         return $this->render(
             'User/list.html.twig',
             [
                 'users' => $userRepository->findAll()
             ]
         );
+    }
+
+    /**
+     * @param User $user
+     * @param UserPasswordEncoderInterface $encoder
+     */
+    private function encryptPasswordAndSaveUser(User $user, UserPasswordEncoderInterface $encoder): void
+    {
+        $password = $encoder->encodePassword($user, $user->getPlainPassword());
+        $user->setPassword($password);
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($user);
+        $entityManager->flush();
     }
 }

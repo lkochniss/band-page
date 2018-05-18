@@ -3,6 +3,7 @@
 
 namespace App\Listener;
 
+use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
 
@@ -11,19 +12,31 @@ use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
  */
 class LoginSuccessListener
 {
-    private $em;
+    private $entityManager;
 
-    public function __construct(EntityManagerInterface $em)
+    /**
+     * LoginSuccessListener constructor.
+     * @param EntityManagerInterface $entityManager
+     */
+    public function __construct(EntityManagerInterface $entityManager)
     {
-        $this->em = $em;
+        $this->entityManager = $entityManager;
     }
 
-    public function onSecurityInteractiveLogin(InteractiveLoginEvent $event)
+    /**
+     * @param InteractiveLoginEvent $event
+     */
+    public function onSecurityInteractiveLogin(InteractiveLoginEvent $event): void
     {
         $user = $event->getAuthenticationToken()->getUser();
+
+        if ($user instanceof User === false) {
+            return;
+        }
+
         $user->setLastLogin();
 
-        $this->em->persist($user);
-        $this->em->flush();
+        $this->entityManager->persist($user);
+        $this->entityManager->flush();
     }
 }

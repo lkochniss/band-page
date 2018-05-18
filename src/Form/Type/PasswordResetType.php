@@ -1,19 +1,19 @@
 <?php
 
-
 namespace App\Form\Type;
 
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Class EditUserType
+ * Class PasswordResetType
  */
-class EditUserType extends AbstractType
+class PasswordResetType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -21,21 +21,16 @@ class EditUserType extends AbstractType
      *
      * @SuppressWarnings("unused")
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add(
-                'roles',
-                ChoiceType::class,
+                'plainPassword',
+                RepeatedType::class,
                 [
-                    'expanded' => true,
-                    'multiple' => true,
-                    'choices' => [
-                        'Admin' => User::ROLE_ADMIN,
-                        'User' => User::ROLE_USER,
-                    ],
+                    'type' => PasswordType::class,
                     'attr' => [
-                        'class' => 'form-check'
+                        'class' => 'form-control'
                     ]
                 ]
             )
@@ -50,13 +45,13 @@ class EditUserType extends AbstractType
             );
     }
 
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'data_class' => User::class,
             'csrf_protection' => true,
             'csrf_field_name' => '_token',
-            'csrf_token_id' => 'editUser'
-        ));
+            'csrf_token_id' => 'passwordReset'
+        ]);
     }
 }

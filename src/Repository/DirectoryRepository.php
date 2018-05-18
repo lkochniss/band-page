@@ -16,6 +16,8 @@ class DirectoryRepository extends AbstractRepository
      * @return Directory
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException
+     *
+     * @SuppressWarnings(PHPMD.ShortVariableName)
      */
     public function findOrCreateRoot(int $id): Directory
     {
