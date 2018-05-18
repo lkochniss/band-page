@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-    <div class="container table-responsive">
+    <div class="container mb-3">
         <h1 class="mb-3">{% trans from "messages" %}upcoming_gigs{% endtrans %}</h1>
         {% include 'Gig/_module/list-frontend-xs.html.twig' with {'gigs': entities} only %}
         {% include 'Gig/_module/list-frontend-md.html.twig' with {'gigs': entities} only %}
