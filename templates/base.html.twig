@@ -39,7 +39,7 @@
         <ul class="navbar-nav mr-auto col-md-8">
             {% for item in footerMenu.items %}
                 <li class="nav-item">
-                    <a class="nav-link"
+                    <a class="nav-link text-light"
                        href="{{ path('page_show', {'slug':  item.page.slug }) }}">{{ item.page.name }}</a>
                 </li>
             {% endfor %}

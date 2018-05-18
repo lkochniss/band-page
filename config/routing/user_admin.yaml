@@ -1,0 +1,15 @@
+user_create:
+    path: /user/create
+    defaults: { _controller: 'App\Controller\SecurityController::register' }
+
+user_edit:
+    path: /user/{id}/edit
+    defaults: { _controller: 'App\Controller\SecurityController::edit' }
+
+user_password_reset:
+    path: /password/reset
+    defaults: { _controller: 'App\Controller\SecurityController::reset' }
+
+user_list:
+    path: /user
+    defaults: { _controller: 'App\Controller\SecurityController::list' }
