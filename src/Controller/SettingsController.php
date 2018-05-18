@@ -30,6 +30,7 @@ class SettingsController extends Controller
             'spotifyAccount' => $bandName = $settingsRepository->findOneByKeyOrCreate(Settings::SPOTIFY_ACCOUNT),
             'favicon' => $bandName = $settingsRepository->findOneByKeyOrCreate(Settings::FAVICON),
             'linkToShop' => $bandName = $settingsRepository->findOneByKeyOrCreate(Settings::LINK_TO_SHOP),
+            'bannerImage' => $bandName = $settingsRepository->findOneByKeyOrCreate(Settings::BANNER_IMAGE),
         ];
 
         $form = $this->createForm(

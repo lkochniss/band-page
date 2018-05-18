@@ -14,6 +14,7 @@ class Settings extends AbstractEntity
     const SPOTIFY_ACCOUNT = 'spotify_account';
     const FAVICON = 'favicon';
     const LINK_TO_SHOP = 'link_to_shop';
+    const BANNER_IMAGE = 'banner_image';
 
     /**
      * @var string
