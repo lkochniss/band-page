@@ -80,6 +80,24 @@ App\Entity\Menu:
         __construct:
             0: 'footer_menu'
 
+App\Entity\MenuItem:
+    main_menu_item_1:
+        position: 0
+        page: '@page_1'
+        menu: '@main_menu'
+    main_menu_item_2:
+        position: 1
+        page: '@page_2'
+        menu: '@main_menu'
+    footer_menu_item_1:
+        position: 0
+        page: '@page_1'
+        menu: '@footer_menu'
+    footer_menu_item_2:
+        position: 0
+        page: '@page_2'
+        menu: '@footer_menu'
+
 App\Entity\User:
     admin_user:
         username (unique): '<username()>'

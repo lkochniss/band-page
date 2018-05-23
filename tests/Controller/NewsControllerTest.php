@@ -60,7 +60,7 @@ class NewsControllerTest extends WebTestCase
      * @param string $url
      * @dataProvider backendUrlProvider
      */
-    public function testBackendBlogActionsReturnOkForDefaultUSer(string $url): void
+    public function testBackendBlogActionsReturnOkForDefaultUser(string $url): void
     {
         $client = static::createClient();
         $this->loginHelper->logInAsUser($client);
