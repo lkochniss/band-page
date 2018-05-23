@@ -89,6 +89,4 @@ class UserControllerTest extends WebTestCase
             ['/admin/user'],
         ];
     }
-
-
 }
