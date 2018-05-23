@@ -17,7 +17,13 @@ class LoginHelper
         // the firewall context defaults to the firewall name
         $firewallContext = 'admin';
 
-        $token = new UsernamePasswordToken(getenv('USER_NAME'), getenv('USER_PASS'), $firewallContext, [User::ROLE_ADMIN]);
+        $token = new UsernamePasswordToken(
+            getenv('USER_NAME'),
+            getenv('USER_PASS'),
+            $firewallContext,
+            [User::ROLE_ADMIN]
+        );
+
         $session->set('_security_' . $firewallContext, serialize($token));
         $session->save();
 
@@ -32,7 +38,13 @@ class LoginHelper
         // the firewall context defaults to the firewall name
         $firewallContext = 'admin';
 
-        $token = new UsernamePasswordToken(getenv('USER_NAME'), getenv('USER_PASS'), $firewallContext, [User::ROLE_USER]);
+        $token = new UsernamePasswordToken(
+            getenv('USER_NAME'),
+            getenv('USER_PASS'),
+            $firewallContext,
+            [User::ROLE_USER]
+        );
+
         $session->set('_security_' . $firewallContext, serialize($token));
         $session->save();
 
