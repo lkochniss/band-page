@@ -79,3 +79,15 @@ App\Entity\Menu:
     footer_menu:
         __construct:
             0: 'footer_menu'
+
+App\Entity\User:
+    admin_user:
+        username (unique): '<username()>'
+        email (unique): '<email()>'
+        roles: ['ROLE_ADMIN']
+        password: 'dont care'
+    default_user:
+        username (unique): '<username()>'
+        email (unique): '<email()>'
+        roles: ['ROLE_ADMIN']
+        password: 'unused'
