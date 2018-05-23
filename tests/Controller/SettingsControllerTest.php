@@ -9,7 +9,15 @@ class SettingsControllerTest extends AbstractControllerTest
      */
     public function frontendUrlProvider(): array
     {
-        return [['/']];
+        return [];
+    }
+
+    /**
+     * @return array
+     */
+    public function notFoundUrlProvider(): array
+    {
+        return [];
     }
 
     /**

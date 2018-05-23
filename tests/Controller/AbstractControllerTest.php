@@ -31,6 +31,19 @@ abstract class AbstractControllerTest extends WebTestCase
 
     /**
      * @param string $url
+     * @dataProvider notFoundUrlProvider
+     */
+    public function testBlogActionsReturnNotFound(string $url): void
+    {
+        $client = static::createClient();
+        $this->loginHelper->loginAsAdmin($client);
+        $client->request('GET', $url);
+
+        $this->assertEquals(Response::HTTP_NOT_FOUND, $client->getResponse()->getStatusCode());
+    }
+
+    /**
+     * @param string $url
      * @dataProvider backendUrlProvider
      */
     public function testBackendBlogActionsReturnOkForAdminUser(string $url): void
@@ -68,10 +81,20 @@ abstract class AbstractControllerTest extends WebTestCase
         $this->assertContains('/admin/login', $crawler->getUri());
     }
 
+    public function getLoginHelper(): LoginHelper
+    {
+        return $this->loginHelper;
+    }
+
     /**
      * @return array
      */
     abstract public function frontendUrlProvider(): array;
+
+    /**
+     * @return array
+     */
+    abstract public function notFoundUrlProvider(): array;
 
     /**
      * @return array

@@ -2,7 +2,6 @@
 
 namespace App\Tests\Controller;
 
-
 class NewsControllerTest extends AbstractControllerTest
 {
     /**
@@ -16,6 +15,17 @@ class NewsControllerTest extends AbstractControllerTest
             [sprintf('/news/%s-post-1', $now->format('Y-m-d'))],
             [sprintf('/news/%s-post-2', $now->format('Y-m-d'))],
             [sprintf('/news/%s-post-3', $now->format('Y-m-d'))]
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    public function notFoundUrlProvider(): array
+    {
+        return [
+            ['/news/1'],
+            ['/admin/news/10/edit'],
         ];
     }
 

@@ -14,10 +14,22 @@ class GigControllerTest extends AbstractControllerTest
         $old = new \DateTime('-5 days');
         
         return [
-            ['/'],
+            ['/gig'],
+            ['/gig/past'],
             [sprintf('/gig/%s-gig-1', $now->format('Y-m-d'))],
             [sprintf('/gig/%s-gig-2', $new->format('Y-m-d'))],
             [sprintf('/gig/%s-gig-3', $old->format('Y-m-d'))],
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    public function notFoundUrlProvider(): array
+    {
+        return [
+            ['/gig/1'],
+            ['/admin/gig/edit/10']
         ];
     }
 

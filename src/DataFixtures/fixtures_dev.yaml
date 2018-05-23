@@ -109,3 +109,8 @@ App\Entity\User:
         email (unique): '<email()>'
         roles: ['ROLE_ADMIN']
         password: 'unused'
+
+App\Entity\Directory:
+    root:
+        name: 'root'
+        path: '.'
