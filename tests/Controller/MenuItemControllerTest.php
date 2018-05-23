@@ -2,18 +2,14 @@
 
 namespace App\Tests\Controller;
 
-class PageControllerTest extends AbstractControllerTest
+class MenuItemControllerTest extends AbstractControllerTest
 {
     /**
      * @return array
      */
     public function frontendUrlProvider(): array
     {
-        return [
-            ['/page/page-1'],
-            ['/page/page-2'],
-            ['/page/page-3']
-        ];
+        return [];
     }
 
     /**
@@ -22,8 +18,9 @@ class PageControllerTest extends AbstractControllerTest
     public function notFoundUrlProvider(): array
     {
         return [
-            ['/page/page-10'],
-            ['/admin/page/10/edit'],
+            ['/admin/menu/1/item/10/edit'],
+            ['/admin/menu/10/item/create'],
+            ['/admin/menu/10/item/10/edit'],
         ];
     }
 
@@ -33,9 +30,8 @@ class PageControllerTest extends AbstractControllerTest
     public function backendUrlProvider(): array
     {
         return [
-            ['/admin/page'],
-            ['/admin/page/create'],
-            ['/admin/page/3/edit'],
+            ['/admin/menu/1/item/create'],
+            ['/admin/menu/1/item/1/edit'],
         ];
     }
 }

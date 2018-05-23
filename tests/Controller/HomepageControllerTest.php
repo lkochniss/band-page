@@ -2,7 +2,7 @@
 
 namespace App\Tests\Controller;
 
-class LocationControllerTest extends AbstractControllerTest
+class HomepageControllerTest extends AbstractControllerTest
 {
     /**
      * @return array
@@ -17,9 +17,7 @@ class LocationControllerTest extends AbstractControllerTest
      */
     public function notFoundUrlProvider(): array
     {
-        return [
-            ['/admin/location/10/edit']
-        ];
+        return [];
     }
 
     /**
@@ -28,9 +26,7 @@ class LocationControllerTest extends AbstractControllerTest
     public function backendUrlProvider(): array
     {
         return [
-            ['/admin/location'],
-            ['/admin/location/create'],
-            ['/admin/location/1/edit'],
+            ['/admin/'],
         ];
     }
 }

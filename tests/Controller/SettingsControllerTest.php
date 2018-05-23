@@ -2,45 +2,22 @@
 
 namespace App\Tests\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-use Symfony\Component\HttpFoundation\Response;
-
-class SettingsControllerTest extends WebTestCase
+class SettingsControllerTest extends AbstractControllerTest
 {
     /**
-     * @var LoginHelper
+     * @return array
      */
-    private $loginHelper;
-
-    public function setUp()
+    public function frontendUrlProvider(): array
     {
-        $this->loginHelper = new LoginHelper();
+        return [];
     }
 
     /**
-     * @param string $url
-     * @dataProvider backendUrlProvider
+     * @return array
      */
-    public function testBackendBlogActionsReturnOk(string $url): void
+    public function notFoundUrlProvider(): array
     {
-        $client = static::createClient();
-        $this->loginHelper->logIn($client);
-        $client->request('GET', $url);
-
-        $this->assertEquals(Response::HTTP_OK, $client->getResponse()->getStatusCode());
-    }
-
-    /**
-     * @param string $url
-     * @dataProvider backendUrlProvider
-     */
-    public function testBackendBlogActionsWithoutCredentialsRedirectsToLogin(string $url): void
-    {
-        $client = static::createClient();
-        $client->request('GET', $url);
-        $crawler = $client->followRedirect();
-
-        $this->assertContains('/admin/login', $crawler->getUri());
+        return [];
     }
 
     /**

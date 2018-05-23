@@ -40,21 +40,6 @@ class GigController extends AbstractCrudController
     }
 
     /**
-     * @return Response
-     */
-    public function listOldGigs(): Response
-    {
-        $entities = $this->getDoctrine()->getRepository($this->getEntityName())->findAllActiveGigsSortedByDate();
-
-        return $this->render(
-            sprintf('%s/list-frontend.html.twig', $this->getTemplateBasePath()),
-            [
-                'entities' => array_reverse($entities),
-            ]
-        );
-    }
-
-    /**
      * @return Gig
      */
     protected function createNewEntity()

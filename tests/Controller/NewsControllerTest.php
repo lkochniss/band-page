@@ -2,33 +2,8 @@
 
 namespace App\Tests\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-use Symfony\Component\HttpFoundation\Response;
-
-class NewsControllerTest extends WebTestCase
+class NewsControllerTest extends AbstractControllerTest
 {
-    /**
-     * @var LoginHelper
-     */
-    private $loginHelper;
-
-    public function setUp()
-    {
-        $this->loginHelper = new LoginHelper();
-    }
-
-    /**
-     * @param string $url
-     * @dataProvider frontendUrlProvider
-     */
-    public function testFrontendBlogActionsReturnOk(string $url): void
-    {
-        $client = static::createClient();
-        $client->request('GET', $url);
-
-        $this->assertEquals(Response::HTTP_OK, $client->getResponse()->getStatusCode());
-    }
-
     /**
      * @return array
      */
@@ -44,29 +19,14 @@ class NewsControllerTest extends WebTestCase
     }
 
     /**
-     * @param string $url
-     * @dataProvider backendUrlProvider
+     * @return array
      */
-    public function testBackendBlogActionsReturnOk(string $url): void
+    public function notFoundUrlProvider(): array
     {
-        $client = static::createClient();
-        $this->loginHelper->logIn($client);
-        $client->request('GET', $url);
-
-        $this->assertEquals(Response::HTTP_OK, $client->getResponse()->getStatusCode());
-    }
-
-    /**
-     * @param string $url
-     * @dataProvider backendUrlProvider
-     */
-    public function testBackendBlogActionsWithoutCredentialsRedirectsToLogin(string $url): void
-    {
-        $client = static::createClient();
-        $client->request('GET', $url);
-        $crawler = $client->followRedirect();
-
-        $this->assertContains('/admin/login', $crawler->getUri());
+        return [
+            ['/news/1'],
+            ['/admin/news/10/edit'],
+        ];
     }
 
     /**
