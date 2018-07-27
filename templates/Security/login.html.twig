@@ -4,7 +4,7 @@
     <div class="container">
         <div class="col-md-3 offset-md-4">
             <form action="{{ path('security_login_check') }}" method="post">
-                <h2>{% trans from "messages" %}login{% endtrans %} </h2>
+                <h2 >{% trans from "messages" %}login{% endtrans %} </h2>
 
                 <div class="form-group">
                     <input type="text" id="username" class="form-control" name="_username" placeholder="{% trans from "messages" %}username{% endtrans %}"/>
@@ -18,7 +18,7 @@
                 </div>
                 <div class="input-group pull-right">
                     <input type="submit" class="form-control btn-primary"
-                           value="{% trans from "messages" %}submit{% endtrans %}"/>
+                           value="{% trans from "messages" %}login{% endtrans %}"/>
                 </div>
             </form>
         </div>

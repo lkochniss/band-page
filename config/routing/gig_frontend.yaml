@@ -1,8 +1,10 @@
 gig_list_upcoming_frontend:
-    path: /gig
+    path: /gigs
     defaults: { _controller: 'App\Controller\GigController::listUpcoming' }
 gig_list_past_frontend:
-    path: /gig/past
+    path:
+      en: /gigs/past
+      de: /gigs/archiv
     defaults: { _controller: 'App\Controller\GigController::listPast' }
 gig_show:
     path: /gig/{slug}

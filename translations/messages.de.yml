@@ -1,0 +1,87 @@
+logout: logout
+dashboard: Dashboard
+news: News
+create_new: 'Neu anlegen'
+list_all: 'Alle anzeigen'
+location: Location
+gig: Gig
+page: Seite
+gigs: Gigs
+when: Wann
+price: Preis
+doors_open: Einlass
+where: Wo
+more_information: 'Mehr Informationen'
+edit_gig: 'Gig bearbeiten'
+show_gig: 'Gig anzeigen'
+create_gig: 'Gig erstellen'
+title: Titel
+price_in_currency: 'Preis:'
+date: Datum
+created_at: 'Erstellt am'
+modified_at: 'Bearbeitet am'
+show: anzeigen
+edit: bearbeiten
+past_gigs: 'Vergangene Gigs'
+upcoming_gigs: 'Anstehende Gigs'
+edit_location: 'Location bearbeiten'
+create_location: 'Location erstellen'
+name: Name
+street: Straße
+city: Stadt
+zip: PLZ
+edit_news: 'News bearbeiten'
+show_news: 'News anzeigen'
+create_news: 'News erstellen'
+read_more: 'Mehr lesen'
+edit_page: 'Seite bearbeiten'
+show_page: 'Seite anzeigen'
+create_page: 'Seite erstellen'
+login: Login
+username: Username
+password: Passwort
+submit: Speichern
+USD: $
+EUR: €
+edit_main_menu: 'Hauptmenü bearbeiten'
+edit_footer_menu: 'Footer bearbeiten'
+settings: Einstellungen
+facebook: Facebook
+instagram: Instagram
+youtube: YouTube
+spotify: Spotify
+target_page: 'Zielseite'
+target_url: 'Ziel URL'
+sort: sortieren
+save: speichern
+add_menu_item: 'Menüeintrag erstellen'
+band_name: 'Bandname'
+facebook_page: 'Facebook Page Url'
+instagram_account: 'Instagram Account Url'
+main_menu: 'Hauptmenü'
+footer_menu: 'Footer'
+create_directory: 'Ordner erstellen'
+upload_image: 'Bild hochladen'
+filemanager_up: zurück
+file: Datei
+action: Aktion
+remove_item: 'löschen'
+youtube_channel: 'YouTube Kanal'
+spotify_account: 'Spotify Account'
+file_manager: 'File Manager'
+link_to_shop: Shop
+latest_news: 'News'
+favicon: Favicon
+banner_image: 'Bannerbild'
+create_user: 'Benutzer anlegen'
+email: Email
+password_repeat: 'Passwort wiederholen'
+roles: Rollen
+last_login: 'Letzter Login'
+user_manager: 'Benutzerverwaltung'
+global_settings: 'Globale Einstellungen'
+profile: 'Profil'
+reset_password: 'Passwort zurücksetzten'
+edit_user: 'Benutzer bearbeiten'
+no_login_yet: 'bisher kein Login'
+am: 'Uhr'

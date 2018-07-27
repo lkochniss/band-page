@@ -4,68 +4,81 @@
 filemanager_admin:
     resource: routing/filemanager_admin.yaml
     prefix: /admin
+    trailing_slash_on_root: false
 
 ## Gig
 gig_admin:
     resource: routing/gig_admin.yaml
     prefix: /admin
+    trailing_slash_on_root: false
 
 ## Homepage
 homepage_admin:
     resource: routing/homepage_admin.yaml
     prefix: /admin
+    trailing_slash_on_root: false
 
 ## Menu
 menu_admin:
     resource: routing/menu_admin.yaml
     prefix: /admin
+    trailing_slash_on_root: false
 
 ## MenuItem
 menu_item_admin:
     resource: routing/menu_item_admin.yaml
     prefix: /admin
+    trailing_slash_on_root: false
 
 ## Location
 location_admin:
     resource: routing/location_admin.yaml
     prefix: /admin
+    trailing_slash_on_root: false
 
 ## Login
 secruity_admin:
     resource: routing/security_admin.yaml
     prefix: /admin
+    trailing_slash_on_root: false
 
 ## News
 news_admin:
     resource: routing/news_admin.yaml
     prefix: /admin
+    trailing_slash_on_root: false
 
 ## Page
 page_admin:
     resource: routing/page_admin.yaml
     prefix: /admin
+    trailing_slash_on_root: false
 
 ## Settings
 settings_admin:
     resource: routing/settings_admin.yaml
     prefix: /admin
+    trailing_slash_on_root: false
 
-## USer
+## User
 user_admin:
     resource: routing/user_admin.yaml
     prefix: /admin
+    trailing_slash_on_root: false
 
 # Frontend
 
 ## Gig
 gig_frontend:
     resource: routing/gig_frontend.yaml
+    trailing_slash_on_root: false
 
 ## News
 news_frontend:
     resource: routing/news_frontend.yaml
+    trailing_slash_on_root: false
 
 ## Page
 page_frontend:
     resource: routing/page_frontend.yaml
-
+    trailing_slash_on_root: false
