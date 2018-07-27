@@ -30,7 +30,7 @@ class Gig extends AbstractEntity
     /**
      * @var float
      */
-    private $price;
+    private $price = 0.0;
 
     /**
      * @return string
@@ -57,11 +57,11 @@ class Gig extends AbstractEntity
     }
 
     /**
-     * @param string $description
+     * @param null|string $description
      */
-    public function setDescription(string $description): void
+    public function setDescription(?string $description): void
     {
-        $this->description = $description;
+        $this->description = $description ?: '';
     }
 
     /**
@@ -105,11 +105,11 @@ class Gig extends AbstractEntity
     }
 
     /**
-     * @param float $price
+     * @param float|null $price
      */
-    public function setPrice(float $price): void
+    public function setPrice(?float $price): void
     {
-        $this->price = $price;
+        $this->price = $price ?: 0.0;
     }
 
     public function setSlug(): void
