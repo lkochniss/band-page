@@ -1,30 +1,32 @@
 {% extends 'admin-base.html.twig' %}
+
  {% block stylesheets %}
      {{ parent() }}
      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css">
  {% endblock %}
+
 {% block body %}
-    <div class="container">
-        <table id="location-list" class="table">
+    <div class="container mb-3">
+        <h1 class="mb-3">{% trans from "messages" %}logs{% endtrans %}</h1>
+
+        <table id="log-list" class="table">
             <thead>
             <tr>
-                <th scope="col">{% trans from "messages" %}title{% endtrans %}</th>
+                <th scope="col">{% trans from "messages" %}message{% endtrans %}</th>
                 <th scope="col">{% trans from "messages" %}created_at{% endtrans %}</th>
-                <th scope="col">{% trans from "messages" %}modified_at{% endtrans %}</th>
                 <th></th>
             </tr>
             </thead>
             <tbody>
-            {% for location in entities %}
+            {% for log in logs %}
                 <tr>
-                    <td scope="row">{{ location.name }}</td>
-                    <td scope="col"
-                        data-order="{{ location.createdAt|date('Y-m-d') }}">{{ location.createdAt|date('d.m.Y H:i') }}</td>
-                    <td scope="col"
-                        data-order="{{ location.modifiedAt|date('Y-m-d') }}">{{ location.modifiedAt|date('d.m.Y H:i') }}</td>
+                    <td scope="col">{{ log.message|slice(0,100) }}</td>
+                    <td scope="col" data-order="{{ log.createdAt|date('Y-m-d') }}">
+                        {{ log.createdAt|date('d.m.Y H:i') }}
+                    </td>
                     <td scope="col">
-                        <a class="float-right"
-                           href="{{ path('location_edit', {'id': location.id}) }}">{% trans from "messages" %}edit{% endtrans %}
+                        <a class="float-right" href="{{ path('log_show', {'id': log.id}) }}">
+                            {% trans from "messages" %}show{% endtrans %}
                         </a>
                     </td>
                 </tr>
@@ -39,8 +41,8 @@
     <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            $('#location-list').DataTable({
-                'order': [[3, 'desc']]
+            $('#log-list').DataTable({
+                'order': [[1, 'desc']]
             });
         });
     </script>

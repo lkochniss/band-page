@@ -66,6 +66,12 @@ user_admin:
     prefix: /admin
     trailing_slash_on_root: false
 
+## Log
+log_admin:
+   resource: routing/log_admin.yaml
+   prefix: /admin
+   trailing_slash_on_root: false
+
 # Frontend
 
 ## Gig
