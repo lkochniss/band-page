@@ -80,7 +80,7 @@ class MenuItemController extends AbstractCrudController
         }
 
         $menuItem = $this->getDoctrine()->getRepository($this->getEntityName())->find($itemId);
-        $menuItemRepository->remove($menuItem);
+        $menuItemRepository->remove($menuItem, $this->getUser());
 
         $route = $menu->getType() === Menu::MAIN_MENU ? 'menu_main_list' : 'menu_footer_list';
 

@@ -46,6 +46,17 @@ class MenuItemRepository extends AbstractRepository
     {
         $this->getEntityManager()->remove($entity);
         $this->getEntityManager()->flush($entity);
+
+        $log = new Log();
+        $log->setMessage(sprintf(
+            'User %s removed a menu item for the page %s in the %s menu on position %s',
+            $user->getUsername(),
+            $entity->getPage()->getTitle(),
+            $entity->getMenu()->getType(),
+            $entity->getPosition()
+        ));
+
+        $this->logRepository->save($log);
     }
 
     /**
