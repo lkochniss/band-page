@@ -1,0 +1,10 @@
+App\Entity\Log:
+    type: entity
+    repositoryClass: App\Repository\LogRepository
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        message:
+            type: text

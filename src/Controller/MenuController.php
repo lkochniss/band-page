@@ -45,7 +45,7 @@ class MenuController extends AbstractCrudController
         foreach (\GuzzleHttp\json_decode($changeset) as $key => $item) {
             $menuItem = $menuItemRepository->find($item);
             $menuItem->setPosition($key);
-            $menuItemRepository->save($menuItem);
+            $menuItemRepository->save($menuItem, $this->getUser());
         }
 
         return new JsonResponse('ok');

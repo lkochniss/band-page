@@ -37,7 +37,7 @@ class FilemanagerController extends Controller
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $directory->setParentDirectory($parentDirectory);
-            $directoryRepository->save($directory);
+            $directoryRepository->save($directory, $this->getUser());
 
             $filesystem = new Filesystem();
             $filesystem->mkdir($directory->getFullPath());
@@ -78,7 +78,7 @@ class FilemanagerController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $image->setParentDirectory($directory);
-            $imageRepository->save($image);
+            $imageRepository->save($image, $this->getUser());
             return $this->redirect($this->generateUrl('filemanager_list', ['id' => $id]));
         }
 
