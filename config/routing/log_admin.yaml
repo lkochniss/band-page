@@ -1,0 +1,6 @@
+log_list_backend:
+    path: /log
+    defaults: { _controller: 'App\Controller\LogController::list' }
+log_show:
+    path: /log/{id}/show
+    defaults: { _controller: 'App\Controller\LogController::show' }
