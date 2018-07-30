@@ -61,8 +61,8 @@ class SecurityController extends Controller
      * @param Request $request
      * @param UserRepository $userRepository
      * @return Response
-     *
-     * @SuppressWarnings(PHPMD.ShortVariableName)
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
      */
     public function edit(int $id, Request $request, UserRepository $userRepository): Response
     {
@@ -80,9 +80,8 @@ class SecurityController extends Controller
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($user);
-            $entityManager->flush();
+            $entityManager = $this->getDoctrine()->getManager()->getRepository(User::class);
+            $entityManager->save($user, $this->getUser());
         }
 
         return $this->render(

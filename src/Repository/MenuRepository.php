@@ -4,6 +4,8 @@ namespace App\Repository;
 
 use App\Entity\AbstractEntity;
 use App\Entity\Menu;
+use App\Entity\User;
+use Symfony\Component\Security\Core\User\User as Admin;
 
 /**
  * Class MenuRepository
@@ -33,13 +35,23 @@ class MenuRepository extends AbstractRepository
 
     /**
      * @param AbstractEntity $entity
+     * @param User|Admin $user
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException
      */
-    public function save(AbstractEntity $entity): void
+    public function save(AbstractEntity $entity, $user): void
     {
         $this->getEntityManager()->persist($entity);
         $this->getEntityManager()->flush($entity);
+    }
+
+    /**
+     * @param AbstractEntity $entity
+     * @param User|Admin $user
+     */
+    public function remove(AbstractEntity $entity, $user): void
+    {
+        //TODO
     }
 
     /**

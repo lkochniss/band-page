@@ -48,7 +48,7 @@ class SettingsController extends Controller
                 foreach ($form->getData() as $key => $value) {
                     $setting = $settings[$key];
                     $setting->setSettingsValue($value);
-                    $settingsRepository->save($setting);
+                    $settingsRepository->save($setting, $this->getUser());
                 }
             }
         }
