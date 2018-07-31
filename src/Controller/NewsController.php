@@ -4,12 +4,36 @@ namespace App\Controller;
 
 use App\Entity\News;
 use App\Form\Type\NewsType;
+use App\Repository\NewsRepository;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class NewsController
  */
 class NewsController extends AbstractCrudController
 {
+    /**
+     * @param NewsRepository $newsRepository
+     * @param int $page
+     * @return Response
+     */
+    public function paginated(NewsRepository $newsRepository, int $page = 1): Response
+    {
+        $news = $newsRepository->findAll();
+        $numberOfNews = 2;
+
+        $entities = array_slice($news, ($page - 1) * $numberOfNews, $numberOfNews);
+
+        return $this->render(
+            sprintf('%s/list-frontend.html.twig', $this->getTemplateBasePath()),
+            [
+                'entities' => array_reverse($entities),
+                'page' => $page,
+                'numberOfPages' => ceil(count($news) / $numberOfNews)
+            ]
+        );
+    }
+
     /**
      * @return News
      */

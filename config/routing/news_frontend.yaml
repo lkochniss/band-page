@@ -1,6 +1,11 @@
 news_list_frontend:
     path: /
-    defaults: { _controller: 'App\Controller\NewsController::listFrontend' }
+    defaults: { _controller: 'App\Controller\NewsController::paginated' }
+news_list_frontend_page:
+    path:
+      de: /news/seite/{page}
+      en: /news/page/{page}
+    defaults: { _controller: 'App\Controller\NewsController::paginated' }
 news_show:
     path: /news/{slug}
     defaults: { _controller: 'App\Controller\NewsController::show' }
