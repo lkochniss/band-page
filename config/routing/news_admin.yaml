@@ -7,3 +7,6 @@ news_create:
 news_edit:
     path: /news/{id}/edit
     defaults: { _controller: 'App\Controller\NewsController::edit' }
+news_delete:
+    path: /news/{id}/delete
+    defaults: { _controller: 'App\Controller\NewsController::delete' }

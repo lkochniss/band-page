@@ -1,0 +1,15 @@
+{% extends 'admin-base.html.twig' %}
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <h1>{% trans with { '%gig%' : entity.title } %}delete_gig{% endtrans %}</h1>
+        </div>
+        <div class="form-row">
+            {{ form_start(form) }}
+            <div class="form-group">
+                {{ form_widget(form.submit) }}
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}

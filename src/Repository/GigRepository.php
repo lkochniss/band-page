@@ -69,10 +69,29 @@ class GigRepository extends AbstractRepository
     /**
      * @param AbstractEntity $entity
      * @param User|Admin $user
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
      */
     public function remove(AbstractEntity $entity, $user): void
     {
-        //TODO
+        $this->getEntityManager()->remove($entity);
+        $this->getEntityManager()->flush($entity);
+
+        $log = new Log();
+        $log->setMessage(sprintf(
+            'User %s deleted the gig %s with description %s, 
+            date %s, doors open %s, a price of %s %s at location %s',
+            $user->getUsername(),
+            $entity->getTitle(),
+            $entity->getDescription(),
+            $entity->getDate()->format('d.m.Y'),
+            $entity->getDate()->format('H:i'),
+            $entity->getPrice(),
+            getenv('DEFAULT_CURRENCY'),
+            $entity->getLocation()->getName()
+        ));
+
+        $this->logRepository->save($log);
     }
 
     /**
