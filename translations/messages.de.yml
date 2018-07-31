@@ -89,3 +89,4 @@ am: 'Uhr'
 delete: löschen
 delete_gig: 'Gig %gig% löschen?'
 delete_news: 'News %news% löschen?'
+delete_page: 'Page %page% löschen?'

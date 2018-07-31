@@ -7,3 +7,6 @@ page_create:
 page_edit:
     path: /page/{id}/edit
     defaults: { _controller: 'App\Controller\PageController::edit' }
+page_delete:
+    path: /page/{id}/delete
+    defaults: { _controller: 'App\Controller\PageController::delete' }
