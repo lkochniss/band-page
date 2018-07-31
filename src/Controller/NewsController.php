@@ -19,7 +19,7 @@ class NewsController extends AbstractCrudController
      */
     public function paginated(NewsRepository $newsRepository, int $page = 1): Response
     {
-        $news = $newsRepository->findAll();
+        $news = array_reverse($newsRepository->findAll());
         $numberOfNews = 2;
 
         $entities = array_slice($news, ($page - 1) * $numberOfNews, $numberOfNews);
@@ -27,7 +27,7 @@ class NewsController extends AbstractCrudController
         return $this->render(
             sprintf('%s/list-frontend.html.twig', $this->getTemplateBasePath()),
             [
-                'entities' => array_reverse($entities),
+                'entities' => $entities,
                 'page' => $page,
                 'numberOfPages' => ceil(count($news) / $numberOfNews)
             ]
