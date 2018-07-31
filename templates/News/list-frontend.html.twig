@@ -37,5 +37,45 @@
                 </div>
             {% endif %}
         {% endfor %}
+        <div class="col-sm-12 text-center">
+            {% if page > 1 %}
+                {% if numberOfPages > 2 %}
+                    <a href="{{ path('news_list_frontend') }}">
+                        <button class="btn btn-light btn-outline-light fa fa-angle-double-left"></button>
+                    </a>
+                {% endif %}
+                {% if page - 1 == 1 %}
+                    <a href="{{ path('news_list_frontend') }}">
+                        <button class="btn btn-light btn-outline-light fa fa-angle-left"></button>
+                    </a>
+                    <a href="{{ path('news_list_frontend') }}">
+                        <button class="btn btn-light btn-outline-light">{{ page - 1 }}</button>
+                    </a>
+                {% else %}
+                    <a href="{{ path('news_list_frontend_page', { page: page - 1 }) }}">
+                        <button class="btn btn-light btn-outline-light fa fa-angle-left"></button>
+                    </a>
+                    <a href="{{ path('news_list_frontend_page', { page: page - 1 }) }}">
+                        <button class="btn btn-light btn-outline-light">{{ page - 1 }}</button>
+                    </a>
+                {% endif %}
+            {% endif %}
+            {% if numberOfPages > 1 %}
+                <button class="btn btn-light btn-outline-light active">{{ page }}</button>
+            {% endif %}
+            {% if page < numberOfPages %}
+                <a href="{{ path('news_list_frontend_page', { page: page + 1 }) }}">
+                    <button class="btn btn-light btn-outline-light">{{ page + 1 }}</button>
+                </a>
+                <a href="{{ path('news_list_frontend_page', { page: page + 1 }) }}">
+                    <button class="btn btn-light btn-outline-light fa fa-angle-right"></button>
+                </a>
+                {% if numberOfPages > 2 %}
+                    <a href="{{ path('news_list_frontend_page', { page: numberOfPages }) }}">
+                        <button class="btn btn-light btn-outline-light fa fa-angle-double-right"></button>
+                    </a>
+                {% endif %}
+            {% endif %}
+        </div>
     </div>
 {% endblock %}

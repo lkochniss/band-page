@@ -7,3 +7,6 @@ gig_create:
 gig_edit:
     path: /gig/{id}/edit
     defaults: { _controller: 'App\Controller\GigController::edit' }
+gig_delete:
+    path: /gig/{id}/delete
+    defaults: { _controller: 'App\Controller\GigController::delete' }

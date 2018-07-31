@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\AbstractEntity;
+use App\Form\Type\DeleteType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -86,6 +87,33 @@ abstract class AbstractCrudController extends Controller
             sprintf('%s/list-backend.html.twig', $this->getTemplateBasePath()),
             [
                 'entities' => array_reverse($entities),
+            ]
+        );
+    }
+
+    /**
+     * @param int $id
+     * @param Request $request
+     * @return Response
+     */
+    public function delete(int $id, Request $request): Response
+    {
+        $entityRepository = $this->getDoctrine()->getRepository($this->getEntityName());
+        $entity = $entityRepository->find($id);
+        $form = $this->createForm(DeleteType::class);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityRepository->remove($entity, $this->getUser());
+
+            return $this->redirect($this->generateUrlForAction('list_backend'));
+        }
+
+        return $this->render(
+            sprintf('%s/delete.html.twig', $this->getTemplateBasePath()),
+            [
+                'form' => $form->createView(),
+                'entity' => $entity
             ]
         );
     }

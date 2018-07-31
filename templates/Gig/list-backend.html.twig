@@ -38,6 +38,10 @@
                         <a href="{{ path('gig_edit', {'id': gig.id}) }}">
                             {% trans from "messages" %}edit{% endtrans %}
                         </a>
+                        |
+                        <a href="{{ path('gig_delete', {'id': gig.id}) }}">
+                            {% trans from "messages" %}delete{% endtrans %}
+                        </a>
                     </td>
                 </tr>
             {% endfor %}

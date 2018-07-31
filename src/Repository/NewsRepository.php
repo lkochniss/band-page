@@ -38,10 +38,23 @@ class NewsRepository extends AbstractRepository
     /**
      * @param AbstractEntity $entity
      * @param User|Admin $user
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
      */
     public function remove(AbstractEntity $entity, $user): void
     {
-        //TODO
+        $this->getEntityManager()->remove($entity);
+        $this->getEntityManager()->flush($entity);
+
+        $log = new Log();
+        $log->setMessage(sprintf(
+            'User %s deleted the news %s with content %s',
+            $user->getUsername(),
+            $entity->getTitle(),
+            $entity->getContent()
+        ));
+
+        $this->logRepository->save($log);
     }
 
     /**

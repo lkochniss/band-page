@@ -21,7 +21,7 @@
             {% for log in logs %}
                 <tr>
                     <td scope="col">{{ log.message|slice(0,100) }}</td>
-                    <td scope="col" data-order="{{ log.createdAt|date('Y-m-d') }}">
+                    <td scope="col" data-order="{{ log.createdAt|date('Y-m-d-h-i') }}">
                         {{ log.createdAt|date('d.m.Y H:i') }}
                     </td>
                     <td scope="col">
