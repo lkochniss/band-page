@@ -88,4 +88,4 @@ am: 'am'
 delete: delete
 delete_gig: 'Delete Gig %gig%?'
 delete_news: 'Delete News %news%?'
-delete_news: 'Delete Page %page%?'
+delete_page: 'Delete Page %page%?'
