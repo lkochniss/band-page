@@ -3,16 +3,10 @@
     <div class="container">
         <div class="row mb-3">
             <div class="col">
-                <h1>{% trans from "messages" %}settings{% endtrans %}</h1>
+                <h1>{% trans from "messages" %}social_settings{% endtrans %}</h1>
             </div>
         </div>
         {{ form_start(form) }}
-        <div class="form-row">
-            <div class="form-group col-md-12">
-                <label>{% trans from "messages" %}band_name{% endtrans %}</label>
-                {{ form_widget(form.bandName) }}
-            </div>
-        </div>
         <div class="form-row">
             <div class="form-group col-md-12">
                 <label>{% trans from "messages" %}facebook_page{% endtrans %}</label>
@@ -51,20 +45,8 @@
         </div>
         <div class="form-row">
             <div class="form-group col-md-12">
-                <label>{% trans from "messages" %}favicon{% endtrans %}</label>
-                {{ form_widget(form.favicon) }}
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group col-md-12">
-                <label>{% trans from "messages" %}link_to_shop{% endtrans %}</label>
-                {{ form_widget(form.linkToShop) }}
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group col-md-12">
-                <label>{% trans from "messages" %}banner_image{% endtrans %}</label>
-                {{ form_widget(form.bannerImage) }}
+                <label>{% trans from "messages" %}spotify_iframe{% endtrans %}</label>
+                {{ form_widget(form.spotifyIframe) }}
             </div>
         </div>
         <div class="form-row">

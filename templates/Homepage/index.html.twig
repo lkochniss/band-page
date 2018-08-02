@@ -65,6 +65,14 @@
                         {{ instagramIframe|raw }}
                     </div>
                 {% endif %}
+
+                {% set spotifyIframe='spotify-iframe'|getSpotifyIframe %}
+                {% if spotifyIframe %}
+                    <div class="mb-3">
+                        <h4>{% trans %}spotify{% endtrans %}</h4>
+                        {{ spotifyIframe|raw }}
+                    </div>
+                {% endif %}
             </div>
         </div>
     </div>
