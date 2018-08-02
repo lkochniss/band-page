@@ -85,6 +85,7 @@ reset_password: 'Reset Password'
 edit_user: 'Edit User'
 no_login_yet: 'No login yet'
 am: 'am'
+pm: 'pm'
 delete: delete
 delete_gig: 'Delete Gig %gig%?'
 delete_news: 'Delete News %news%?'
