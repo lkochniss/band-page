@@ -42,11 +42,11 @@ class News extends AbstractEntity
     }
 
     /**
-     * @param mixed $content
+     * @param null|string $content
      */
-    public function setContent($content): void
+    public function setContent(?string $content): void
     {
-        $this->content = $content;
+        $this->content = $content?: '';
     }
 
     public function setSlug(): void
