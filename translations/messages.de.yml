@@ -86,6 +86,7 @@ reset_password: 'Passwort zurücksetzten'
 edit_user: 'Benutzer bearbeiten'
 no_login_yet: 'bisher kein Login'
 am: 'Uhr'
+pm: 'Uhr'
 delete: löschen
 delete_gig: 'Gig %gig% löschen?'
 delete_news: 'News %news% löschen?'
