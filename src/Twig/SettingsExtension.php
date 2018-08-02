@@ -28,9 +28,12 @@ class SettingsExtension extends AbstractExtension
         return [
             new TwigFilter('getBandName', [$this, 'getBandName']),
             new TwigFilter('getFacebookPage', [$this, 'getFacebookPage']),
+            new TwigFilter('getFacebookIframe', [$this, 'getFacebookIframe']),
             new TwigFilter('getInstagramAccount', [$this, 'getInstagramAccount']),
+            new TwigFilter('getInstagramIframe', [$this, 'getInstagramIframe']),
             new TwigFilter('getYouTubeChannel', [$this, 'getYouTubeChannel']),
             new TwigFilter('getSpotifyAccount', [$this, 'getSpotifyAccount']),
+            new TwigFilter('getSpotifyIframe', [$this, 'getSpotifyIframe']),
             new TwigFilter('getFavicon', [$this, 'getFavicon']),
             new TwigFilter('getLinkToShop', [$this, 'getLinkToShop']),
             new TwigFilter('getBannerImage', [$this, 'getBannerImage']),
@@ -66,11 +69,35 @@ class SettingsExtension extends AbstractExtension
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException
      */
+    public function getFacebookIframe(): ?string
+    {
+        $facebookIframe = $this->settingsRepository->findOneByKeyOrCreate(Settings::FACEBOOK_IFRAME);
+
+        return $facebookIframe->getSettingsValue() ?: null;
+    }
+
+    /**
+     * @return string
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
     public function getInstagramAccount(): ?string
     {
         $instagramAccount = $this->settingsRepository->findOneByKeyOrCreate(Settings::INSTAGRAM_ACCOUNT);
 
         return $instagramAccount->getSettingsValue() ?: null;
+    }
+
+    /**
+     * @return string
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function getInstagramIframe(): ?string
+    {
+        $instagramIframe = $this->settingsRepository->findOneByKeyOrCreate(Settings::INSTAGRAM_IFRAME);
+
+        return $instagramIframe->getSettingsValue() ?: null;
     }
 
     /**
@@ -95,6 +122,18 @@ class SettingsExtension extends AbstractExtension
         $spotifyAccount = $this->settingsRepository->findOneByKeyOrCreate(Settings::SPOTIFY_ACCOUNT);
 
         return $spotifyAccount->getSettingsValue() ?: null;
+    }
+
+    /**
+     * @return string
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function getSpotifyIframe(): ?string
+    {
+        $spotifyIframe = $this->settingsRepository->findOneByKeyOrCreate(Settings::SPOTIFY_IFRAME);
+
+        return $spotifyIframe->getSettingsValue() ?: null;
     }
 
     /**

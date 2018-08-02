@@ -1,3 +1,6 @@
-settings_edit:
-    path: /settings
-    defaults: { _controller: 'App\Controller\SettingsController::edit' }
+settings_general:
+    path: /settings/general
+    defaults: { _controller: 'App\Controller\SettingsController::generalSettings' }
+settings_social:
+    path: /settings/social
+    defaults: { _controller: 'App\Controller\SettingsController::socialSettings' }

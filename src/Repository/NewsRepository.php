@@ -14,6 +14,20 @@ use Symfony\Component\Security\Core\User\User as Admin;
 class NewsRepository extends AbstractRepository
 {
     /**
+     * @param int $numberOfNews
+     * @return array
+     */
+    public function findLatestNews(int $numberOfNews): array
+    {
+        $query = $this->createQueryBuilder('news')
+            ->orderBy('news.createdAt', 'DESC')
+            ->setMaxResults($numberOfNews)
+            ->getQuery();
+
+        return $query->getResult();
+    }
+
+    /**
      * @param AbstractEntity $entity
      * @param User|Admin $user
      * @throws \Doctrine\ORM\ORMException

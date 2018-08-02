@@ -88,3 +88,8 @@ news_frontend:
 page_frontend:
     resource: routing/page_frontend.yaml
     trailing_slash_on_root: false
+
+## Homepage
+homepage_frontend_index:
+    path: /
+    defaults: { _controller: 'App\Controller\HomepageController::index' }

@@ -10,9 +10,9 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Class SettingsType
+ * Class SocialSettingsType
  */
-class SettingsType extends AbstractType
+class SocialSettingsType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -24,8 +24,8 @@ class SettingsType extends AbstractType
     {
         $builder
             ->add(
-                'bandName',
-                TextType::class,
+                'facebookPage',
+                UrlType::class,
                 [
                     'required' => false,
                     'attr' =>
@@ -35,8 +35,8 @@ class SettingsType extends AbstractType
                 ]
             )
             ->add(
-                'facebookPage',
-                UrlType::class,
+                'facebookIframe',
+                TextType::class,
                 [
                     'required' => false,
                     'attr' =>
@@ -55,9 +55,18 @@ class SettingsType extends AbstractType
                             'class' => 'form-control'
                         ]
                 ]
-            );
-
-        $builder
+            )
+            ->add(
+                'instagramIframe',
+                TextType::class,
+                [
+                    'required' => false,
+                    'attr' =>
+                        [
+                            'class' => 'form-control'
+                        ]
+                ]
+            )
             ->add(
                 'youtubeChannel',
                 UrlType::class,
@@ -81,31 +90,8 @@ class SettingsType extends AbstractType
                 ]
             )
             ->add(
-                'favicon',
-                UrlType::class,
-                [
-                    'required' => false,
-                    'attr' =>
-                        [
-                            'class' => 'form-control'
-                        ]
-                ]
-            );
-        $builder
-            ->add(
-                'linkToShop',
-                UrlType::class,
-                [
-                    'required' => false,
-                    'attr' =>
-                        [
-                            'class' => 'form-control'
-                        ]
-                ]
-            )
-            ->add(
-                'bannerImage',
-                UrlType::class,
+                'spotifyIframe',
+                TextType::class,
                 [
                     'required' => false,
                     'attr' =>
@@ -130,7 +116,7 @@ class SettingsType extends AbstractType
         $resolver->setDefaults([
             'csrf_protection' => true,
             'csrf_field_name' => '_token',
-            'csrf_token_id' => 'settings'
+            'csrf_token_id' => 'social_settings'
         ]);
     }
 }

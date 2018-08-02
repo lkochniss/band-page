@@ -1,5 +1,5 @@
 news_list_frontend:
-    path: /
+    path: /news
     defaults: { _controller: 'App\Controller\NewsController::paginated' }
 news_list_frontend_page:
     path:
