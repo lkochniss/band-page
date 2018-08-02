@@ -1,9 +1,5 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-    <div class="container-fluid text-center mb-3">
-        <h1 class="mb-3 text-light">{{ 'band-name'|getBandName }}</h1>
-        <img class="img-fluid" src="{{ 'bannerImage'|getBannerImage }}"/>
-    </div>
     <div class="container">
         <h2 class="text-center text-light">{% trans from  "messages" %}latest_news{% endtrans %}</h2>
         {% for key, news in entities %}

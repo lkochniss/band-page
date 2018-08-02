@@ -25,7 +25,9 @@ class SettingsController extends Controller
         $settings = [
             'bandName' => $bandName = $settingsRepository->findOneByKeyOrCreate(Settings::BAND_NAME),
             'facebookPage' => $bandName = $settingsRepository->findOneByKeyOrCreate(Settings::FACEBOOK_PAGE),
+            'facebookIframe' => $bandName = $settingsRepository->findOneByKeyOrCreate(Settings::FACEBOOK_IFRAME),
             'instagramAccount' => $bandName = $settingsRepository->findOneByKeyOrCreate(Settings::INSTAGRAM_ACCOUNT),
+            'instagramIframe' => $bandName = $settingsRepository->findOneByKeyOrCreate(Settings::INSTAGRAM_IFRAME),
             'youtubeChannel' => $bandName = $settingsRepository->findOneByKeyOrCreate(Settings::YOUTUBE_CHANNEL),
             'spotifyAccount' => $bandName = $settingsRepository->findOneByKeyOrCreate(Settings::SPOTIFY_ACCOUNT),
             'favicon' => $bandName = $settingsRepository->findOneByKeyOrCreate(Settings::FAVICON),

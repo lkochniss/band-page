@@ -21,8 +21,20 @@
         </div>
         <div class="form-row">
             <div class="form-group col-md-12">
+                <label>{% trans from "messages" %}facebook_iframe{% endtrans %}</label>
+                {{ form_widget(form.facebookIframe) }}
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-12">
                 <label>{% trans from "messages" %}instagram_account{% endtrans %}</label>
                 {{ form_widget(form.instagramAccount) }}
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label>{% trans from "messages" %}instagram_iframe{% endtrans %}</label>
+                {{ form_widget(form.instagramIframe) }}
             </div>
         </div>
         <div class="form-row">

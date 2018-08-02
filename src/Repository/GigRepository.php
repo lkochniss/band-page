@@ -14,6 +14,9 @@ use Symfony\Component\Security\Core\User\User as Admin;
 class GigRepository extends AbstractRepository
 {
 
+    /**
+     * @return array
+     */
     public function findAllUpcomingGigsSortedByDate(): array
     {
         $now = new \DateTime('now 00:00:00');
@@ -21,6 +24,23 @@ class GigRepository extends AbstractRepository
             ->where('gig.date > :now')
             ->setParameter('now', $now)
             ->orderBy('gig.date', 'ASC')
+            ->getQuery();
+
+        return $query->getResult();
+    }
+
+    /**
+     * @param int $numberOfGigs
+     * @return array
+     */
+    public function findNextUpcomingGigsSortedByDate(int $numberOfGigs): array
+    {
+        $now = new \DateTime('now 00:00:00');
+        $query = $this->createQueryBuilder('gig')
+            ->where('gig.date > :now')
+            ->setParameter('now', $now)
+            ->orderBy('gig.date', 'ASC')
+            ->setMaxResults($numberOfGigs)
             ->getQuery();
 
         return $query->getResult();

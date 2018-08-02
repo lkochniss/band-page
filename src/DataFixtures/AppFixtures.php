@@ -3,6 +3,7 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Nelmio\Alice\Loader\NativeLoader;
@@ -21,8 +22,11 @@ class AppFixtures extends Fixture implements ContainerAwareInterface
         $loader = new NativeLoader();
         $objectSet = $loader->loadFile(__DIR__ . '/fixtures_dev.yaml')->getObjects();
 
+        $systemUser = new User();
+        $systemUser->setUsername('System User');
+
         foreach ($objectSet as $object) {
-            $manager->getRepository(get_class($object))->save($object);
+            $manager->getRepository(get_class($object))->save($object, $systemUser);
         }
     }
 

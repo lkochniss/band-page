@@ -12,7 +12,6 @@ App\Entity\Settings:
             unique: true
             column: settings_key
         settingsValue:
-            type: string
-            length: 100
+            type: text
             nullable: true
             column: settings_value

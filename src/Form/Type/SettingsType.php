@@ -46,6 +46,17 @@ class SettingsType extends AbstractType
                 ]
             )
             ->add(
+                'facebookIframe',
+                TextType::class,
+                [
+                    'required' => false,
+                    'attr' =>
+                        [
+                            'class' => 'form-control'
+                        ]
+                ]
+            )
+            ->add(
                 'instagramAccount',
                 UrlType::class,
                 [
@@ -55,7 +66,19 @@ class SettingsType extends AbstractType
                             'class' => 'form-control'
                         ]
                 ]
-            );
+            )
+            ->add(
+                'instagramIframe',
+                TextType::class,
+                [
+                    'required' => false,
+                    'attr' =>
+                        [
+                            'class' => 'form-control'
+                        ]
+                ]
+            )
+        ;
 
         $builder
             ->add(

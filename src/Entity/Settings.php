@@ -9,7 +9,9 @@ class Settings extends AbstractEntity
 {
     const BAND_NAME = 'band_name';
     const FACEBOOK_PAGE = 'facebook_page';
+    const FACEBOOK_IFRAME = 'facebook_iframe';
     const INSTAGRAM_ACCOUNT = 'instagram_account';
+    const INSTAGRAM_IFRAME = 'instagram_iframe';
     const YOUTUBE_CHANNEL = 'youtube_channel';
     const SPOTIFY_ACCOUNT = 'spotify_account';
     const FAVICON = 'favicon';

@@ -26,9 +26,12 @@ class SettingsRepository extends AbstractRepository
          */
         $settings = $this->findOneBy(['settingsKey' => $key]);
 
+        $systemUser = new User();
+        $systemUser->setUsername('SystemUser');
+
         if (is_null($settings)) {
             $settings = new Settings($key);
-            $this->save($settings);
+            $this->save($settings, $systemUser);
         }
 
         return $settings;
