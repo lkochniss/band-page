@@ -28,6 +28,7 @@ class SettingsController extends Controller
             'favicon' => $bandName = $settingsRepository->findOneByKeyOrCreate(Settings::FAVICON),
             'linkToShop' => $bandName = $settingsRepository->findOneByKeyOrCreate(Settings::LINK_TO_SHOP),
             'bannerImage' => $bandName = $settingsRepository->findOneByKeyOrCreate(Settings::BANNER_IMAGE),
+            'backgroundImage' => $bandName = $settingsRepository->findOneByKeyOrCreate(Settings::BACKGROUND_IMAGE),
         ];
 
         $form = $this->createForm(

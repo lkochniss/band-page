@@ -68,6 +68,17 @@ class GeneralSettingsType extends AbstractType
                 ]
             )
             ->add(
+                'backgroundImage',
+                UrlType::class,
+                [
+                    'required' => false,
+                    'attr' =>
+                        [
+                            'class' => 'form-control'
+                        ]
+                ]
+            )
+            ->add(
                 'submit',
                 SubmitType::class,
                 [

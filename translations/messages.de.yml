@@ -4,17 +4,17 @@ news: News
 create_new: 'Neu anlegen'
 list_all: 'Alle anzeigen'
 location: Location
-gig: Gig
+gig: 'Konzert'
 page: Seite
-gigs: Gigs
+gigs: 'Live Konzerte'
 when: Wann
 price: Preis
 doors_open: Einlass
 where: Wo
 more_information: 'Mehr Informationen'
-edit_gig: 'Gig bearbeiten'
-show_gig: 'Gig anzeigen'
-create_gig: 'Gig erstellen'
+edit_gig: 'Konzert bearbeiten'
+show_gig: 'Konzert anzeigen'
+create_gig: 'Konzert erstellen'
 title: Titel
 price_in_currency: 'Preis:'
 date: Datum
@@ -22,8 +22,8 @@ created_at: 'Erstellt am'
 modified_at: 'Bearbeitet am'
 show: anzeigen
 edit: bearbeiten
-past_gigs: 'Vergangene Gigs'
-upcoming_gigs: 'Anstehende Gigs'
+past_gigs: 'Vergangene Konzerte'
+upcoming_gigs: 'Anstehende Konzerte'
 edit_location: 'Location bearbeiten'
 create_location: 'Location erstellen'
 name: Name
@@ -88,11 +88,11 @@ no_login_yet: 'bisher kein Login'
 am: 'Uhr'
 pm: 'Uhr'
 delete: löschen
-delete_gig: 'Gig %gig% löschen?'
+delete_gig: 'Konzert %gig% löschen?'
 delete_news: 'News %news% löschen?'
 delete_page: 'Page %page% löschen?'
 more_news: 'Mehr News'
-more_gigs: 'Mehr Gigs'
+more_gigs: 'Mehr Live Konzerte'
 social: 'Social'
 logs: 'Logs'
 message: 'Nachricht'
@@ -102,3 +102,4 @@ home: 'Home'
 facebook_iframe: 'Facebook Widget iFrame'
 instagram_iframe: 'Instagram Widget iFrame'
 spotify_iframe: 'Spotify Widget iFrame'
+info: Informationen

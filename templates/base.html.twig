@@ -25,11 +25,12 @@
     </script>
     <link id="favicon" rel="shortcut icon" href="{{ 'favicon'|getFavicon }}" title="Favicon">
 </head>
-<body class="d-flex flex-column bg-black" style="min-height: 100vh">
+{% set backgroundImage = 'image'|getBackgroundImage %}
+<body class="d-flex flex-column bg-black" style="min-height: 100vh; {% if backgroundImage %}background-image: url({{ backgroundImage }}); background-position: center; background-repeat: no-repeat; background-size: cover;{% endif %}">
 <header>
     {% include 'Navigation/frontend-navigation.html.twig' %}
 </header>
-<main class="container-fluid flex-fill text-light">
+<main class="container-fluid w-100 flex-fill text-light">
     {% block body %}
     {% endblock %}
 </main>

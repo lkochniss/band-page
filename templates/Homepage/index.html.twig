@@ -1,79 +1,99 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <h3>{% trans %}news{% endtrans %}</h3>
-                {% for news in newsList %}
-                    <div class="card-body">
-                        <a href="{{ path('news_show', {'slug': news.slug}) }}" class="text-light">
-                            <h4 class="card-title"> {{ news.title }}</h4>
-                        </a>
-                        <p class="card-text">
-                            {{ news.content|striptags| slice(0, 100) }}
-                            {% if news.content|length > 100 %}
-                                ...
-                            {% endif %}
-                            <br/>
+    <div class="row ml-md-5">
+        <div class="col-md-3 mb-5 bg-black ml-3 mr-3 ml-md-5 mr-md-5">
+            <h2 class="text-center pt-3">{% trans %}news{% endtrans %}</h2>
+            {% for news in newsList %}
+            <div class="card bg-black mb-3 border-bottom">
+                <div class="card-body p-0">
+                    <a href="{{ path('news_show', {'slug': news.slug}) }}" class="text-light">
+                        <h3 class="card-title"> {{ news.title }}</h3>
+                    </a>
+                    <p class="card-text">
+                        {{ news.content|striptags| slice(0, 100) }}
+                        {% if news.content|length > 100 %}
+                            ...
+                        {% endif %}
+                        <p>
                             <a href="{{ path('news_show', {'slug': news.slug}) }}" class="text-light">
                                 {% trans from "messages" %}read_more{% endtrans %}
                             </a>
                         </p>
-                    </div>
-                    <hr class="border-light"/>
-                {% endfor %}
-                <a href="{{ path('news_list_frontend') }}" class="text-light">
+                    </p>
+                </div>
+            </div>
+            {% endfor %}
+            <div class=" d-none d-md-block">
+                <a href="{{ path('news_list_frontend') }}" class="text-light text-center">
                     {% trans from "messages" %}more_news{% endtrans %}
                 </a>
             </div>
-            <div class="col-md-4">
-                <h3>{% trans %}gigs{% endtrans %}</h3>
-                {% for gig in gigs %}
-                    <div class="card-body">
-                        <a href="{{ path('gig_show', {'slug': gig.slug}) }}" class="text-light">
-                            <h4 class="card-title"> {{ gig.title }}</h4>
-                        </a>
-                        <p class="card-text">
-                            {{ gig.date|date('d.m.Y') }} | {{ gig.location.name }}
-                            <br/>
+            <div class="d-block d-md-none">
+                <button class="btn btn-outline-light pull-right">
+                    <a href="{{ path('news_list_frontend') }}" class="text-light">
+                        {% trans from "messages" %}more_news{% endtrans %}
+                    </a>
+                </button>
+            </div>
+        </div>
+        <div class="col-md-3 mb-5 bg-black ml-3 mr-3 ml-md-5 mr-md-5">
+            <h2 class="text-center pt-3">{% trans %}gigs{% endtrans %}</h2>
+            {% for gig in gigs %}
+            <div class="card bg-black mb-3 border-bottom">
+                <div class="card-body p-0">
+                    <a href="{{ path('gig_show', {'slug': gig.slug}) }}" class="text-light">
+                        <h3 class="card-title"> {{ gig.title }}</h3>
+                    </a>
+                    <p class="card-text">
+                        {{ gig.date|date('d.m.Y') }} | {{ gig.location.name }}
+                        <p>
                             <a href="{{ path('gig_show', {'slug': gig.slug}) }}" class="text-light">
-                                {% trans from "messages" %}read_more{% endtrans %}
+                                {% trans from "messages" %}info{% endtrans %}
                             </a>
                         </p>
-                    </div>
-                    <hr class="border-light"/>
-                {% endfor %}
+                    </p>
+                </div>
+            </div>
+            {% endfor %}
+            <div class=" d-none d-md-block">
                 <a href="{{ path('gig_list_upcoming_frontend') }}" class="text-light">
                     {% trans from "messages" %}more_gigs{% endtrans %}
                 </a>
             </div>
-            <div class="col-md-4">
-                <h3>{% trans %}social{% endtrans %}</h3>
-
-                {% set facebookIframe='facebook-iframe'|getFacebookIframe %}
-                {% if facebookIframe %}
-                    <div class="mb-3">
-                        <h4>{% trans %}facebook{% endtrans %}</h4>
-                        {{ facebookIframe|raw }}
-                    </div>
-                {% endif %}
-
-                {% set instagramIframe='instagram-iframe'|getInstagramIframe %}
-                {% if instagramIframe %}
-                    <div class="mb-3">
-                        <h4>{% trans %}instagram{% endtrans %}</h4>
-                        {{ instagramIframe|raw }}
-                    </div>
-                {% endif %}
-
-                {% set spotifyIframe='spotify-iframe'|getSpotifyIframe %}
-                {% if spotifyIframe %}
-                    <div class="mb-3">
-                        <h4>{% trans %}spotify{% endtrans %}</h4>
-                        {{ spotifyIframe|raw }}
-                    </div>
-                {% endif %}
+            <div class="d-block d-md-none">
+                <button class="btn btn-outline-light pull-right">
+                    <a href="{{ path('gig_list_upcoming_frontend') }}" class="text-light">
+                        {% trans from "messages" %}more_gigs{% endtrans %}
+                    </a>
+                </button>
             </div>
+        </div>
+        <div class="col-md-3 mb-5 bg-black ml-3 mr-3 ml-md-5 mr-md-5">
+            <h2 class="text-center pt-2">{% trans %}social{% endtrans %}</h2>
+
+            {% set facebookIframe='facebook-iframe'|getFacebookIframe %}
+            {% if facebookIframe %}
+                <div class="mb-3">
+                    <h4>{% trans %}facebook{% endtrans %}</h4>
+                    {{ facebookIframe|raw }}
+                </div>
+            {% endif %}
+
+            {% set instagramIframe='instagram-iframe'|getInstagramIframe %}
+            {% if instagramIframe %}
+                <div class="mb-3">
+                    <h4>{% trans %}instagram{% endtrans %}</h4>
+                    {{ instagramIframe|raw }}
+                </div>
+            {% endif %}
+
+            {% set spotifyIframe='spotify-iframe'|getSpotifyIframe %}
+            {% if spotifyIframe %}
+                <div class="mb-3">
+                    <h4>{% trans %}spotify{% endtrans %}</h4>
+                    {{ spotifyIframe|raw }}
+                </div>
+            {% endif %}
         </div>
     </div>
 {% endblock %}
