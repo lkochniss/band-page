@@ -37,6 +37,7 @@ class SettingsExtension extends AbstractExtension
             new TwigFilter('getFavicon', [$this, 'getFavicon']),
             new TwigFilter('getLinkToShop', [$this, 'getLinkToShop']),
             new TwigFilter('getBannerImage', [$this, 'getBannerImage']),
+            new TwigFilter('getBackgroundImage', [$this, 'getBackgroundImage']),
         ];
     }
 
@@ -167,8 +168,20 @@ class SettingsExtension extends AbstractExtension
      */
     public function getBannerImage(): ?string
     {
-        $linkToShop = $this->settingsRepository->findOneByKeyOrCreate(Settings::BANNER_IMAGE);
+        $bannerSource = $this->settingsRepository->findOneByKeyOrCreate(Settings::BANNER_IMAGE);
 
-        return $linkToShop->getSettingsValue() ?: null;
+        return $bannerSource->getSettingsValue() ?: null;
+    }
+
+    /**
+     * @return string
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function getBackgroundImage(): ?string
+    {
+        $backgroundSource = $this->settingsRepository->findOneByKeyOrCreate(Settings::BACKGROUND_IMAGE);
+
+        return $backgroundSource->getSettingsValue() ?: null;
     }
 }
