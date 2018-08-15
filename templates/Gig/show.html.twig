@@ -1,8 +1,7 @@
 {% extends 'base.html.twig' %}
 
-{% block metaDescription %}
-    <meta property="og:description" content="{{ entity.description|striptags }}"/>
-{% endblock %}
+{% block metaTitle %}<meta property="og:title" content="{{ entity.date|date('d.m.Y') }}: {{ entity.title }}| {{ 'band'|getBandName }}"/>{% endblock %}
+{% block metaDescription %}<meta property="og:description" content="{{ entity.description|striptags }}"/>{% endblock %}
 
 {% block schema %}
     <script type="application/ld+json">

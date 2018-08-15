@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
 
+{% block metaTitle %}<meta property="og:title" content="{{ 'past_gigs'|trans }}| {{ 'band'|getBandName }}"/>{% endblock %}
+
 {% block breadCrumb %}
     <script type="application/ld+json">
 {
