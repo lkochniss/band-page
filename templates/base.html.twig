@@ -31,7 +31,7 @@
 
     <meta property="og:type" content="website"/>
     <meta property="og:title" content="{{ 'band'|getBandName }}"/>
-    <meta property="og:description" content="{{ 'description'|getMetaDescription }}"/>
+    {% block metaDescription %}<meta property="og:description" content="{{ 'description'|getMetaDescription }}"/>{% endblock %}
     <meta property="og:image" content="{{ 'image'|getMetaImage }}" />
     <link id="favicon" rel="shortcut icon" href="{{ 'favicon'|getFavicon }}" title="Favicon">
 </head>
