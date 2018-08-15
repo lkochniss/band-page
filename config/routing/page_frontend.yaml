@@ -1,3 +1,0 @@
-page_show:
-    path: /{slug}
-    defaults: { _controller: 'App\Controller\PageController::show' }

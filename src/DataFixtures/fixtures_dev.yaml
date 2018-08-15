@@ -4,16 +4,19 @@ App\Entity\Location:
         street: 'Zeithstraße 100'
         city: 'Siegburg'
         zip: '53721'
+        country: 'germany'
     location_2:
         name: 'Live Music Hall'
         street: 'Lichtstraße 30'
         city: 'Köln'
         zip: '50825'
+        country: 'germany'
     location_3:
         name: 'Turbinenhalle'
         street: 'Im Lipperfeld 23'
         city: 'Oberhausen'
         zip: '46047'
+        country: 'germany'
 
 App\Entity\Gig:
     gig_1:

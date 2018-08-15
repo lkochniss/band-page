@@ -1,6 +1,9 @@
 settings_general:
     path: /settings/general
-    defaults: { _controller: 'App\Controller\SettingsController::generalSettings' }
+    defaults: { _controller: 'App\Controller\SettingsController::general' }
 settings_social:
     path: /settings/social
-    defaults: { _controller: 'App\Controller\SettingsController::socialSettings' }
+    defaults: { _controller: 'App\Controller\SettingsController::social' }
+settings_seo:
+    path: /settings/seo
+    defaults: { _controller: 'App\Controller\SettingsController::seo' }

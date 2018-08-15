@@ -23,6 +23,16 @@
 
         gtag('config', '{{ ga_tracking }}');
     </script>
+    {% block schema %}
+    {% endblock %}
+
+    {% block breadCrumb %}
+    {% endblock %}
+
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="{{ 'band'|getBandName }}"/>
+    <meta property="og:description" content="{{ 'description'|getMetaDescription }}"/>
+    <meta property="og:image" content="{{ 'image'|getMetaImage }}" />
     <link id="favicon" rel="shortcut icon" href="{{ 'favicon'|getFavicon }}" title="Favicon">
 </head>
 {% set backgroundImage = 'image'|getBackgroundImage %}

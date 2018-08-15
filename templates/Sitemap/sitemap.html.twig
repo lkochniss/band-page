@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>{{ url('homepage_frontend_index') }}</loc>
+    </url>
+    <url>
+        <loc>{{ url('gig_list_upcoming_frontend') }}</loc>
+    </url>
+    <url>
+        <loc>{{ url('gig_list_past_frontend') }}</loc>
+    </url>
+    <url>
+        <loc>{{ url('news_list_frontend') }}</loc>
+    </url>
+    {% for gig in gigs %}
+        <url>
+            <loc>{{ url('gig_show', {'slug' : gig.slug }) }}</loc>
+            <lastmod>{{ gig.modifiedAt|date('Y-m-d') }}</lastmod>
+        </url>
+    {% endfor %}
+    {% for news in newsList %}
+        <url>
+            <loc>{{ url('news_show', {'slug' : news.slug }) }}</loc>
+            <lastmod>{{ news.modifiedAt|date('Y-m-d') }}</lastmod>
+        </url>
+    {% endfor %}
+    {% for page in pages %}
+        <url>
+            <loc>{{ url('page_show', {'slug' : page.slug }) }}</loc>
+            <lastmod>{{ page.modifiedAt|date('Y-m-d') }}</lastmod>
+        </url>
+    {% endfor %}
+</urlset>

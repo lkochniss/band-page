@@ -1,4 +1,72 @@
 {% extends 'base.html.twig' %}
+{% block schema %}
+
+{% set sameAs = ['facebook-page'|getFacebookPage, 'instagram-account'|getInstagramAccount, 'youtube-channel'|getYouTubeChannel, 'spotify-account'|getSpotifyAccount] %}
+
+<script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "MusicGroup",
+         "name": "{{ 'bla'|getBandName }}",
+         "sameAs": [
+            {% for url in sameAs %}
+                "{{ url }}"{% if url != sameAs|last %},{% endif %}
+            {% endfor %}
+        ],
+        "event": [
+    {% for gig in gigs %}
+            {
+                "@type": "Event",
+                "name": "{{ gig.title }}",
+                "description": "{{ gig.description }}",
+                "startDate": "{{ gig.date|date('Y-m-d H:i') }}",
+                "typicalAgeRange": "All Ages",
+                "image" : "{{ 'image' |getMetaImage}}",
+                "performers": {
+                    "@type": "Organization",
+                    "name": "{{ 'band'|getBandName }}"
+                },
+                "location": {
+                    "@type": "Place",
+                    "name": "{{ gig.location.name }}",
+                    "address": {
+                        "@type": "PostalAddress",
+                        "streetAddress": "{{ gig.location.street }}",
+                        "addressLocality": "{{ gig.location.city }}",
+                        "postalCode": "{{ gig.location.zip }}",
+                        "addressCountry": "{{ gig.location.country|capitalize }}"
+                    }
+                },
+                "offers": {
+                    "@type": "Offer",
+                    "price": "{{ gig.price }}",
+                    "priceCurrency": "{{ default_currency|trans }}",
+                    "validFrom": "{{ gig.date|date('Y-m-d') }}",
+                    "validThrough": "{{ gig.date|date('Y-m-d') }}"
+                }
+            }{% if gig != gigs|last %},{% endif %}
+    {% endfor %}
+        ]
+    }
+</script>
+{% endblock %}
+
+{% block breadCrumb %}
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+            "@id": "{{ url('homepage_frontend_index') }}",
+            "name": "{{ 'home'|trans }}"
+        }
+    }]
+}
+</script>
+{% endblock %}
 {% block body %}
     <div class="row ml-md-5">
         <div class="col-md-3 mb-5 bg-black ml-3 mr-3 ml-md-5 mr-md-5">
@@ -68,29 +136,31 @@
                 </button>
             </div>
         </div>
-        <div class="col-md-3 mb-5 bg-black ml-3 mr-3 ml-md-5 mr-md-5">
-            <h2 class="text-center pt-2">{% trans %}social{% endtrans %}</h2>
+        <div class="col-md-3 mb-5 bg-black ml-3 mr-3 ml-md-5 mr-md-5 text-center">
+            <h2 class="pt-2">{% trans %}social{% endtrans %}</h2>
 
             {% set facebookIframe='facebook-iframe'|getFacebookIframe %}
             {% if facebookIframe %}
                 <div class="mb-3">
-                    <h4>{% trans %}facebook{% endtrans %}</h4>
+                    <h3 class="text-left mb-3">{% trans %}facebook{% endtrans %}</h3>
                     {{ facebookIframe|raw }}
                 </div>
+                <hr class="border-white" />
             {% endif %}
 
             {% set instagramIframe='instagram-iframe'|getInstagramIframe %}
             {% if instagramIframe %}
                 <div class="mb-3">
-                    <h4>{% trans %}instagram{% endtrans %}</h4>
+                    <h3 class="text-left mb-3">{% trans %}instagram{% endtrans %}</h3>
                     {{ instagramIframe|raw }}
                 </div>
+                <hr class="border-white" />
             {% endif %}
 
             {% set spotifyIframe='spotify-iframe'|getSpotifyIframe %}
             {% if spotifyIframe %}
                 <div class="mb-3">
-                    <h4>{% trans %}spotify{% endtrans %}</h4>
+                    <h3 class="text-left">{% trans %}spotify{% endtrans %}</h3>
                     {{ spotifyIframe|raw }}
                 </div>
             {% endif %}

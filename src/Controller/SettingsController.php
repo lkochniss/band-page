@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Settings;
 use App\Form\Type\GeneralSettingsType;
+use App\Form\Type\SeoSettingsType;
 use App\Form\Type\SocialSettingsType;
 use App\Repository\SettingsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -21,7 +22,7 @@ class SettingsController extends Controller
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException
      */
-    public function generalSettings(Request $request, SettingsRepository $settingsRepository)
+    public function general(Request $request, SettingsRepository $settingsRepository)
     {
         $settings = [
             'bandName' => $bandName = $settingsRepository->findOneByKeyOrCreate(Settings::BAND_NAME),
@@ -66,7 +67,7 @@ class SettingsController extends Controller
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException
      */
-    public function socialSettings(Request $request, SettingsRepository $settingsRepository)
+    public function social(Request $request, SettingsRepository $settingsRepository)
     {
         $settings = [
             'facebookPage' => $bandName = $settingsRepository->findOneByKeyOrCreate(Settings::FACEBOOK_PAGE),
@@ -100,6 +101,48 @@ class SettingsController extends Controller
 
         return $this->render(
             'Settings/social.html.twig',
+            [
+                'form' => $form->createView(),
+            ]
+        );
+    }
+
+    /**
+     * @param Request $request
+     * @param SettingsRepository $settingsRepository
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function seo(Request $request, SettingsRepository $settingsRepository)
+    {
+        $settings = [
+            'metaDescription' => $bandName = $settingsRepository->findOneByKeyOrCreate(Settings::META_DESCRIPTION),
+            'metaImage' => $bandName = $settingsRepository->findOneByKeyOrCreate(Settings::META_IMAGE),
+        ];
+
+        $form = $this->createForm(
+            SeoSettingsType::class,
+            $settings,
+            [
+                'action' => $this->generateUrl('settings_seo'),
+                'method' => 'POST',
+            ]
+        );
+
+        if (in_array($request->getMethod(), ['POST'])) {
+            $form->handleRequest($request);
+            if ($form->isSubmitted() && $form->isValid()) {
+                foreach ($form->getData() as $key => $value) {
+                    $setting = $settings[$key];
+                    $setting->setSettingsValue($value);
+                    $settingsRepository->save($setting, $this->getUser());
+                }
+            }
+        }
+
+        return $this->render(
+            'Settings/seo.html.twig',
             [
                 'form' => $form->createView(),
             ]

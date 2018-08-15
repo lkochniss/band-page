@@ -17,3 +17,6 @@ App\Entity\Location:
             length: 100
         zip:
             type: integer
+        country:
+            type: string
+            length: 100

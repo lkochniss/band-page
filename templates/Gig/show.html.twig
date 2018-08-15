@@ -1,4 +1,72 @@
 {% extends 'base.html.twig' %}
+{% block schema %}
+    <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "Event",
+        "name": "{{ entity.title }}",
+        "description": "{{ entity.description }}",
+        "startDate": "{{ entity.date|date('Y-m-d H:i') }}",
+        "typicalAgeRange": "All Ages",
+        "image" : "{{ 'image' |getMetaImage}}",
+        "performers": {
+            "@type": "Organization",
+            "name": "{{ 'band'|getBandName }}"
+        },
+        "location": {
+            "@type": "Place",
+            "name": "{{ entity.location.name }}",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "{{ entity.location.street }}",
+                "addressLocality": "{{ entity.location.city }}",
+                "postalCode": "{{ entity.location.zip }}",
+                "addressCountry": "{{ entity.location.country|capitalize }}"
+            }
+        },
+        "offers": {
+            "@type": "Offer",
+            "price": "{{ entity.price }}",
+            "priceCurrency": "{{ default_currency|trans }}",
+            "validFrom": "{{ entity.date|date('Y-m-d') }}",
+            "validThrough": "{{ entity.date|date('Y-m-d') }}"
+        }
+    }
+</script>
+{% endblock %}
+
+{% block breadCrumb %}
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+    {
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+            "@id": "{{ url('homepage_frontend_index') }}",
+            "name": "{{ 'home'|trans }}"
+        }
+    }, {
+        "@type": "ListItem",
+        "position": 2,
+        "item": {
+            "@id": "{{ url('gig_list_upcoming_frontend') }}",
+            "name": "{{ 'upcoming_gigs'|trans }}"
+        }
+    }, {
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+            "@id": "{{ url('gig_show', {'slug' : entity.slug}) }}",
+            "name": "{{ entity.title }}"
+        }
+    }]
+}
+</script>
+{% endblock %}
+
 {% block body %}
     <div class="container bg-black p-3">
         <div class="d-none d-md-block">
