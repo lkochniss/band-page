@@ -1,4 +1,33 @@
 {% extends 'base.html.twig' %}
+{% block schema %}
+
+
+<script type="application/ld+json">
+    {% for gig in gigs %}
+        [
+            {
+                "@context": "http://schema.org",
+                "@type": "Event",
+                "name": "{{ gig.title }}",
+                "startDate": "{{ gig.date|date('Y-m-d H:i') }}",
+                "typicalAgeRange": "All Ages",
+                "performers": {
+                    "@type": "Organization",
+                    "name": "{{ 'bla'|getBandName }}"
+                },
+                "location": {
+                    "@type": "Place",
+                    "name": "{{ gig.location.name }}",
+                    "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "{{ gig.location.city }}",
+                    "addressCountry": "{{ gig.location.country|capitalize }}"
+                }
+            },
+        ]
+    {% endfor %}
+</script>
+{% endblock %}
 {% block body %}
     <div class="row ml-md-5">
         <div class="col-md-3 mb-5 bg-black ml-3 mr-3 ml-md-5 mr-md-5">

@@ -3,12 +3,12 @@
         <iframe class="w-100 mh-50" height="300px"
                 frameborder="0" style="border:0"
                 src="https://www.google.com/maps/embed/v1/place?key={{ ga_api_key }}
-    &q={{ entity.location.street }} + {{ entity.location.zip }} + {{ entity.location.city }}" allowfullscreen>
+    &q={{ entity.location.street }} + {{ entity.location.zip }} + {{ entity.location.city }} + {{ entity.location.country|trans }}" allowfullscreen>
         </iframe>
         <div class="text-right">
             <h6>
                 <a target="_blank" class="text-light"
-                   href="https://www.google.com/maps/search/?api=1&query={{ entity.location.street }} + {{ entity.location.zip }} + {{ entity.location.city }}">
+                   href="https://www.google.com/maps/search/?api=1&query={{ entity.location.street }} + {{ entity.location.zip }} + {{ entity.location.city }} + {{ entity.location.country|trans }}">
                     {{ entity.location.name }} |
                     {{ entity.location.street }},
                     {{ entity.location.zip }} {{ entity.location.city }}

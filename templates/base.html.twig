@@ -23,6 +23,8 @@
 
         gtag('config', '{{ ga_tracking }}');
     </script>
+    {% block schema %}
+    {% endblock %}
     <link id="favicon" rel="shortcut icon" href="{{ 'favicon'|getFavicon }}" title="Favicon">
 </head>
 {% set backgroundImage = 'image'|getBackgroundImage %}

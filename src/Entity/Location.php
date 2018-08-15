@@ -28,6 +28,11 @@ class Location extends AbstractEntity
     private $zip;
 
     /**
+     * @var string
+     */
+    private $country;
+
+    /**
      * @return string
      */
     public function getName(): string
@@ -89,6 +94,22 @@ class Location extends AbstractEntity
     public function setZip(int $zip): void
     {
         $this->zip = $zip;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCountry(): string
+    {
+        return $this->stringTransform($this->country);
+    }
+
+    /**
+     * @param string $country
+     */
+    public function setCountry(string $country): void
+    {
+        $this->country = $country;
     }
 
     public function setSlug(): void

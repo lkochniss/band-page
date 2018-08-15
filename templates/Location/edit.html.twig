@@ -16,9 +16,13 @@
         {% endif %}
         {{ form_start(form) }}
         <div class="form-row">
-            <div class="form-group col-md-12">
+            <div class="form-group col-md-8">
                 <label>{% trans from "messages" %}name{% endtrans %}</label>
                 {{ form_widget(form.name) }}
+            </div>
+            <div class="form-group col-md-4">
+                <label>{% trans from "messages" %}country{% endtrans %}</label>
+                {{ form_widget(form.country) }}
             </div>
         </div>
         <div class="form-row">
