@@ -3,12 +3,13 @@
 
 
 <script type="application/ld+json">
+    [
     {% for gig in gigs %}
-        [
             {
                 "@context": "http://schema.org",
                 "@type": "Event",
                 "name": "{{ gig.title }}",
+                "description": "{{ gig.description }}",
                 "startDate": "{{ gig.date|date('Y-m-d H:i') }}",
                 "typicalAgeRange": "All Ages",
                 "performers": {
@@ -19,13 +20,19 @@
                     "@type": "Place",
                     "name": "{{ gig.location.name }}",
                     "address": {
-                    "@type": "PostalAddress",
-                    "addressLocality": "{{ gig.location.city }}",
-                    "addressCountry": "{{ gig.location.country|capitalize }}"
+                        "@type": "PostalAddress",
+                        "addressLocality": "{{ gig.location.city }}",
+                        "addressCountry": "{{ gig.location.country|capitalize }}"
+                    }
+                },
+                "offers": {
+                    "@type": "Offer",
+                    "price": "{{ gig.price }}",
+                    "priceCurrency": "{{ default_currency|trans }}"
                 }
-            },
-        ]
+            }{% if gig != gigs|last %},{% endif %}
     {% endfor %}
+    ]
 </script>
 {% endblock %}
 {% block body %}
