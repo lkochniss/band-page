@@ -1,4 +1,37 @@
 {% extends 'base.html.twig' %}
+
+{% block breadCrumb %}
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+    {
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+            "@id": "{{ url('homepage_frontend_index') }}",
+            "name": "{{ 'home'|trans }}"
+        }
+    }, {
+        "@type": "ListItem",
+        "position": 2,
+        "item": {
+            "@id": "{{ url('gig_list_upcoming_frontend') }}",
+            "name": "{{ 'upcoming_gigs'|trans }}"
+        }
+    }, {
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+            "@id": "{{ url('gig_list_past_frontend') }}",
+            "name": "{{ 'past_gigs'|trans }}"
+        }
+    }]
+}
+</script>
+{% endblock %}
+
 {% block body %}
     <div class="container mb-3 bg-black p-3">
         <h1 class="mb-3">{% trans from "messages" %}past_gigs{% endtrans %}</h1>

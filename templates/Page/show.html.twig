@@ -1,4 +1,30 @@
 {% extends 'base.html.twig' %}
+
+{% block breadCrumb %}
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+    {
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+            "@id": "{{ url('homepage_frontend_index') }}",
+            "name": "{{ 'home'|trans }}"
+        }
+    }, {
+        "@type": "ListItem",
+        "position": 2,
+        "item": {
+            "@id": "{{ url('page_show', {'slug': entity.slug}) }}",
+            "name": "{{ entity.title }}"
+        }
+    }]
+}
+</script>
+{% endblock %}
+
 {% block body %}
     <div class="container bg-black p-3">
         <div class="row">
