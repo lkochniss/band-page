@@ -1,5 +1,8 @@
 {% extends 'base.html.twig' %}
 
+{% block metaTitle %}<meta property="og:title" content="{{ entity.title }}| {{ 'band'|getBandName }}"/>{% endblock %}
+{% block metaDescription %}<meta property="og:description" content="{{ entity.content|striptags }}"/>{% endblock %}
+
 {% block breadCrumb %}
     <script type="application/ld+json">
 {
