@@ -1,11 +1,16 @@
 {% extends 'base.html.twig' %}
+
+{% block metaDescription %}
+    <meta property="og:description" content="{{ entity.description|raw }}"/>
+{% endblock %}
+
 {% block schema %}
     <script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "Event",
         "name": "{{ entity.title }}",
-        "description": "{{ entity.description }}",
+        "description": "{{ entity.description|raw }}",
         "startDate": "{{ entity.date|date('Y-m-d H:i') }}",
         "typicalAgeRange": "All Ages",
         "image" : "{{ 'image' |getMetaImage}}",
