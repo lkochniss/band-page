@@ -19,6 +19,8 @@ class Settings extends AbstractEntity
     const LINK_TO_SHOP = 'link_to_shop';
     const BANNER_IMAGE = 'banner_image';
     const BACKGROUND_IMAGE = 'background_image';
+    const META_DESCRIPTION = 'meta_description';
+    const META_IMAGE = 'meta_image';
 
     /**
      * @var string

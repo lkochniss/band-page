@@ -1,0 +1,29 @@
+{% extends 'admin-base.html.twig' %}
+{% block body %}
+    <div class="container">
+        <div class="row mb-3">
+            <div class="col">
+                <h1>{% trans from "messages" %}seo_settings{% endtrans %}</h1>
+            </div>
+        </div>
+        {{ form_start(form) }}
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label>{% trans from "messages" %}meta_description{% endtrans %}</label>
+                {{ form_widget(form.metaDescription) }}
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label>{% trans from "messages" %}meta_image{% endtrans %}</label>
+                {{ form_widget(form.metaImage) }}
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-2">
+                {{ form_row(form.submit) }}
+            </div>
+        </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

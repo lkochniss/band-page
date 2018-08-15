@@ -38,6 +38,8 @@ class SettingsExtension extends AbstractExtension
             new TwigFilter('getLinkToShop', [$this, 'getLinkToShop']),
             new TwigFilter('getBannerImage', [$this, 'getBannerImage']),
             new TwigFilter('getBackgroundImage', [$this, 'getBackgroundImage']),
+            new TwigFilter('getMetaDescription', [$this, 'getMetaDescription']),
+            new TwigFilter('getMetaImage', [$this, 'getMetaImage']),
         ];
     }
 
@@ -183,5 +185,29 @@ class SettingsExtension extends AbstractExtension
         $backgroundSource = $this->settingsRepository->findOneByKeyOrCreate(Settings::BACKGROUND_IMAGE);
 
         return $backgroundSource->getSettingsValue() ?: null;
+    }
+
+    /**
+     * @return string
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function getMetaDescription(): ?string
+    {
+        $metaDescription = $this->settingsRepository->findOneByKeyOrCreate(Settings::META_DESCRIPTION);
+
+        return $metaDescription->getSettingsValue() ?: null;
+    }
+
+    /**
+     * @return string
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function getMetaImage(): ?string
+    {
+        $metaImage = $this->settingsRepository->findOneByKeyOrCreate(Settings::META_IMAGE);
+
+        return $metaImage->getSettingsValue() ?: null;
     }
 }

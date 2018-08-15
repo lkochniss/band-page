@@ -1,38 +1,54 @@
 {% extends 'base.html.twig' %}
 {% block schema %}
 
+{% set sameAs = ['facebook-page'|getFacebookPage, 'instagram-account'|getInstagramAccount, 'youtube-channel'|getYouTubeChannel, 'spotify-account'|getSpotifyAccount] %}
+
 
 <script type="application/ld+json">
-    [
+    {
+        "@context": "http://schema.org",
+        "@type": "MusicGroup",
+         "name": "{{ 'bla'|getBandName }}",
+         "sameAs": [
+            {% for url in sameAs %}
+                "{{ url }}"{% if url != sameAs|last %},{% endif %}
+            {% endfor %}
+        ],
+        "event": [
     {% for gig in gigs %}
             {
-                "@context": "http://schema.org",
                 "@type": "Event",
                 "name": "{{ gig.title }}",
                 "description": "{{ gig.description }}",
                 "startDate": "{{ gig.date|date('Y-m-d H:i') }}",
                 "typicalAgeRange": "All Ages",
+                "image" : "{{ 'image' |getMetaImage}}",
                 "performers": {
                     "@type": "Organization",
-                    "name": "{{ 'bla'|getBandName }}"
+                    "name": "{{ 'band'|getBandName }}"
                 },
                 "location": {
                     "@type": "Place",
                     "name": "{{ gig.location.name }}",
                     "address": {
                         "@type": "PostalAddress",
+                        "streetAddress": "{{ gig.location.street }}",
                         "addressLocality": "{{ gig.location.city }}",
+                        "postalCode": "{{ gig.location.zip }}",
                         "addressCountry": "{{ gig.location.country|capitalize }}"
                     }
                 },
                 "offers": {
                     "@type": "Offer",
                     "price": "{{ gig.price }}",
-                    "priceCurrency": "{{ default_currency|trans }}"
+                    "priceCurrency": "{{ default_currency|trans }}",
+                    "validFrom": "{{ gig.date|date('Y-m-d') }}",
+                    "validThrough": "{{ gig.date|date('Y-m-d') }}"
                 }
             }{% if gig != gigs|last %},{% endif %}
     {% endfor %}
-    ]
+        ]
+    }
 </script>
 {% endblock %}
 {% block body %}
