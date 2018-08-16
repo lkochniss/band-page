@@ -7,3 +7,4 @@ twig:
       ga_api_key: '%env(resolve:GA_API_KEY)%'
       default_currency: '%env(resolve:DEFAULT_CURRENCY)%'
       csrf_security_login_token: '%env(resolve:CSRF_SECURITY_LOGIN_TOKEN)%'
+      environment: '%env(resolve:APP_ENV)%'

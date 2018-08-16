@@ -12,6 +12,9 @@
               href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     {% endblock %}
     <script async src="https://www.googletagmanager.com/gtag/js?id={{ ga_tracking }}"></script>
+    {% if environment != 'prod' %}
+        <META NAME="ROBOTS" CONTENT="NOINDEX,NOFOLLOW">
+    {% endif %}
     <script>
         window.dataLayer = window.dataLayer || [];
 
