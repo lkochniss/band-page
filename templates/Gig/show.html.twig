@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block metaTitle %}<meta property="og:title" content="{{ entity.date|date('d.m.Y') }}: {{ entity.title }}| {{ 'band'|getBandName }}"/>{% endblock %}
-{% block metaDescription %}<meta property="og:description" content="{{ entity.description|raw|striptags }}"/>{% endblock %}
+{% block metaDescription %}<meta property="og:description" content="{{ entity.description|striptags|replace({'&nbsp;': ' '}) }}"/>{% endblock %}
 
 {% block schema %}
     <script type="application/ld+json">
@@ -9,7 +9,7 @@
         "@context": "http://schema.org",
         "@type": "Event",
         "name": "{{ entity.title }}",
-        "description": "{{ entity.description|raw|striptags }}",
+        "description": "{{ entity.description|striptags|replace({'&nbsp;': ' '}) }}",
         "startDate": "{{ entity.date|date('Y-m-d H:i') }}",
         "typicalAgeRange": "All Ages",
         "image" : "{{ 'image' |getMetaImage}}",
