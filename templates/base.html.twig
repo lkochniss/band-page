@@ -39,7 +39,7 @@
     <link id="favicon" rel="shortcut icon" href="{{ 'favicon'|getFavicon }}" title="Favicon">
 </head>
 {% set backgroundImage = 'image'|getBackgroundImage %}
-<body class="d-flex flex-column bg-black" style="min-height: 100vh; {% if backgroundImage %}background-image: url({{ backgroundImage }}); background-position: center; background-repeat: no-repeat; background-size: cover;{% endif %}">
+<body class="d-flex flex-column bg-black" style="min-height: 100vh; {% if backgroundImage %}background-image: url({{ backgroundImage }}); background-position: center; background-repeat: no-repeat; background-size: cover; background-attachment: fixed{% endif %}">
 <header>
     {% include 'Navigation/frontend-navigation.html.twig' %}
 </header>
