@@ -20,7 +20,7 @@ class NewsController extends AbstractCrudController
     public function paginated(NewsRepository $newsRepository, int $page = 1): Response
     {
         $news = array_reverse($newsRepository->findAll());
-        $numberOfNews = 2;
+        $numberOfNews = 5;
 
         $entities = array_slice($news, ($page - 1) * $numberOfNews, $numberOfNews);
 
