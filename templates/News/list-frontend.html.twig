@@ -41,7 +41,7 @@
                     <div class="card-body">
                         <h3 class="card-title"> {{ news.title }}</h3>
                         <p class="card-text">
-                            {{ news.content|striptags|raw| slice(0, 500) }}
+                            {{ news.content|striptags|convert_encoding('UTF-8', 'HTML-ENTITIES')|raw| slice(0, 500) }}
                             {% if news.content|length > 500 %}
                                 ...
                             {% endif %}
