@@ -23,8 +23,7 @@ class SitemapController extends Controller
         GigRepository $gigRepository,
         NewsRepository $newsRepository,
         PageRepository $pageRepository
-    ): Response
-    {
+    ): Response {
         $response = new Response();
         $response->headers->set('Content-Type', 'xml');
 
