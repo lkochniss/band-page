@@ -27,7 +27,7 @@
                 "postalCode": "{{ entity.location.zip }}",
                 "addressCountry": "{{ entity.location.country|capitalize }}"
             }
-        },
+        }{% if entity.priceTba == false %},
         "offers": {
             "@type": "Offer",
             "price": "{{ entity.price }}",
@@ -35,6 +35,7 @@
             "validFrom": "{{ entity.date|date('Y-m-d') }}",
             "validThrough": "{{ entity.date|date('Y-m-d') }}"
         }
+        {% endif %}
     }
 </script>
 {% endblock %}
@@ -89,7 +90,11 @@
                     </h3>
                     <h3>
                         {% trans from "messages" %}price{% endtrans %}:
-                        {{ entity.price }}{{ default_currency|trans }}
+                        {% if entity.priceTba == true %}
+                            {% trans %}price_tba{% endtrans %}
+                        {% else %}
+                            {{ entity.price }}{{ default_currency|trans }}
+                        {% endif %}
                     </h3>
                 </div>
                 <div class="col-md-6">
@@ -115,7 +120,11 @@
                     </h3>
                     <h3>
                         {% trans from "messages" %}price{% endtrans %}:
-                        {{ entity.price }}{{ default_currency|trans }}
+                        {% if entity.priceTba == true %}
+                            {% trans %}price_tba{% endtrans %}
+                        {% else %}
+                            {{ entity.price }}{{ default_currency|trans }}
+                        {% endif %}
                     </h3>
                 </div>
             </div>

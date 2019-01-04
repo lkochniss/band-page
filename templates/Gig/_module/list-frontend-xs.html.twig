@@ -8,7 +8,12 @@
                 <p class="card-text">
                     {% trans from "messages" %}when{% endtrans %}: {{ gig.date|date('d.m.Y') }}<br/>
                     {% trans from "messages" %}doors_open{% endtrans %}: {{ gig.date|date('H:i') }}<br/>
-                    {% trans from "messages" %}price{% endtrans %}: {{ gig.price }}{{ default_currency|trans() }}<br/>
+                    {% trans from "messages" %}price{% endtrans %}:
+                    {% if gig.priceTba == true %}
+                        {% trans %}price_tba{% endtrans %}
+                    {% else %}
+                        {{ gig.price }}{{ default_currency|trans }}
+                    {% endif %}<br/>
                     {% trans from "messages" %}location{% endtrans %}: {{ gig.location.name }}, {{ gig.location.city }}
                     <br/>
                 </p>

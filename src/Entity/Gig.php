@@ -28,9 +28,14 @@ class Gig extends AbstractEntity
     private $location;
 
     /**
-     * @var float
+     * @var ?float
      */
     private $price = 0.0;
+
+    /**
+     * @var bool
+     */
+    private $priceTba = false;
 
     /**
      * @return string
@@ -110,6 +115,22 @@ class Gig extends AbstractEntity
     public function setPrice(?float $price): void
     {
         $this->price = $price ?: 0.0;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isPriceTba(): bool
+    {
+        return $this->priceTba;
+    }
+
+    /**
+     * @param bool $priceTba
+     */
+    public function setPriceTba(bool $priceTba): void
+    {
+        $this->priceTba = $priceTba;
     }
 
     public function setSlug(): void

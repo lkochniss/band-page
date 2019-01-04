@@ -5,6 +5,7 @@ namespace App\Form\Type;
 use App\Entity\Gig;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -53,8 +54,19 @@ class GigType extends AbstractType
                 'price',
                 MoneyType::class,
                 [
-                    'required' => true,
+                    'required' => false,
                     'currency' => getenv('DEFAULT_CURRENCY'),
+                    'attr' =>
+                        [
+                            'class' => 'form-control'
+                        ]
+                ]
+            )
+            ->add(
+                'priceTba',
+                CheckboxType::class,
+                [
+                    'required' => false,
                     'attr' =>
                         [
                             'class' => 'form-control'

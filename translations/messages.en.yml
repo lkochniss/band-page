@@ -9,6 +9,7 @@ page: Page
 gigs: Gigs
 when: When
 price: Price
+price_tba: price unknown
 doors_open: 'Doors Open'
 where: Where
 more_information: 'More Information'

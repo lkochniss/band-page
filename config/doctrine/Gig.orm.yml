@@ -15,6 +15,9 @@ App\Entity\Gig:
             type: datetime
         price:
             type: float
+        priceTba:
+            column: price_tba
+            type: boolean
     manyToOne:
         location:
             targetEntity: Location

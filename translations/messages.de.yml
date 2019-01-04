@@ -9,6 +9,7 @@ page: Seite
 gigs: 'Live Konzerte'
 when: Wann
 price: Preis
+price_tba: bisher kein Preis bekannt
 doors_open: Einlass
 where: Wo
 more_information: 'Mehr Informationen'

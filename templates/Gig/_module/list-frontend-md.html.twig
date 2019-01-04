@@ -30,7 +30,11 @@
                     {{ gig.title }}
                 </td>
                 <td>
-                    {{ gig.price }}{{ default_currency|trans() }}
+                    {% if gig.priceTba == true %}
+                        {% trans %}price_tba{% endtrans %}
+                    {% else %}
+                        {{ gig.price }}{{ default_currency|trans }}
+                    {% endif %}
                 </td>
                 <td>
                     {{ gig.date|date('H:i') }}
