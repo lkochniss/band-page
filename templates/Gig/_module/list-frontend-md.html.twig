@@ -32,6 +32,8 @@
                 <td>
                     {% if gig.priceTba == true %}
                         {% trans %}price_tba{% endtrans %}
+                    {% elseif gig.price == 0.0 %}
+                        {% trans %}free{% endtrans %}
                     {% else %}
                         {{ gig.price }}{{ default_currency|trans }}
                     {% endif %}

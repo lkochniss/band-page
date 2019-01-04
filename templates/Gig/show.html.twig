@@ -92,6 +92,8 @@
                         {% trans from "messages" %}price{% endtrans %}:
                         {% if entity.priceTba == true %}
                             {% trans %}price_tba{% endtrans %}
+                        {% elseif entity.price == 0.0 %}
+                            {% trans %}free{% endtrans %}
                         {% else %}
                             {{ entity.price }}{{ default_currency|trans }}
                         {% endif %}
@@ -122,6 +124,8 @@
                         {% trans from "messages" %}price{% endtrans %}:
                         {% if entity.priceTba == true %}
                             {% trans %}price_tba{% endtrans %}
+                        {% elseif entity.price == 0.0 %}
+                            {% trans %}free{% endtrans %}
                         {% else %}
                             {{ entity.price }}{{ default_currency|trans }}
                         {% endif %}
