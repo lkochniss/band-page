@@ -19,7 +19,7 @@
     "precss": "^2.0.0",
     "resolve-url-loader": "^2.2.1",
     "sass-loader": "^6.0.6",
-    "select2": "^4.0.6-rc.1",
+    "select2": "^4.0.7",
     "startbootstrap-sb-admin-2": "^3.3.7",
     "style-loader": "^0.19.1",
     "url-loader": "^0.6.2",
